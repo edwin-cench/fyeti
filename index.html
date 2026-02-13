@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alQa Brands Creatives</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --accent: #38bdf8;        /* Bright Blue */
+            --accent-print: #f472b6;  /* Pink */
+            --whatsapp: #25D366;      /* WhatsApp Green */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-weight: 900; font-size: 1.5rem; color: var(--text-color); }
+        .logo span { color: var(--accent); }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--accent); }
+
+        /* --- HERO --- */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: -webkit-linear-gradient(0deg, var(--accent), var(--accent-print));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--text-color);
+            color: var(--bg-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease; 
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            background-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        /* --- SECTION TITLES --- */
+        .section-title {
+            font-size: 2rem;
+            margin: 80px 0 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05); /* Subtle separator */
+            padding-top: 40px;
+        }
+
+        /* --- SERVICES GRID --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            cursor: default;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover { 
+            transform: translateY(-10px);
+            border-color: var(--accent); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover .icon-box { transform: scale(1.1) rotate(5deg); }
+        .service-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .service-card p { opacity: 0.7; font-size: 0.95rem; }
+
+        /* --- PORTFOLIO GRID (Expanded) --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            border-color: var(--accent-print);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: #333;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img { transform: scale(1.05); }
+        .project-info { padding: 20px; position: relative; z-index: 1; background: var(--card-bg); }
+        .project-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-print);
+            font-weight: bold;
+        }
+
+        /* --- CONTACT SECTION (New) --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover { transform: translateY(-5px); }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 15px auto;
+            color: var(--accent);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-color);
+            transition: background 0.3s;
+        }
+
+        .contact-btn:hover { background: var(--accent); color: var(--bg-color); }
+
+        /* Specific style for WhatsApp button */
+        .whatsapp-btn:hover { background: var(--whatsapp); color: white; }
+        .whatsapp-icon { color: var(--whatsapp); }
+
+
+        /* --- COPYRIGHT FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--card-bg);
+            opacity: 0.5;
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">alQa Brand Creatives<span>Design</span>.</div>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#work">Our Work</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>Design. Branding. Print.</h1>
+            <p>We turn ideas into brands and brands into physical reality. Your one-stop shop for creative solutions.</p>
+            <a href="#contact" class="btn">Get a Quote</a>
+        </section>
+
+        <h2 class="section-title" id="services">What We Do</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon-box">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.131A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
+                </div>
+                <h3>Brand Identity</h3>
+                <p>Logos, color palettes, and style guides.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                </div>
+                <h3>Professional Printing</h3>
+                <p>High-quality business cards and flyers.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                </div>
+                <h3>Graphic Design</h3>
+                <p>Social media posts and ads.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="work">Recent Projects</h2>
+        <div class="portfolio-grid">
+            
+            <div class="project-card">
+                <img src="https://placehold.co/600x400/222/FFF?text=Business+Cards+1" class="project-img" alt="Project">
+                <div class="project-info">
+                    <div class="project-tag">Printing</div>
+                    <h3>Luxury Business Cards</h3>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://placehold.co/600x400/333/FFF?text=Logo+Design" class="project-img" alt="Project">
+                <div class="project-info">
+                    <div class="project-tag">Branding</div>
+                    <h3>Tech Startup Logo</h3>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://placehold.co/600x400/444/FFF?text=Flyer+Design" class="project-img" alt="Project">
+                <div class="project-info">
+                    <div class="project-tag">Marketing</div>
+                    <h3>Event Flyer</h3>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://placehold.co/600x400/222/FFF?text=Business+Cards+2" class="project-img" alt="Project">
+                <div class="project-info">
+                    <div class="project-tag">Printing</div>
+                    <h3>Matte Finish Cards</h3>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://placehold.co/600x400/333/FFF?text=Social+Media" class="project-img" alt="Project">
+                <div class="project-info">
+                    <div class="project-tag">Digital</div>
+                    <h3>Instagram Campaign</h3>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://placehold.co/600x400/444/FFF?text=Merch" class="project-img" alt="Project">
+                <div class="project-info">
+                    <div class="project-tag">Merchandise</div>
+                    <h3>T-Shirt Branding</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="section-title" id="contact">Get In Touch</h2>
+        <div class="contact-grid">
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                </div>
+                <h3>Phone</h3>
+                <p>Mon-Fri, 9am - 5pm</p>
+                <a href="tel:+254794851212" class="contact-btn">Call Now</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3>Email</h3>
+                <p>Send us your project details</p>
+                <a href="alqabrandscreations@gmail.com" class="contact-btn">Send Email</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon whatsapp-icon">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.983.57 2.051.896 3.168.896 3.179 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.783-5.766-5.783zm6.196 8.6c-.22.618-1.077 1.138-1.478 1.173-.402.036-.926.176-3.235-.747-2.73-1.09-4.482-3.896-4.618-4.077-.135-.181-1.097-1.464-1.097-2.793 0-1.329.695-1.982.942-2.242.247-.26.657-.327.874-.327.217 0 .434.008.618.049.199.044.473.125.719.721.253.618.865 2.116.942 2.27.076.154.127.337.026.541-.1.205-.152.332-.299.508-.146.176-.306.393-.437.528-.146.151-.297.314-.127.608.169.294.75 1.242 1.611 2.009 1.107.986 2.038 1.291 2.327 1.433.289.141.459.124.632-.074.173-.198.74-865.942-1.129.202-.264.836-.217 1.343-.028.508.189 3.22 1.521 3.774 1.785.553.264.922.397 1.053.618.131.221.131 1.284-.089 1.902z"/></svg>
+                </div>
+                <h3>WhatsApp</h3>
+                <p>Chat with us instantly</p>
+                <a href="https://wa.me/254794851212" class="contact-btn whatsapp-btn">Chat on WhatsApp</a>
+            </div>
+
+        </div>
+
+        <footer id="copyright">
+            <p>&copy; 2026 Brother Design & Print. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
