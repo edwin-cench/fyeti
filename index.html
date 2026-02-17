@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>alQa Brands | Business + Creative Agency</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -536,7 +536,7 @@
         .contact-info-grid { display: grid; gap: 20px; }
         .contact-card { background: rgba(0,0,0,0.25); padding: 25px; border-radius: 28px; display: flex; align-items: center; gap: 20px; border: 1px solid rgba(255,255,255,0.1); }
         .contact-card .icon { font-size: 2rem; }
-        .contact-card a { color: white; text-decoration: underline; }
+        .contact-card a { color: white; text-decoration: underline; word-break: break-word; }
         .contact-card a:hover { color: var(--accent); }
 
         footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-color); color: var(--text-muted); background: var(--card-bg); border-radius: 40px 40px 0 0; margin-top: 50px; }
@@ -544,13 +544,17 @@
         .footer-links a { color: var(--text-muted); text-decoration: none; }
         .footer-links a:hover { color: var(--accent); }
 
+        /* ========== ENHANCED MOBILE RESPONSIVENESS ========== */
         @media (max-width: 700px) {
             .hero-grid { grid-template-columns: 1fr; }
             .testimonials { grid-template-columns: 1fr; }
             .about-grid { grid-template-columns: 1fr; }
             .carousel-slides { height: 200px; }
+            
+            /* Contact section mobile optimizations */
             .contact-section-wrapper {
                 padding: 40px 20px;
+                border-radius: 32px;
             }
             .contact-container {
                 grid-template-columns: 1fr;
@@ -569,6 +573,68 @@
             .channel-option {
                 max-width: 200px;
                 width: 100%;
+            }
+        }
+
+        /* Extra small devices (phones under 480px) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .contact-section-wrapper {
+                padding: 30px 15px;
+                margin: 40px 0;
+            }
+            .contact-form-wrapper {
+                padding: 20px 15px;
+            }
+            .contact-card {
+                padding: 15px;
+                gap: 15px;
+            }
+            .contact-card .icon {
+                font-size: 1.8rem;
+            }
+            .form-input, .form-select, .form-textarea {
+                padding: 12px;
+            }
+            .submit-btn {
+                padding: 14px;
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Very small screens (under 360px) */
+        @media (max-width: 360px) {
+            .contact-section-wrapper {
+                padding: 20px 10px;
+            }
+            .contact-form-wrapper {
+                padding: 15px 10px;
+            }
+            .contact-card {
+                padding: 12px 10px;
+                gap: 10px;
+            }
+            .contact-card .icon {
+                font-size: 1.5rem;
+            }
+            .contact-card a {
+                font-size: 0.9rem;
+            }
+            .form-input, .form-select, .form-textarea {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            .submit-btn {
+                padding: 12px;
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
             }
         }
     </style>
