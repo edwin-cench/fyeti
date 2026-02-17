@@ -293,26 +293,83 @@
         .gallery-info { padding: 15px; }
         .gallery-info h3 { font-size: 1.2rem; margin-bottom: 4px; }
 
-        /* new banner images for sections */
-        .section-banner {
+        /* ========== CAROUSEL STYLES ========== */
+        .carousel-container {
+            position: relative;
             width: 100%;
             border-radius: 28px;
-            margin-bottom: 40px;
             overflow: hidden;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
-            transition: transform 0.3s;
+            margin-bottom: 40px;
+            background: var(--card-bg);
         }
-        .section-banner:hover {
-            transform: scale(1.01);
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 300px; /* fixed height */
         }
-        .section-banner img {
+        .carousel-slide {
+            flex: 0 0 100%;
+            height: 100%;
+        }
+        .carousel-slide img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
             object-fit: cover;
+            display: block;
         }
-
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+        }
+        .carousel-arrow:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .carousel-arrow.prev { left: 15px; }
+        .carousel-arrow.next { right: 15px; }
+        .carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .carousel-dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+        /* pause on hover */
+        .carousel-container:hover .carousel-slides {
+            animation-play-state: paused;
+        }
         /* quote area */
         #quote-area { background: var(--card-bg); padding: 30px; border-radius: 28px; margin: 40px 0; border: 2px solid var(--accent); display: none; box-shadow: var(--shadow); }
         #quote-area h3 { font-size: 1.8rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
@@ -335,4 +392,463 @@
         .form-input, .form-select, .form-textarea { width: 100%; padding: 14px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 18px; color: white; }
         .submit-btn { background: white; color: var(--contact-bg); padding: 16px; font-weight: 800; border-radius: 60px; font-size: 1.2rem; }
         .contact-info-grid { display: grid; gap: 20px; }
-        .contact-card { background: rgba(0,0,0,0.25); padding: 25px; border-radius: 28px; display: flex; align-items: cent
+        .contact-card { background: rgba(0,0,0,0.25); padding: 25px; border-radius: 28px; display: flex; align-items: center; gap: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        .contact-card .icon { font-size: 2rem; }
+
+        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-color); color: var(--text-muted); background: var(--card-bg); border-radius: 40px 40px 0 0; margin-top: 50px; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin: 20px 0; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 700px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .testimonials { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; }
+            .carousel-slides { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+<div class="doodle-wrapper">
+    <div class="doodle shape-circle"></div>
+    <div class="doodle shape-triangle"></div>
+    <div class="doodle shape-square"></div>
+    <div class="doodle shape-blob"></div>
+</div>
+
+<div id="overlay" class="overlay" onclick="closeNav()"></div>
+<div id="mySidebar" class="sidebar">
+    <a href="#">🏠 Home</a>
+    <a href="#about">📌 About Us</a>
+    <a href="#quote-area" class="sidebar-cart-link" onclick="closeNav()">🛒 Quote (<span id="sidebar-cart-count">0</span>)</a>
+    <a href="#design-section">🎨 Design</a>
+    <a href="#branding-section">🏷️ Branding</a>
+    <a href="#printing-section">🖨️ Printing</a>
+    <button class="dropdown-btn">▼ All Products</button>
+    <div class="dropdown-container">
+        <a href="#printing-section">3D Signage</a>
+        <a href="#printing-section">Building Signs</a>
+        <a href="#printing-section">PVC Signs</a>
+        <a href="#printing-section">Canvas Prints</a>
+        <a href="#printing-section">Vehicle Wraps</a>
+    </div>
+    <a href="#contact">📞 Contact</a>
+    <div style="position: absolute; bottom: 20px; width:100%; text-align:center; font-size:0.8rem;">&copy; 2026 alQa Business</div>
+</div>
+
+<a href="#quote-area" class="cart-float" id="cart-float">🛒 Quote (<span id="cart-count">0</span>)</a>
+
+<header>
+    <div class="logo" id="logo-container">
+        <img src="https://placehold.co/100x100/2563eb/white?text=alQa" class="logo-img" alt="alQa">
+        <div>alQa <span>Brands</span></div>
+    </div>
+    <div class="header-controls">
+        <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">☀️</button>
+        <button class="menu-toggle" onclick="openNav()">☰</button>
+    </div>
+</header>
+
+<div class="container">
+    <!-- laptop scene with logo on screen -->
+    <div class="laptop-scene">
+        <div class="person"><div class="person-head"><div class="person-hair"></div></div><div class="person-body"></div></div>
+        <div class="laptop">
+            <div class="laptop-screen">
+                <div class="laptop-display">
+                    <!-- popping icons (remain) -->
+                    <div class="pop-icon icon-design">🎨</div>
+                    <div class="pop-icon icon-brand">🏷️</div>
+                    <div class="pop-icon icon-print">🖨️</div>
+                    <!-- New laptop logo (prominent) -->
+                    <div class="laptop-logo">
+                        <img src="https://placehold.co/100x100/2563eb/white?text=alQa" alt="alQa logo">
+                        <span>alQa</span>
+                    </div>
+                </div>
+            </div>
+            <div class="laptop-base"></div>
+        </div>
+    </div>
+
+    <!-- Hero business with <img> tags -->
+    <section class="hero">
+        <div class="hero-grid">
+            <a href="#design-section" class="hero-card">
+                <img src="https://placehold.co/800x600/1e2b4f/2b7fff?text=DESIGN" alt="Design services">
+                <h2>Design</h2>
+            </a>
+            <a href="#branding-section" class="hero-card">
+                <img src="https://placehold.co/800x600/1e2b4f/d946ef?text=BRANDING" alt="Branding services">
+                <h2>Branding</h2>
+            </a>
+            <a href="#printing-section" class="hero-card">
+                <img src="https://placehold.co/800x600/1e2b4f/25D366?text=PRINTING" alt="Printing services">
+                <h2>Printing</h2>
+            </a>
+        </div>
+        <p>From identity to physical form — alQa delivers corporate branding, high-end design, and large-format printing for businesses across Africa. <br>Fast, precise, creative.</p>
+        <a href="#contact" class="btn">Request consultation</a>
+    </section>
+
+    <!-- ========== NEW ABOUT US SECTION ========== -->
+    <h2 class="section-title" id="about">About Us</h2>
+    <div class="about-grid">
+        <!-- left column: history & mission -->
+        <div class="about-text">
+            <h3>Our story</h3>
+            <p>Founded in 2018, alQa Brands started as a two‑person design studio in Nairobi. Today we are a full‑service creative agency and print house, trusted by over 500 businesses across East Africa. We blend strategic thinking with bold creativity to help brands stand out—from logo design to large‑scale signage.</p>
+            <p><strong>📍 Based in Nairobi, serving the world.</strong> Our in‑house production facility allows us to control quality every step of the way, ensuring fast turnaround and exceptional results.</p>
+            <div class="about-highlight">
+                <div class="about-highlight-item">
+                    <span>500+</span>
+                    <small>brands served</small>
+                </div>
+                <div class="about-highlight-item">
+                    <span>5‑day</span>
+                    <small>avg. turnaround</small>
+                </div>
+                <div class="about-highlight-item">
+                    <span>24/7</span>
+                    <small>client support</small>
+                </div>
+            </div>
+        </div>
+        <!-- right column: location / map placeholder -->
+        <div class="about-map">
+            <img src="https://placehold.co/600x300/1e2b4f/2b7fff?text=Nairobi+Kenya" alt="Map location placeholder">
+            <h4>📍 Visit our workshop</h4>
+            <p><i>📌</i> 123 Creative Avenue, Industrial Area, Nairobi, Kenya</p>
+            <p><i>🕒</i> Mon–Fri 8:00 – 18:00 · Sat 9:00 – 14:00</p>
+            <p><i>📞</i> +254 794 851 212</p>
+            <p style="font-style: italic; margin-top: 15px;">"We’d love to meet you and discuss your next project over a cup of Kenyan coffee."</p>
+        </div>
+    </div>
+
+    <!-- New business section: Services -->
+    <h2 class="section-title">Core services</h2>
+    <div class="services-grid">
+        <div class="service-card"><div class="service-icon">📐</div><h3>Graphic Design</h3><p>Logos, brochures, digital ads, UI/UX — tailored to your brand.</p></div>
+        <div class="service-card"><div class="service-icon">🏢</div><h3>Corporate Identity</h3><p>Complete branding guidelines, stationery, and brand books.</p></div>
+        <div class="service-card"><div class="service-icon">🪧</div><h3>3D Signage</h3><p>Illuminated letters, channel letters, building signs.</p></div>
+        <div class="service-card"><div class="service-icon">🖨️</div><h3>Large Format</h3><p>Banners, vehicle wraps, canvas, stickers, exhibition stands.</p></div>
+        <div class="service-card"><div class="service-icon">📦</div><h3>Packaging</h3><p>Custom boxes, labels, and product packaging design.</p></div>
+        <div class="service-card"><div class="service-icon">📱</div><h3>Digital Marketing</h3><p>Social media kits, web banners, ad creatives.</p></div>
+    </div>
+
+    <!-- How we work -->
+    <h2 class="section-title">How it works</h2>
+    <div class="steps-grid">
+        <div class="step-card"><span class="step-icon">📋</span><h3>1. Brief</h3><p>Tell us your vision via form or WhatsApp.</p></div>
+        <div class="step-card"><span class="step-icon">🤝</span><h3>2. Quote & concept</h3><p>We provide a detailed quote and mockup.</p></div>
+        <div class="step-card"><span class="step-icon">✍️</span><h3>3. Approval & production</h3><p>You approve, we produce with quality.</p></div>
+        <div class="step-card"><span class="step-icon">🚚</span><h3>4. Delivery</h3><p>Shipping or installation across Kenya.</p></div>
+    </div>
+
+    <!-- DESIGN SECTION (15 items) with CAROUSEL -->
+    <h2 class="section-title" id="design-section">Creative design</h2>
+    <!-- Carousel for Design -->
+    <div class="carousel-container" id="carousel-design">
+        <div class="carousel-slides">
+            <div class="carousel-slide"><img src="https://placehold.co/1200x300/1e2b4f/2b7fff?text=Design+Concept+1" alt="Design 1"></div>
+            <div class="carousel-slide"><img src="https://placehold.co/1200x300/1e2b4f/2b7fff?text=Design+Concept+2" alt="Design 2"></div>
+            <div class="carousel-slide"><img src="https://placehold.co/1200x300/1e2b4f/2b7fff?text=Design+Concept+3" alt="Design 3"></div>
+        </div>
+        <div class="carousel-arrow prev" onclick="changeSlide('design', -1)">❮</div>
+        <div class="carousel-arrow next" onclick="changeSlide('design', 1)">❯</div>
+        <div class="carousel-dots" id="dots-design"></div>
+    </div>
+    <div class="gallery-grid">
+        <!-- 1-15 as before, but we keep same for brevity (already 15 each) -->
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Logo+Suite" class="gallery-img"><div class="gallery-info"><h3>Logo suite</h3><p>Minimalist/modern</p><button class="add-btn" onclick="addToQuote('Logo design','Logo suite - full set')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=UI+Kit" class="gallery-img"><div class="gallery-info"><h3>App UI kit</h3><p>Mobile interface</p><button class="add-btn" onclick="addToQuote('UI design','Mobile app UI kit')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Flyer" class="gallery-img"><div class="gallery-info"><h3>Flyer</h3><p>A5 / DL flyer</p><button class="add-btn" onclick="addToQuote('Flyer design','Event flyer')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Menu" class="gallery-img"><div class="gallery-info"><h3>Restaurant menu</h3><p>Multi-page menu</p><button class="add-btn" onclick="addToQuote('Menu design','Restaurant menu')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Brochure" class="gallery-img"><div class="gallery-info"><h3>Brochure</h3><p>Tri-fold / bi-fold</p><button class="add-btn" onclick="addToQuote('Brochure design','Corporate brochure')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Social+Media" class="gallery-img"><div class="gallery-info"><h3>Social kit</h3><p>Instagram/Facebook templates</p><button class="add-btn" onclick="addToQuote('Social media kit','Set of 10 templates')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Packaging" class="gallery-img"><div class="gallery-info"><h3>Packaging design</h3><p>Product box</p><button class="add-btn" onclick="addToQuote('Packaging design','Custom box design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Label" class="gallery-img"><div class="gallery-info"><h3>Product label</h3><p>Sticker label</p><button class="add-btn" onclick="addToQuote('Label design','Product label')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Poster" class="gallery-img"><div class="gallery-info"><h3>Poster</h3><p>A2 / A3 poster</p><button class="add-btn" onclick="addToQuote('Poster design','Event poster')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Web+Banner" class="gallery-img"><div class="gallery-info"><h3>Web banners</h3><p>Google/Display ads</p><button class="add-btn" onclick="addToQuote('Web banner set','5 banner sizes')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Illustration" class="gallery-img"><div class="gallery-info"><h3>Custom illustration</h3><p>Vector art</p><button class="add-btn" onclick="addToQuote('Illustration','Custom vector illustration')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Magazine" class="gallery-img"><div class="gallery-info"><h3>Magazine layout</h3><p>Multi-page editorial</p><button class="add-btn" onclick="addToQuote('Magazine layout','8-16 pages')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Email+Header" class="gallery-img"><div class="gallery-info"><h3>Email header</h3><p>Newsletter template</p><button class="add-btn" onclick="addToQuote('Email header','HTML email design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Catalog" class="gallery-img"><div class="gallery-info"><h3>Product catalog</h3><p>20-page catalog</p><button class="add-btn" onclick="addToQuote('Catalog design','Product catalog')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Icon+Set" class="gallery-img"><div class="gallery-info"><h3>Icon set</h3><p>30 custom icons</p><button class="add-btn" onclick="addToQuote('Icon set','Custom icons for web')">Add to quote</button></div></div>
+    </div>
+
+    <!-- BRANDING SECTION (15 items) with CAROUSEL -->
+    <h2 class="section-title" id="branding-section">Corporate branding</h2>
+    <!-- Carousel for Branding -->
+    <div class="carousel-container" id="carousel-branding">
+        <div class="carousel-slides">
+            <div class="carousel-slide"><img src="https://placehold.co/1200x300/1e2b4f/d946ef?text=Branding+Identity+1" alt="Branding 1"></div>
+            <div class="carousel-slide"><img src="https://placehold.co/1200x300/1e2b4f/d946ef?text=Branding+Identity+2" alt="Branding 2"></div>
+            <div class="carousel-slide"><img src="https://placehold.co/1200x300/1e2b4f/d946ef?text=Branding+Identity+3" alt="Branding 3"></div>
+        </div>
+        <div class="carousel-arrow prev" onclick="changeSlide('branding', -1)">❮</div>
+        <div class="carousel-arrow next" onclick="changeSlide('branding', 1)">❯</div>
+        <div class="carousel-dots" id="dots-branding"></div>
+    </div>
+    <div class="gallery-grid">
+        <!-- 1-15 (keeping all) -->
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Stationery" class="gallery-img"><div class="gallery-info"><h3>Stationery set</h3><p>Letterhead + envelope + card</p><button class="add-btn" onclick="addToQuote('Stationery set','Full stationery suite')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Vehicle+Wrap" class="gallery-img"><div class="gallery-info"><h3>Vehicle wrap</h3><p>Full/partial car branding</p><button class="add-btn" onclick="addToQuote('Vehicle wrap','Car / van wrap')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Uniform" class="gallery-img"><div class="gallery-info"><h3>Uniform printing</h3><p>T-shirts, caps, aprons</p><button class="add-btn" onclick="addToQuote('Uniform printing','Branded staff wear')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Brand+Guide" class="gallery-img"><div class="gallery-info"><h3>Brand manual</h3><p>Complete style guide</p><button class="add-btn" onclick="addToQuote('Brand manual','PDF brand book')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Lanyards" class="gallery-img"><div class="gallery-info"><h3>ID lanyards</h3><p>Custom printed lanyards</p><button class="add-btn" onclick="addToQuote('Lanyards','Printed logo + text')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Expo+Booth" class="gallery-img"><div class="gallery-info"><h3>Expo booth</h3><p>Full trade show setup</p><button class="add-btn" onclick="addToQuote('Expo booth','Design & production')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Gift+Items" class="gallery-img"><div class="gallery-info"><h3>Corporate gifts</h3><p>Pens, mugs, notepads</p><button class="add-btn" onclick="addToQuote('Corporate gifts','Branded merchandise')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Reception+Sign" class="gallery-img"><div class="gallery-info"><h3>Reception signage</h3><p>Acrylic / metal logo</p><button class="add-btn" onclick="addToQuote('Reception sign','Office lobby sign')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Business+Card" class="gallery-img"><div class="gallery-info"><h3>Business cards</h3><p>Premium finish</p><button class="add-btn" onclick="addToQuote('Business cards','Box of 100')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Envelope" class="gallery-img"><div class="gallery-info"><h3>Branded envelopes</h3><p>DL / A4</p><button class="add-btn" onclick="addToQuote('Envelopes','Printed envelopes')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Folder" class="gallery-img"><div class="gallery-info"><h3>Presentation folder</h3><p>Embossed logo</p><button class="add-btn" onclick="addToQuote('Presentation folder','With pockets')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Notebook" class="gallery-img"><div class="gallery-info"><h3>Branded notebook</h3><p>Custom cover</p><button class="add-btn" onclick="addToQuote('Notebook','Corporate notebook')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Pen" class="gallery-img"><div class="gallery-info"><h3>Custom pens</h3><p>Metal / plastic</p><button class="add-btn" onclick="addToQuote('Custom pens','Box of 50')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Cap" class="gallery-img"><div class="gallery-info"><h3>Embroidered caps</h3><p>Cotton / twill</p><button class="add-btn" onclick="addToQuote('Caps','Embroidered logo')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/d946ef?text=Tote+Bag" class="gallery-img"><div class="gallery-info"><h3>Cotton tote bag</h3><p>Screen printed</p><button class="add-btn" onclick="addToQuote('Tote bag','Eco-friendly bag')">Add to quote</button></div></div>
+    </div>
+
+    <!-- PRINTING SECTION (15 items) with CAROUSEL -->
+    <h2 class="section-title" id="printing-section">Printing & signage</h2>
+    <!-- Carousel for Printing -->
+    <div class="carousel-container" id="carousel-printing">
+        <div class="carousel-slides">
+            <div class="carousel-slide"><img src="https://placehold.co/1200x300/1e2b4f/25D366?text=Printing+Solutions+1" alt="Printing 1"></div>
+            <div class="carousel-slide"><img src="https://placehold.co/1200x300/1e2b4f/25D366?text=Printing+Solutions+2" alt="Printing 2"></div>
+            <div class="carousel-slide"><img src="https://placehold.co/1200x300/1e2b4f/25D366?text=Printing+Solutions+3" alt="Printing 3"></div>
+        </div>
+        <div class="carousel-arrow prev" onclick="changeSlide('printing', -1)">❮</div>
+        <div class="carousel-arrow next" onclick="changeSlide('printing', 1)">❯</div>
+        <div class="carousel-dots" id="dots-printing"></div>
+    </div>
+    <div class="gallery-grid">
+        <!-- 1-15 -->
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=3D+Lightbox" class="gallery-img"><div class="gallery-info"><h3>3D lightbox</h3><p>Illuminated letters</p><button class="add-btn" onclick="addToQuote('3D lightbox','Illuminated signage')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Rollup" class="gallery-img"><div class="gallery-info"><h3>Roll‑up banner</h3><p>80x200cm</p><button class="add-btn" onclick="addToQuote('Roll-up banner','Standard size')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Canvas" class="gallery-img"><div class="gallery-info"><h3>Canvas print</h3><p>Ready to hang</p><button class="add-btn" onclick="addToQuote('Canvas print','Custom size')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Vinyl+Sticker" class="gallery-img"><div class="gallery-info"><h3>Vinyl stickers</h3><p>Cut / contour</p><button class="add-btn" onclick="addToQuote('Vinyl stickers','Die-cut stickers')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Outdoor+Banner" class="gallery-img"><div class="gallery-info"><h3>Outdoor banner</h3><p>Mesh / PVC</p><button class="add-btn" onclick="addToQuote('Outdoor banner','Large format')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Foamboard" class="gallery-img"><div class="gallery-info"><h3>Foamboard</h3><p>3mm / 5mm</p><button class="add-btn" onclick="addToQuote('Foamboard','Rigid display')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Acrylic+Sign" class="gallery-img"><div class="gallery-info"><h3>Acrylic sign</h3><p>Laser cut</p><button class="add-btn" onclick="addToQuote('Acrylic sign','Office door sign')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Coroplast" class="gallery-img"><div class="gallery-info"><h3>Coroplast yard sign</h3><p>18x24"</p><button class="add-btn" onclick="addToQuote('Coroplast sign','Temporary signage')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Window+Perf" class="gallery-img"><div class="gallery-info"><h3>Window perforation</h3><p>See‑through vinyl</p><button class="add-btn" onclick="addToQuote('Window perf','Perforated vinyl')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Floor+Graphics" class="gallery-img"><div class="gallery-info"><h3>Floor graphics</h3><p>Anti‑slip</p><button class="add-btn" onclick="addToQuote('Floor graphics','Anti‑slip vinyl')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Table+Throw" class="gallery-img"><div class="gallery-info"><h3>Table throw / runner</h3><p>Stretch fabric</p><button class="add-btn" onclick="addToQuote('Table throw','Expo table cover')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=PopUp+Stand" class="gallery-img"><div class="gallery-info"><h3>Pop‑up stand</h3><p>Modular display</p><button class="add-btn" onclick="addToQuote('Pop-up stand','Trade show display')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Flag" class="gallery-img"><div class="gallery-info"><h3>Feather flag</h3><p>Outdoor teardrop</p><button class="add-btn" onclick="addToQuote('Feather flag','Full colour')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Booklet" class="gallery-img"><div class="gallery-info"><h3>Booklet printing</h3><p>Saddle stitch</p><button class="add-btn" onclick="addToQuote('Booklet printing','Multi-page booklet')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/25D366?text=Calendar" class="gallery-img"><div class="gallery-info"><h3>Wall calendar</h3><p>Spiral bound</p><button class="add-btn" onclick="addToQuote('Calendar','Custom photo calendar')">Add to quote</button></div></div>
+    </div>
+
+    <!-- why choose us -->
+    <h2 class="section-title">Why alQa?</h2>
+    <div class="why-grid">
+        <div class="why-card"><h3>⚡ 5‑day turnaround</h3><p>Most projects delivered within a week.</p></div>
+        <div class="why-card"><h3>🎯 In‑house production</h3><p>No outsourcing: full control of printing & signage.</p></div>
+        <div class="why-card"><h3>📞 24/7 support</h3><p>Direct WhatsApp line to your project manager.</p></div>
+        <div class="why-card"><h3>🏆 500+ brands</h3><p>Trusted by companies across East Africa.</p></div>
+    </div>
+
+    <!-- Testimonials (now 4) -->
+    <h2 class="section-title">Client stories</h2>
+    <div class="testimonials">
+        <div class="testimonial-card"><p>"alQa redesigned our entire brand identity and did all our stationery and signage. Professional, fast and great quality."</p><div class="testimonial-author">— Grace M., CEO, Urban Eatery</div></div>
+        <div class="testimonial-card"><p>"We needed 50 roll-up banners and vehicle wraps for a trade show. They delivered in 3 days. Highly recommend."</p><div class="testimonial-author">— James K., Marketing, Technova</div></div>
+        <div class="testimonial-card"><p>"The 3D signage they installed for our headquarters is stunning. Attention to detail and installation was seamless."</p><div class="testimonial-author">— Amina S., Operations, Prime Properties</div></div>
+        <div class="testimonial-card"><p>"Their design team captured our brand essence perfectly. The new packaging has increased our shelf appeal dramatically."</p><div class="testimonial-author">— David O., Product Manager, FreshFoods Ltd</div></div>
+    </div>
+
+    <!-- dynamic quote area -->
+    <div id="quote-area">
+        <h3>📋 Your quote summary</h3>
+        <div class="quote-items" id="quote-list"></div>
+        <div class="quote-total" id="quote-total">Total: KSh 0</div>
+        <div class="quote-actions">
+            <button onclick="clearQuote()">🗑️ Clear</button>
+            <button onclick="sendWhatsAppBusiness()">💬 Send via WhatsApp</button>
+        </div>
+    </div>
+
+    <!-- contact section -->
+    <h2 class="section-title" id="contact">Start a project</h2>
+    <div class="contact-section-wrapper">
+        <div class="contact-container">
+            <div class="contact-form-wrapper">
+                <h3>Write us a message</h3>
+                <form onsubmit="handleFormSubmit(event)">
+                    <div class="form-group"><label class="form-label">Full name *</label><input type="text" class="form-input" required placeholder="John Kimani"></div>
+                    <div class="form-group"><label class="form-label">Company *</label><input type="text" class="form-input" required placeholder="Your Business Ltd"></div>
+                    <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" required placeholder="john@company.com"></div>
+                    <div class="form-group"><label class="form-label">Service needed</label><select class="form-select"><option>Design</option><option>Branding</option><option>Printing</option><option>Signage</option></select></div>
+                    <div class="form-group"><label class="form-label">Message *</label><textarea class="form-textarea" rows="3" required placeholder="Tell us details..."></textarea></div>
+                    <button type="submit" class="submit-btn">Send inquiry</button>
+                </form>
+            </div>
+            <div class="contact-info-grid">
+                <div class="contact-card"><div class="icon">📞</div><div><h4>Phone</h4><p><a href="tel:+254794851212" style="color:white;">+254 794 851 212</a></p></div></div>
+                <div class="contact-card"><div class="icon">📧</div><div><h4>Email</h4><p>alqabrandscreations@gmail.com</p></div></div>
+                <div class="contact-card"><div class="icon">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/254794851212" onclick="sendWhatsAppBusiness()" style="color:white;">Chat direct</a></p></div></div>
+                <div class="contact-card"><div class="icon">📍</div><div><h4>Location</h4><p>Nairobi, Kenya</p></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 alQa Brands Creatives — business identity & print</p>
+    <div class="footer-links">
+        <a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">Facebook</a>
+    </div>
+</footer>
+
+<script>
+    (function() {
+        let cart = JSON.parse(localStorage.getItem('alqa_cart')) || [];
+
+        function saveCart() { localStorage.setItem('alqa_cart', JSON.stringify(cart)); updateCartDisplay(); }
+
+        window.addToQuote = function(itemName, presetNote = '') {
+            let qty = prompt(`Quantity for "${itemName}"?`, '1');
+            if (qty === null) return;
+            qty = parseInt(qty) || 1;
+            let note = prompt(`Add note (e.g. size, color)`, presetNote);
+            if (note === null) note = '';
+            cart.push({ name: itemName, quantity: qty, note: note || '—' });
+            saveCart();
+        };
+
+        window.removeFromQuote = function(index) { cart.splice(index, 1); saveCart(); };
+
+        window.clearQuote = function() { if (confirm('Remove all items?')) { cart = []; saveCart(); } };
+
+        function updateCartDisplay() {
+            const list = document.getElementById('quote-list');
+            const area = document.getElementById('quote-area');
+            const floatCart = document.getElementById('cart-float');
+            const cartCount = document.getElementById('cart-count');
+            const sideCount = document.getElementById('sidebar-cart-count');
+            const totalSpan = document.getElementById('quote-total');
+            if (!list) return;
+
+            list.innerHTML = '';
+            if (cart.length === 0) {
+                area.style.display = 'none';
+                floatCart.style.display = 'none';
+                sideCount.innerText = '0';
+                return;
+            }
+            area.style.display = 'block';
+            floatCart.style.display = 'block';
+            cartCount.innerText = cart.length;
+            sideCount.innerText = cart.length;
+
+            let totalItems = 0;
+            cart.forEach((item, idx) => {
+                totalItems += item.quantity;
+                const row = document.createElement('div');
+                row.className = 'quote-row';
+                row.innerHTML = `<div class="quote-details"><span class="quote-name">${item.name}</span><span class="quote-note">${item.note}</span></div>
+                                 <div style="display:flex; align-items:center; gap:15px;"><span class="quote-qty">x${item.quantity}</span><span class="remove-btn" onclick="removeFromQuote(${idx})">✕</span></div>`;
+                list.appendChild(row);
+            });
+            totalSpan.innerText = `Total items: ${totalItems}`;
+        }
+
+        window.sendWhatsAppBusiness = function() {
+            const phone = '254794851212';
+            let msg = 'Hello alQa Brands, I would like a quote for:\n';
+            if (cart.length) {
+                cart.forEach(i => { msg += `🔹 ${i.name}  x${i.quantity}  (${i.note})\n`; });
+            } else {
+                msg += '🔹 Please send me more information about your services.';
+            }
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        };
+
+        window.handleFormSubmit = function(e) {
+            e.preventDefault();
+            alert('Thank you! We will respond within 24 hours.');
+            e.target.reset();
+        };
+
+        // theme
+        window.toggleTheme = function() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            document.getElementById('theme-btn').innerText = next === 'light' ? '🌙' : '☀️';
+        };
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.getElementById('theme-btn').innerText = savedTheme === 'light' ? '🌙' : '☀️';
+
+        window.openNav = function() { document.getElementById('mySidebar').style.left = '0'; document.getElementById('overlay').style.display = 'block'; };
+        window.closeNav = function() { document.getElementById('mySidebar').style.left = '-300px'; document.getElementById('overlay').style.display = 'none'; };
+
+        // dropdown
+        document.querySelectorAll('.dropdown-btn').forEach(btn => {
+            btn.addEventListener('click', function() { this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'; });
+        });
+
+        // ========== CAROUSEL INIT ==========
+        const carousels = {
+            design: { index: 0, slides: document.querySelectorAll('#carousel-design .carousel-slide'), container: document.querySelector('#carousel-design .carousel-slides'), dotsContainer: document.getElementById('dots-design') },
+            branding: { index: 0, slides: document.querySelectorAll('#carousel-branding .carousel-slide'), container: document.querySelector('#carousel-branding .carousel-slides'), dotsContainer: document.getElementById('dots-branding') },
+            printing: { index: 0, slides: document.querySelectorAll('#carousel-printing .carousel-slide'), container: document.querySelector('#carousel-printing .carousel-slides'), dotsContainer: document.getElementById('dots-printing') }
+        };
+
+        function updateCarousel(name) {
+            const c = carousels[name];
+            if (!c || !c.container) return;
+            c.container.style.transform = `translateX(-${c.index * 100}%)`;
+            // update dots
+            if (c.dotsContainer) {
+                const dots = c.dotsContainer.children;
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].classList.toggle('active', i === c.index);
+                }
+            }
+        }
+
+        window.changeSlide = function(name, direction) {
+            const c = carousels[name];
+            if (!c) return;
+            c.index = (c.index + direction + c.slides.length) % c.slides.length;
+            updateCarousel(name);
+        };
+
+        function goToSlide(name, slideIndex) {
+            const c = carousels[name];
+            if (!c) return;
+            c.index = slideIndex;
+            updateCarousel(name);
+        }
+
+        // create dots and attach click
+        for (let [name, c] of Object.entries(carousels)) {
+            if (c.dotsContainer) {
+                for (let i = 0; i < c.slides.length; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                    dot.addEventListener('click', () => goToSlide(name, i));
+                    c.dotsContainer.appendChild(dot);
+                }
+            }
+            // autoplay every 5 seconds
+            setInterval(() => {
+                // only if not hovering (simple check: we can check if mouse is over container, but we'll just advance anyway)
+                // optional pause on hover is handled by CSS pointer-events? we'll just always advance
+                c.index = (c.index + 1) % c.slides.length;
+                updateCarousel(name);
+            }, 5000);
+        }
+
+        // init cart
+        updateCartDisplay();
+    })();
+</script>
+</body>
+</html>
