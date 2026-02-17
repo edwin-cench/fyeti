@@ -455,6 +455,40 @@
             transform: scale(1.05);
         }
 
+        /* Channel selection modal (for WhatsApp/Email) */
+        .channel-modal .modal-content {
+            text-align: center;
+        }
+        .channel-options {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .channel-option {
+            background: var(--card-hover);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 20px;
+            flex: 1;
+            max-width: 140px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .channel-option:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            background: var(--card-bg);
+        }
+        .channel-option .icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .channel-option span {
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
         /* Toast notification */
         .toast {
             position: fixed;
@@ -515,7 +549,6 @@
             .testimonials { grid-template-columns: 1fr; }
             .about-grid { grid-template-columns: 1fr; }
             .carousel-slides { height: 200px; }
-            /* Improve contact section on mobile */
             .contact-section-wrapper {
                 padding: 40px 20px;
             }
@@ -528,6 +561,14 @@
             }
             .contact-card {
                 padding: 20px;
+            }
+            .channel-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            .channel-option {
+                max-width: 200px;
+                width: 100%;
             }
         }
     </style>
@@ -558,23 +599,45 @@
     </div>
 </div>
 
+<!-- Channel selection modal (WhatsApp / Email) -->
+<div id="channelModal" class="modal channel-modal">
+    <div class="modal-content">
+        <h3>Choose how to send</h3>
+        <div class="channel-options">
+            <div class="channel-option" onclick="sendViaWhatsApp()">
+                <div class="icon">💬</div>
+                <span>WhatsApp</span>
+            </div>
+            <div class="channel-option" onclick="sendViaEmail()">
+                <div class="icon">📧</div>
+                <span>Email</span>
+            </div>
+        </div>
+        <div class="modal-actions" style="justify-content: center;">
+            <button class="cancel" onclick="closeChannelModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
 <div id="overlay" class="overlay" onclick="closeNav()"></div>
 <div id="mySidebar" class="sidebar">
-    <a href="#">🏠 Home</a>
-    <a href="#about">📌 About Us</a>
+    <!-- All links now close the sidebar when clicked -->
+    <a href="#" onclick="closeNav()">🏠 Home</a>
+    <a href="#about" onclick="closeNav()">📌 About Us</a>
     <a href="#quote-area" class="sidebar-cart-link" onclick="closeNav()">🛒 Quote (<span id="sidebar-cart-count">0</span>)</a>
-    <a href="#design-section">🎨 Design</a>
-    <a href="#branding-section">🏷️ Branding</a>
-    <a href="#printing-section">🖨️ Printing</a>
+    <a href="#design-section" onclick="closeNav()">🎨 Design</a>
+    <a href="#branding-section" onclick="closeNav()">🏷️ Branding</a>
+    <a href="#printing-section" onclick="closeNav()">🖨️ Printing</a>
     <button class="dropdown-btn">▼ All Products</button>
     <div class="dropdown-container">
-        <a href="#printing-section">3D Signage</a>
-        <a href="#printing-section">Building Signs</a>
-        <a href="#printing-section">PVC Signs</a>
-        <a href="#printing-section">Canvas Prints</a>
-        <a href="#printing-section">Vehicle Wraps</a>
+        <!-- Dropdown items also close sidebar -->
+        <a href="#printing-section" onclick="closeNav()">3D Signage</a>
+        <a href="#printing-section" onclick="closeNav()">Building Signs</a>
+        <a href="#printing-section" onclick="closeNav()">PVC Signs</a>
+        <a href="#printing-section" onclick="closeNav()">Canvas Prints</a>
+        <a href="#printing-section" onclick="closeNav()">Vehicle Wraps</a>
     </div>
-    <a href="#contact">📞 Contact</a>
+    <a href="#contact" onclick="closeNav()">📞 Contact</a>
     <div style="position: absolute; bottom: 20px; width:100%; text-align:center; font-size:0.8rem;">&copy; 2026 alQa Business</div>
 </div>
 
@@ -821,7 +884,7 @@
         <div class="contact-container">
             <div class="contact-form-wrapper">
                 <h3>Write us a message</h3>
-                <form onsubmit="handleFormSubmit(event)">
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
                     <div class="form-group"><label class="form-label">Full name *</label><input type="text" class="form-input" required placeholder="John Kimani"></div>
                     <div class="form-group"><label class="form-label">Company *</label><input type="text" class="form-input" required placeholder="Your Business Ltd"></div>
                     <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" required placeholder="john@company.com"></div>
@@ -851,6 +914,7 @@
 <script>
     (function() {
         let cart = JSON.parse(localStorage.getItem('alqa_cart')) || [];
+        let currentFormData = null; // store form data for channel selection
 
         // Toast function
         function showToast(message) {
@@ -862,7 +926,7 @@
             }, 5000);
         }
 
-        // Modal handling
+        // Modal handling for add to cart
         let currentItemName = '';
         window.openModal = function(itemName) {
             currentItemName = itemName;
@@ -923,6 +987,7 @@
             totalSpan.innerText = `Total items: ${totalItems}`;
         }
 
+        // WhatsApp function for direct quote send (used by cart button)
         window.sendWhatsAppBusiness = function() {
             const phone = '254794851212';
             let msg = 'Hello alQa Brands, I would like a quote for:\n';
@@ -934,7 +999,12 @@
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         };
 
-        // New form submit handler: send via WhatsApp and show toast
+        // Channel selection modal functions
+        window.closeChannelModal = function() {
+            document.getElementById('channelModal').classList.remove('active');
+        };
+
+        // Form submit: prevent default, store data, show channel modal
         window.handleFormSubmit = function(e) {
             e.preventDefault();
             const form = e.target;
@@ -944,15 +1014,41 @@
             const service = form.querySelector('select').value;
             const message = form.querySelector('textarea').value;
 
+            currentFormData = { name, company, email, service, message };
+            document.getElementById('channelModal').classList.add('active');
+        };
+
+        // Send via WhatsApp using stored form data
+        window.sendViaWhatsApp = function() {
+            if (!currentFormData) return;
+            const { name, company, email, service, message } = currentFormData;
+            const phone = '254794851212';
             let whatsappMsg = `New inquiry from ${name} (${company}, ${email})\n`;
             whatsappMsg += `Service: ${service}\nMessage: ${message}\n\n`;
             if (cart.length > 0) {
                 whatsappMsg += 'Quote items:\n';
                 cart.forEach(i => { whatsappMsg += `🔹 ${i.name} x${i.quantity} (${i.note})\n`; });
             }
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
+            document.getElementById('contactForm').reset();
+            closeChannelModal();
+            showToast('Thank you for contacting us! We\'ll reach back within 24 hours.');
+        };
 
-            window.open(`https://wa.me/254794851212?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
-            form.reset();
+        // Send via Email using stored form data
+        window.sendViaEmail = function() {
+            if (!currentFormData) return;
+            const { name, company, email, service, message } = currentFormData;
+            const recipient = 'alqabrandscreations@gmail.com';
+            let subject = `Inquiry from ${name} (${company})`;
+            let body = `Name: ${name}\nCompany: ${company}\nEmail: ${email}\nService: ${service}\nMessage: ${message}\n\n`;
+            if (cart.length > 0) {
+                body += 'Quote items:\n';
+                cart.forEach(i => { body += `- ${i.name} x${i.quantity} (${i.note})\n`; });
+            }
+            window.open(`mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
+            document.getElementById('contactForm').reset();
+            closeChannelModal();
             showToast('Thank you for contacting us! We\'ll reach back within 24 hours.');
         };
 
@@ -1031,6 +1127,9 @@
         // close modal if click outside content
         document.getElementById('cartModal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
+        });
+        document.getElementById('channelModal').addEventListener('click', function(e) {
+            if (e.target === this) closeChannelModal();
         });
     })();
 </script>
