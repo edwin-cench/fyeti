@@ -489,8 +489,9 @@
             color: var(--text-color);
         }
 
-        /* Toast notification */
+        /* Toast notification - now hidden by default */
         .toast {
+            display: none;
             position: fixed;
             top: 20px;
             left: 50%;
@@ -509,6 +510,7 @@
             backdrop-filter: blur(5px);
         }
         .toast.show {
+            display: block;
             transform: translateX(-50%) translateY(0);
         }
 
@@ -647,7 +649,7 @@
     <div class="doodle shape-blob"></div>
 </div>
 
-<!-- Toast notification -->
+<!-- Toast notification - hidden by default -->
 <div id="toast" class="toast">Thank you for contacting us! We'll reach back within 24 hours.</div>
 
 <!-- MODAL for adding to cart -->
@@ -982,7 +984,7 @@
         let cart = JSON.parse(localStorage.getItem('alqa_cart')) || [];
         let currentFormData = null; // store form data for channel selection
 
-        // Toast function
+        // Toast function - now also ensures display block
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
