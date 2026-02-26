@@ -2,7 +2,7 @@
 
 A modern, responsive business website for a creative agency offering design, branding, and printing services. Built with HTML, CSS, and JavaScript.
 
-![Website Screenshot](images/Nairobi.webp) <!-- Replace with an actual screenshot path -->
+![Website Screenshot](images/Nairobi.webp) 
 
 ## Features
 
@@ -27,7 +27,7 @@ A modern, responsive business website for a creative agency offering design, bra
 
 ## Live Demo
 
-[View live demo](#) <!-- Add your live URL if deployed -->
+[View live demo](#) 
 
 ## Getting Started
 
@@ -41,14 +41,3 @@ A modern, responsive business website for a creative agency offering design, bra
 1. Clone the repository:
    ```bash
    git clone https://github.com/edwin-cench/fyeti.git
-
-
-   
-### Next Steps
-
-1. Create a `README.md` file in your project root and paste this content.
-2. Replace placeholders like the screenshot path and live demo URL.
-3. If you have a `LICENSE` file, include it; otherwise, you can remove that section.
-4. Add a real screenshot of your website (maybe a collage of key sections) and update the image path.
-
-Let me know if you'd like to adjust any part of the README!
