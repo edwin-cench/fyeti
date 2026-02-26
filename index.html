@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>alQa Brands | Business + Creative Agency</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-     <link href="style.css" rel="stylesheet">       
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
 <div class="doodle-wrapper">
@@ -55,7 +55,6 @@
 
 <div id="overlay" class="overlay" onclick="closeNav()"></div>
 <div id="mySidebar" class="sidebar">
-    <!-- All links now close the sidebar when clicked -->
     <a href="#" onclick="closeNav()">🏠 Home</a>
     <a href="#about" onclick="closeNav()">📌 About Us</a>
     <a href="#quote-area" class="sidebar-cart-link" onclick="closeNav()">🛒 Quote (<span id="sidebar-cart-count">0</span>)</a>
@@ -64,7 +63,6 @@
     <a href="#printing-section" onclick="closeNav()">🖨️ Printing</a>
     <button class="dropdown-btn">▼ All Products</button>
     <div class="dropdown-container">
-        <!-- Dropdown items also close sidebar -->
         <a href="#printing-section" onclick="closeNav()">Signage</a>
         <a href="#printing-section" onclick="closeNav()">Posters</a>
         <a href="#printing-section" onclick="closeNav()">Stickers</a>
@@ -80,11 +78,13 @@
 
 <header>
     <div class="logo" id="logo-container">
-        <img src="images/logo/alQa Logo concept png-03.png" class="logo-img" alt="alQa">
-        <div>alQa <span>Brands</span></div>
+        <a href="#" title="Back to top">
+            <img src="images/logo/alQa Logo concept png-03.png" class="logo-img" alt="alQa">
+        </a>
     </div>
     <div class="header-controls">
         <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">☀️</button>
+        <a href="#quote-area" class="cart-nav">🛒 <span id="nav-cart-count">0</span></a>
         <button class="menu-toggle" onclick="openNav()">☰</button>
     </div>
 </header>
@@ -96,11 +96,9 @@
         <div class="laptop">
             <div class="laptop-screen">
                 <div class="laptop-display">
-                    <!-- popping icons (remain) -->
                     <div class="pop-icon icon-design">🎨</div>
                     <div class="pop-icon icon-brand">🏷️</div>
                     <div class="pop-icon icon-print">🖨️</div>
-                    <!-- New laptop logo (prominent) -->
                     <div class="laptop-logo">
                         <img src="images/logo/logo 2.jpeg" alt="alQa logo">
                         <span>alQa  Brands </span>
@@ -128,36 +126,24 @@
             </a>
         </div>
         <p>From identity to physical form — alQa delivers corporate branding, high-end design, and large-format printing for businesses across Kenya. <br>Fast, precise, creative.</p>
-        <!-- Centered button -->
         <div class="btn-center">
             <a href="#contact" class="btn">Request consultation</a>
         </div>
     </section>
 
-    <!-- ========== NEW ABOUT US SECTION ========== -->
+    <!-- ========== ABOUT US SECTION ========== -->
     <h2 class="section-title" id="about">About Us</h2>
     <div class="about-grid">
-        <!-- left column: history & mission -->
         <div class="about-text">
             <h3>Our story</h3>
             <p>Founded in 2024, alQa Brands started as a two‑person design studio in Nairobi. Today we are a full‑service creative agency and print house, trusted by over 500 businesses across Kenya. We blend strategic thinking with bold creativity to help brands stand out—from logo design to large‑scale signage.</p>
             <p><strong>📍 Based in Nairobi, serving the world.</strong> Our in‑house production facility allows us to control quality every step of the way, ensuring fast turnaround and exceptional results.</p>
             <div class="about-highlight">
-                <div class="about-highlight-item">
-                    <span>500+</span>
-                    <small>brands served</small>
-                </div>
-                <div class="about-highlight-item">
-                    <span>5‑day</span>
-                    <small>avg. turnaround</small>
-                </div>
-                <div class="about-highlight-item">
-                    <span>24/7</span>
-                    <small>client support</small>
-                </div>
+                <div class="about-highlight-item"><span>500+</span><small>brands served</small></div>
+                <div class="about-highlight-item"><span>5‑day</span><small>avg. turnaround</small></div>
+                <div class="about-highlight-item"><span>24/7</span><small>client support</small></div>
             </div>
         </div>
-        <!-- right column: location / map placeholder -->
         <div class="about-map">
             <img src="images/Nairobi.webp" alt="Map location placeholder">
             <h4>📍 Visit our workshop</h4>
@@ -168,7 +154,7 @@
         </div>
     </div>
 
-    <!-- New business section: Services -->
+    <!-- Core services -->
     <h2 class="section-title">Core services</h2>
     <div class="services-grid">
         <div class="service-card"><div class="service-icon">📐</div><h3>Graphic Design</h3><p>Logos, brochures, — tailored to your brand.</p></div>
@@ -188,75 +174,53 @@
         <div class="step-card"><span class="step-icon">🚚</span><h3>4. Delivery</h3><p>Shipping or installation across Kenya.</p></div>
     </div>
 
-    <!-- ========== DESIGN SECTION (15 items) with HORIZONTAL CAROUSEL (32 images) ========== -->
+    <!-- DESIGN SECTION (6 slides, 24 images) -->
     <h2 class="section-title" id="design-section">Creative design</h2>
-    <!-- Carousel for Design - 8 slides, 4 images each (32 total) -->
     <div class="carousel-container" id="carousel-design">
         <div class="carousel-slides">
-            <!-- Slide 1 -->
             <div class="carousel-slide">
                 <img src="images/design/logosuit.jpg" alt="Design 1">
                 <img src="images/design/eulogy.jpg" alt="Design 2">
                 <img src="images/design/flyer.jpg" alt="Design 3">
                 <img src="images/design/menu.jpeg" alt="Design 4">
             </div>
-            <!-- Slide 2 -->
             <div class="carousel-slide">
                 <img src="images/design/brochure.jpeg" alt="Design 5">
                 <img src="images/design/success cards.jpeg" alt="Design 6">
                 <img src="images/design/productbox.webp" alt="Design 7">
                 <img src="images/design/party banners.jpeg" alt="Design 8">
             </div>
-            <!-- Slide 3 -->
             <div class="carousel-slide">
                 <img src="images/design/pos.jpg" alt="Design 9">
                 <img src="images/branding/business cards.jpg" alt="Design 10">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Illustration" alt="Design 11">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Magazine" alt="Design 12">
             </div>
-            <!-- Slide 4 -->
             <div class="carousel-slide">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Pack+Design+A" alt="Design 13">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Pack+Design+B" alt="Design 14">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Pack+Design+C" alt="Design 15">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Pack+Design+D" alt="Design 16">
             </div>
-            <!-- Slide 5 -->
             <div class="carousel-slide">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Brochure+A" alt="Design 17">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Brochure+B" alt="Design 18">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Brochure+C" alt="Design 19">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Brochure+D" alt="Design 20">
             </div>
-            <!-- Slide 6 -->
             <div class="carousel-slide">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=UI+Design+A" alt="Design 21">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=UI+Design+B" alt="Design 22">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=UI+Design+C" alt="Design 23">
                 <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=UI+Design+D" alt="Design 24">
             </div>
-            <!-- Slide 7 -->
-            <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Poster+A" alt="Design 25">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Poster+B" alt="Design 26">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Poster+C" alt="Design 27">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Poster+D" alt="Design 28">
-            </div>
-            <!-- Slide 8 -->
-            <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Illustration+E" alt="Design 29">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Illustration+F" alt="Design 30">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Illustration+G" alt="Design 31">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Illustration+H" alt="Design 32">
-            </div>
         </div>
         <div class="carousel-arrow prev" onclick="changeSlide('design', -1)">❮</div>
         <div class="carousel-arrow next" onclick="changeSlide('design', 1)">❯</div>
         <div class="carousel-dots" id="dots-design"></div>
     </div>
-    <!-- Gallery grid remains unchanged (15 items) -->
     <div class="gallery-grid">
-        <!-- 1-15 as before, but we keep same for brevity (already 15 each) -->
+        <!-- gallery cards (15 items) unchanged -->
         <div class="gallery-card"><img src="images/design/logosuit.jpg" class="gallery-img"><div class="gallery-info"><h3>Logo suite</h3><p>Minimalist/modern</p><button class="add-btn" onclick="openModal('Logo design')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/design/eulogy.jpg" class="gallery-img"><div class="gallery-info"><h3>Programe Flyers</h3><p>A4 / A5</p><button class="add-btn" onclick="openModal('UI design')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/design/flyer.jpg" class="gallery-img"><div class="gallery-info"><h3>Flyer</h3><p>A5 / DL flyer</p><button class="add-btn" onclick="openModal('Flyer design')">Add to quote</button></div></div>
@@ -274,75 +238,53 @@
         <div class="gallery-card"><img src="https://placehold.co/400x300/1e2b4f/2b7fff?text=Icon+Set" class="gallery-img"><div class="gallery-info"><h3>Icon set</h3><p>30 custom icons</p><button class="add-btn" onclick="openModal('Icon set')">Add to quote</button></div></div>
     </div>
 
-    <!-- ========== BRANDING SECTION with HORIZONTAL CAROUSEL (32 images) ========== -->
+    <!-- BRANDING SECTION (6 slides, 24 images) -->
     <h2 class="section-title" id="branding-section">Corporate branding</h2>
-    <!-- Carousel for Branding - 8 slides, 4 images each -->
     <div class="carousel-container" id="carousel-branding">
         <div class="carousel-slides">
-            <!-- Slide 1 -->
             <div class="carousel-slide">
                 <img src="images/branding/package.jpg" alt="Branding 1">
                 <img src="images/branding/hoodie.jpeg" alt="Branding 2">
                 <img src="images/branding/glass trophies.jpeg" alt="Branding 3">
                 <img src="images/branding/wrist bands.jpeg" alt="Branding 4">
             </div>
-            <!-- Slide 2 -->
             <div class="carousel-slide">
                 <img src="images/branding/office branding 1.jpg" alt="Branding 5">
                 <img src="images/branding/wallb.jpg" alt="Branding 6">
                 <img src="images/branding/T-shirts4.jpeg" alt="Branding 7">
                 <img src="images/branding/nametags.jpeg" alt="Branding 8">
             </div>
-            <!-- Slide 3 -->
             <div class="carousel-slide">
                 <img src="images/printing/arsenal.jpg" alt="Branding 9">
                 <img src="images/branding/cups2.jpg" alt="Branding 10">
                 <img src="images/branding/sign.jpg" alt="Branding 11">
                 <img src="images/branding/business cards.jpg" alt="Branding 12">
             </div>
-            <!-- Slide 4 -->
             <div class="carousel-slide">
                 <img src="images/branding/branded envelopes.webp" alt="Branding 13">
                 <img src="images/branding/cotton caps2.jpeg" alt="Branding 14">
                 <img src="images/branding/booklet.jpg" alt="Branding 15">
                 <img src="images/branding/pens.jpg" alt="Branding 16">
             </div>
-            <!-- Slide 5 -->
             <div class="carousel-slide">
                 <img src="images/branding/cups1.jpg" alt="Branding 17">
                 <img src="images/branding/shoppingbags.jpg" alt="Branding 18">
                 <img src="images/branding/work vests.jpeg" alt="Branding 19">
                 <img src="images/branding/T-shirts3.jpeg" alt="Branding 20">
             </div>
-            <!-- Slide 6 -->
             <div class="carousel-slide">
                 <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Keychain" alt="Branding 21">
                 <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=USB" alt="Branding 22">
                 <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Powerbank" alt="Branding 23">
                 <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Mousepad" alt="Branding 24">
             </div>
-            <!-- Slide 7 -->
-            <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Towel" alt="Branding 25">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Apron" alt="Branding 26">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Cap+2" alt="Branding 27">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Tshirt+2" alt="Branding 28">
-            </div>
-            <!-- Slide 8 -->
-            <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Bag+2" alt="Branding 29">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Wallet" alt="Branding 30">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Badge" alt="Branding 31">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Sticker+Set" alt="Branding 32">
-            </div>
         </div>
         <div class="carousel-arrow prev" onclick="changeSlide('branding', -1)">❮</div>
         <div class="carousel-arrow next" onclick="changeSlide('branding', 1)">❯</div>
         <div class="carousel-dots" id="dots-branding"></div>
     </div>
-    <!-- Gallery grid remains unchanged -->
     <div class="gallery-grid">
-        <!-- 1-15 (keeping all) -->
+        <!-- gallery cards (15 items) unchanged -->
         <div class="gallery-card"><img src="images/branding/stationeryset.webp" class="gallery-img"><div class="gallery-info"><h3>Stationery set</h3><p>Letterhead + envelope + card</p><button class="add-btn" onclick="openModal('Stationery set')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/branding/work vests.jpeg" class="gallery-img"><div class="gallery-info"><h3>Work vests</h3><p>Detailed work vests</p><button class="add-btn" onclick="openModal('Vehicle wrap')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/branding/uniform.webp" class="gallery-img"><div class="gallery-info"><h3>Uniform printing</h3><p>T-shirts, caps, aprons</p><button class="add-btn" onclick="openModal('Uniform printing')">Add to quote</button></div></div>
@@ -360,66 +302,45 @@
         <div class="gallery-card"><img src="images/branding/shoppingbags.jpg" class="gallery-img"><div class="gallery-info"><h3>Cotton tote bag</h3><p>Screen printed</p><button class="add-btn" onclick="openModal('Tote bag')">Add to quote</button></div></div>
     </div>
 
-    <!-- ========== PRINTING SECTION with HORIZONTAL CAROUSEL (32 images) ========== -->
+    <!-- PRINTING SECTION (6 slides, 24 images) -->
     <h2 class="section-title" id="printing-section">Printing & signage</h2>
-    <!-- Carousel for Printing - 8 slides, 4 images each -->
     <div class="carousel-container" id="carousel-printing">
         <div class="carousel-slides">
-            <!-- Slide 1 -->
             <div class="carousel-slide">
                 <img src="images/printing/printing p1.jpeg" alt="Printing 1">
                 <img src="images/printing/printingp2.jpeg" alt="Printing 2">
                 <img src="images/printing/printingp3.jpeg" alt="Printing 3">
                 <img src="images/printing/lightbox.jpg" alt="Printing 4">
             </div>
-            <!-- Slide 2 -->
             <div class="carousel-slide">
                 <img src="images/printing/roll up.jpg" alt="Printing 5">
                 <img src="images/printing/ready to hang.jpg" alt="Printing 6">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Vinyl+Sticker" alt="Printing 7">
                 <img src="images/printing/printing.jpg" alt="Printing 8">
             </div>
-            <!-- Slide 3 -->
             <div class="carousel-slide">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Foamboard" alt="Printing 9">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Acrylic+Sign" alt="Printing 10">
                 <img src="images/printing/coroplast.webp" alt="Printing 11">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Window+Perf" alt="Printing 12">
             </div>
-            <!-- Slide 4 -->
             <div class="carousel-slide">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Floor+Graphics" alt="Printing 13">
                 <img src="images/printing/table throw.webp" alt="Printing 14">
                 <img src="images/printing/pos.jpg" alt="Printing 15">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Flag" alt="Printing 16">
             </div>
-            <!-- Slide 5 -->
             <div class="carousel-slide">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Booklet" alt="Printing 17">
                 <img src="images/printing/calender.jpg" alt="Printing 18">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Sticker+Sheet" alt="Printing 19">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Magnet" alt="Printing 20">
             </div>
-            <!-- Slide 6 -->
             <div class="carousel-slide">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Poster+Print" alt="Printing 21">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Banner+Stand" alt="Printing 22">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Mesh+Banner" alt="Printing 23">
                 <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Backlit" alt="Printing 24">
-            </div>
-            <!-- Slide 7 -->
-            <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Acrylic+Photo" alt="Printing 25">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Aluminium+Print" alt="Printing 26">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Wood+Print" alt="Printing 27">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Glass+Print" alt="Printing 28">
-            </div>
-            <!-- Slide 8 -->
-            <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Neon+Sign" alt="Printing 29">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=LED+Display" alt="Printing 30">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Channel+Letters" alt="Printing 31">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Pylon+Sign" alt="Printing 32">
             </div>
         </div>
         <div class="carousel-arrow prev" onclick="changeSlide('printing', -1)">❮</div>
@@ -427,7 +348,7 @@
         <div class="carousel-dots" id="dots-printing"></div>
     </div>
     <div class="gallery-grid">
-        <!-- 1-15 -->
+        <!-- gallery cards (15 items) unchanged -->
         <div class="gallery-card"><img src="images/printing/lightbox.jpg" class="gallery-img"><div class="gallery-info"><h3>3D lightbox</h3><p>Illuminated letters</p><button class="add-btn" onclick="openModal('3D lightbox')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/printing/roll up.jpg" class="gallery-img"><div class="gallery-info"><h3>Roll‑up banner</h3><p>80x200cm</p><button class="add-btn" onclick="openModal('Roll-up banner')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/printing/ready to hang.jpg" class="gallery-img"><div class="gallery-info"><h3>Canvas print</h3><p>Ready to hang</p><button class="add-btn" onclick="openModal('Canvas print')">Add to quote</button></div></div>
@@ -454,7 +375,7 @@
         <div class="why-card"><h3>🏆 500+ brands</h3><p>Trusted by companies across East Africa.</p></div>
     </div>
 
-    <!-- Testimonials (now 4) -->
+    <!-- Testimonials -->
     <h2 class="section-title">Client stories</h2>
     <div class="testimonials">
         <div class="testimonial-card"><p>"alQa redesigned our entire brand identity and did all our stationery and signage. Professional, fast and great quality."</p><div class="testimonial-author">— Grace M., CEO, Urban Eatery</div></div>
@@ -491,7 +412,6 @@
             </div>
             <div class="contact-info-grid">
                 <div class="contact-card"><div class="icon">📞</div><div><h4>Phone</h4><p><a href="tel:+254794851212" style="color:white;">+254 794 851 212</a></p></div></div>
-                <!-- Email now clickable mailto link -->
                 <div class="contact-card"><div class="icon">📧</div><div><h4>Email</h4><p><a href="mailto:alqabrandscreations@gmail.com" style="color:white;">alqabrandscreations@gmail.com</a></p></div></div>
                 <div class="contact-card"><div class="icon">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/254794851212" onclick="sendWhatsAppBusiness()" style="color:white;">Chat direct</a></p></div></div>
                 <div class="contact-card"><div class="icon">📍</div><div><h4>Location</h4><p>Nairobi, Kenya</p></div></div>
