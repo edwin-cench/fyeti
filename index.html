@@ -55,6 +55,8 @@
 
 <div id="overlay" class="overlay" onclick="closeNav()"></div>
 <div id="mySidebar" class="sidebar">
+    <!-- Theme toggle button moved to sidebar -->
+    <button class="sidebar-theme-toggle" onclick="toggleTheme()" id="theme-btn">☀️</button>
     <a href="#" onclick="closeNav()">🏠 Home</a>
     <a href="#about" onclick="closeNav()">📌 About Us</a>
     <a href="#quote-area" class="sidebar-cart-link" onclick="closeNav()">🛒 Quote (<span id="sidebar-cart-count">0</span>)</a>
@@ -79,11 +81,11 @@
 <header>
     <div class="logo" id="logo-container">
         <a href="#" title="Back to top">
-            <img src="images/logo/alQa Logo concept png-03.png" class="logo-img" alt="alQa">
+            <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
         </a>
     </div>
     <div class="header-controls">
-        <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">☀️</button>
+        <!-- Theme toggle removed from here -->
         <a href="#quote-area" class="cart-nav">🛒 <span id="nav-cart-count">0</span></a>
         <button class="menu-toggle" onclick="openNav()">☰</button>
     </div>
@@ -179,40 +181,40 @@
     <div class="carousel-container" id="carousel-design">
         <div class="carousel-slides">
             <div class="carousel-slide">
-                <img src="images/design/logosuit.jpg" alt="Design 1">
-                <img src="images/design/eulogy.jpg" alt="Design 2">
-                <img src="images/design/flyer.jpg" alt="Design 3">
-                <img src="images/design/menu.jpeg" alt="Design 4">
+                <img src="images/design/20240311_194625.jpg" alt="Design 1">
+                <img src="images/design/success cards.jpeg" alt="Design 2">
+                <img src="images/design/logo2.jpeg" alt="Design 3">
+                <img src="images/design/product label.webp" alt="Design 4">
             </div>
             <div class="carousel-slide">
-                <img src="images/design/brochure.jpeg" alt="Design 5">
-                <img src="images/design/success cards.jpeg" alt="Design 6">
+                <img src="images/design/campaign  flyers.jpeg" alt="Design 5">
+                <img src="images/design/certificates.jpeg" alt="Design 6">
                 <img src="images/design/productbox.webp" alt="Design 7">
                 <img src="images/design/party banners.jpeg" alt="Design 8">
             </div>
             <div class="carousel-slide">
-                <img src="images/design/pos.jpg" alt="Design 9">
+                <img src="images/design/charts.webp" alt="Design 9">
                 <img src="images/branding/business cards.jpg" alt="Design 10">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Illustration" alt="Design 11">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Magazine" alt="Design 12">
+                <img src="images/design/circular.jpg" alt="Design 11">
+                <img src="images/design/magazins.jpg" alt="Design 12">
             </div>
             <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Pack+Design+A" alt="Design 13">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Pack+Design+B" alt="Design 14">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Pack+Design+C" alt="Design 15">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Pack+Design+D" alt="Design 16">
+                <img src="images/design/20240801_182623.jpg" alt="Design 13">
+                <img src="images/design/menu.jpeg" alt="Design 14">
+                <img src="images/design/email header.jpg" alt="Design 15">
+                <img src="images/design/flyer.jpg" alt="Design 16">
             </div>
             <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Brochure+A" alt="Design 17">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Brochure+B" alt="Design 18">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Brochure+C" alt="Design 19">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=Brochure+D" alt="Design 20">
+                <img src="images/design/brochure.jpeg" alt="Design 17">
+                <img src="images/design/eulogy.jpg" alt="Design 18">
+                <img src="images/design/custom illustrations.webp" alt="Design 19">
+                <img src="images/design/product catalog.webp" alt="Design 20">
             </div>
             <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=UI+Design+A" alt="Design 21">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=UI+Design+B" alt="Design 22">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=UI+Design+C" alt="Design 23">
-                <img src="https://placehold.co/600x400/1e2b4f/2b7fff?text=UI+Design+D" alt="Design 24">
+                <img src="images/design/Educational visuals.webp" alt="Design 21">
+                <img src="images/design/design1.jpg" alt="Design 22">
+                <img src="images/design/hotel2.jpg" alt="Design 23">
+                <img src="images/design/design 1.webp" alt="Design 24">
             </div>
         </div>
         <div class="carousel-arrow prev" onclick="changeSlide('design', -1)">❮</div>
@@ -243,16 +245,16 @@
     <div class="carousel-container" id="carousel-branding">
         <div class="carousel-slides">
             <div class="carousel-slide">
-                <img src="images/branding/package.jpg" alt="Branding 1">
+                <img src="images/branding/T-shirts2.jpeg" alt="Branding 1">
                 <img src="images/branding/hoodie.jpeg" alt="Branding 2">
                 <img src="images/branding/glass trophies.jpeg" alt="Branding 3">
                 <img src="images/branding/wrist bands.jpeg" alt="Branding 4">
             </div>
             <div class="carousel-slide">
                 <img src="images/branding/office branding 1.jpg" alt="Branding 5">
-                <img src="images/branding/wallb.jpg" alt="Branding 6">
+                <img src="images/branding/nametags.jpeg" alt="Branding 6">
                 <img src="images/branding/T-shirts4.jpeg" alt="Branding 7">
-                <img src="images/branding/nametags.jpeg" alt="Branding 8">
+                <img src="images/branding/hoodie3.jpeg" alt="Branding 8">
             </div>
             <div class="carousel-slide">
                 <img src="images/printing/arsenal.jpg" alt="Branding 9">
@@ -261,7 +263,7 @@
                 <img src="images/branding/business cards.jpg" alt="Branding 12">
             </div>
             <div class="carousel-slide">
-                <img src="images/branding/branded envelopes.webp" alt="Branding 13">
+                <img src="images/branding/hoodie2.jpeg" alt="Branding 13">
                 <img src="images/branding/cotton caps2.jpeg" alt="Branding 14">
                 <img src="images/branding/booklet.jpg" alt="Branding 15">
                 <img src="images/branding/pens.jpg" alt="Branding 16">
@@ -269,14 +271,14 @@
             <div class="carousel-slide">
                 <img src="images/branding/cups1.jpg" alt="Branding 17">
                 <img src="images/branding/shoppingbags.jpg" alt="Branding 18">
-                <img src="images/branding/work vests.jpeg" alt="Branding 19">
-                <img src="images/branding/T-shirts3.jpeg" alt="Branding 20">
+                <img src="images/branding/IMG20250901142927.jpg" alt="Branding 19">
+                <img src="images/branding/lanyards.jpeg" alt="Branding 20">
             </div>
             <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Keychain" alt="Branding 21">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=USB" alt="Branding 22">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Powerbank" alt="Branding 23">
-                <img src="https://placehold.co/600x400/1e2b4f/d946ef?text=Mousepad" alt="Branding 24">
+                <img src="images/branding/office branding 3.jpg" alt="Branding 21">
+                <img src="images/branding/mugs.jpeg" alt="Branding 22">
+                <img src="images/branding/office branding.jpeg" alt="Branding 23">
+                <img src="images/branding/branded envelopes.webp" alt="Branding 24">
             </div>
         </div>
         <div class="carousel-arrow prev" onclick="changeSlide('branding', -1)">❮</div>
@@ -308,39 +310,39 @@
         <div class="carousel-slides">
             <div class="carousel-slide">
                 <img src="images/printing/printing p1.jpeg" alt="Printing 1">
-                <img src="images/printing/printingp2.jpeg" alt="Printing 2">
-                <img src="images/printing/printingp3.jpeg" alt="Printing 3">
-                <img src="images/printing/lightbox.jpg" alt="Printing 4">
+                <img src="images/printing/IMG-20240722-WA0031.jpg" alt="Printing 2">
+                <img src="images/printing/canvas2.jpg" alt="Printing 3">
+                <img src="images/printing/20240807_152028.jpg" alt="Printing 4">
             </div>
             <div class="carousel-slide">
-                <img src="images/printing/roll up.jpg" alt="Printing 5">
+                <img src="images/printing/brand office.jpeg" alt="Printing 5">
                 <img src="images/printing/ready to hang.jpg" alt="Printing 6">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Vinyl+Sticker" alt="Printing 7">
+                <img src="images/printing/20240806_145508.jpg" alt="Printing 7">
                 <img src="images/printing/printing.jpg" alt="Printing 8">
             </div>
             <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Foamboard" alt="Printing 9">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Acrylic+Sign" alt="Printing 10">
+                <img src="images/printing/vinyl stickers.webp" alt="Printing 9">
+                <img src="images/printing/Receipt books2.jpeg" alt="Printing 10">
                 <img src="images/printing/coroplast.webp" alt="Printing 11">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Window+Perf" alt="Printing 12">
+                <img src="images/printing/printingp2.jpeg" alt="Printing 12">
             </div>
             <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Floor+Graphics" alt="Printing 13">
+                <img src="images/printing/calender.jpg" alt="Printing 13">
                 <img src="images/printing/table throw.webp" alt="Printing 14">
                 <img src="images/printing/pos.jpg" alt="Printing 15">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Flag" alt="Printing 16">
+                <img src="images/printing/reflective signs.webp" alt="Printing 16">
             </div>
             <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Booklet" alt="Printing 17">
+                <img src="images/printing/printing p1.jpeg" alt="Printing 17">
                 <img src="images/printing/calender.jpg" alt="Printing 18">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Sticker+Sheet" alt="Printing 19">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Magnet" alt="Printing 20">
+                <img src="images/printing/water bottle stickers.jpeg" alt="Printing 19">
+                <img src="images/printing/jerseys2.jpeg" alt="Printing 20">
             </div>
             <div class="carousel-slide">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Poster+Print" alt="Printing 21">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Banner+Stand" alt="Printing 22">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Mesh+Banner" alt="Printing 23">
-                <img src="https://placehold.co/600x400/1e2b4f/25D366?text=Backlit" alt="Printing 24">
+                <img src="images/printing/tear drop.jpeg" alt="Printing 21">
+                <img src="images/printing/printingp3.jpeg" alt="Printing 22">
+                <img src="images/printing/posters.jpeg" alt="Printing 23">
+                <img src="images/branding/hoodie.jpeg" alt="Printing 24">
             </div>
         </div>
         <div class="carousel-arrow prev" onclick="changeSlide('printing', -1)">❮</div>
