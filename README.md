@@ -2,8 +2,6 @@
 
 A modern, responsive business website for a creative agency offering design, branding, and printing services. Built with HTML, CSS, and JavaScript.
 
-![Website Screenshot](images/Nairobi.webp) 
-
 ## Features
 
 - Fully responsive design (mobile, tablet, desktop)
