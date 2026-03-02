@@ -1,7 +1,7 @@
 :root {
     --bg-color: #0a0c0f;
     --bg-gradient: linear-gradient(180deg, #0f1a2f 0%, #0a0c0f 600px);
-    --nav-bg: #1e2b4f;
+    --nav-bg: #1c07bb;
     --card-bg: #151a24;
     --border-color: #2a3342;
     --sidebar-bg: #11161e;
@@ -108,7 +108,7 @@ body {
 header { padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; background: var(--nav-bg); box-shadow: 0 6px 18px rgba(0,0,0,0.3); position: sticky; top: 0; z-index: 2000; }
 .logo { display: flex; align-items: center; }
 .logo a { display: flex; align-items: center; text-decoration: none; }
-.logo-img { height: 70px; width: auto; border-radius: 8px; object-fit: cover; cursor: pointer; }
+.logo-img { height: 60px; width: auto; border-radius: 8px; object-fit: cover; cursor: pointer; }
 .logo span, .logo div { display: none; }
 .header-controls { display: flex; gap: 20px; align-items: center; }
 .menu-toggle { font-size: 1.8rem; cursor: pointer; color: white; background: none; border: none; padding: 5px; transition: 0.2s; }
