@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>alQa Brands | Corporate Branding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div id="loading-screen" class="loading-screen">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+</div>
+
+<div class="doodle-wrapper">
+    <div class="doodle shape-circle"></div>
+    <div class="doodle shape-triangle"></div>
+    <div class="doodle shape-square"></div>
+    <div class="doodle shape-blob"></div>
+</div>
+
+<div id="toast" class="toast">Thank you for contacting us! We'll reach back within 24 hours.</div>
+
+<!-- MODAL for adding to cart -->
+<div id="cartModal" class="modal">...</div>
+<div id="channelModal" class="modal channel-modal">...</div>
+
+<div id="overlay" class="overlay" onclick="closeNav()"></div>
+
+<!-- Mobile Sidebar (same as design.html) -->
+<div id="mySidebar" class="sidebar">...</div>
+
+<a href="#quote-area" class="cart-float" id="cart-float">🛒 Quote (<span id="cart-count">0</span>)</a>
+
+<header>
+    <div class="logo">
+        <a href="index.html" title="Back to top">
+            <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
+        </a>
+    </div>
+    <nav class="desktop-nav">
+        <ul>
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="index.html#about">📌 About</a></li>
+            <li class="dropdown">
+                <a href="#">📦 Services ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="design.html">🎨 Design</a></li>
+                    <li><a href="branding.html">🏷️ Branding</a></li>
+                    <li><a href="printing.html">🖨️ Printing</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#contact">📞 Contact</a></li>
+            <li><a href="#quote-area" class="cart-nav">🛒 <span id="nav-cart-count">0</span></a></li>
+        </ul>
+    </nav>
+    <div class="mobile-controls">...</div>
+</header>
+
+<div class="container">
+    <div class="persuasive">
+        <h3>🌟 Build a Brand That Lasts</h3>
+        <p>Your brand is more than a logo – it's the emotion people feel when they interact with your business. We create cohesive identities that build trust and recognition. From stationery to signage, we've got you covered.</p>
+    </div>
+
+    <h1 class="page-title">🏷️ Corporate Branding</h1>
+    <p class="page-description">Discover our full range of branding products. Make your mark with consistent, professional branding.</p>
+
+    <!-- Carousel for Branding (6 slides) – replace with your slides -->
+    <div class="carousel-container" id="carousel-branding">
+        <div class="carousel-slides">
+            <div class="carousel-slide">
+                <img src="images/branding/T-shirts2.jpeg" alt="Branding 1">
+                <img src="images/branding/hoodie.jpeg" alt="Branding 2">
+                <img src="images/branding/glass trophies.jpeg" alt="Branding 3">
+                <img src="images/branding/wrist bands.jpeg" alt="Branding 4">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/branding/office branding 1.jpg" alt="Branding 5">
+                <img src="images/branding/nametags.jpeg" alt="Branding 6">
+                <img src="images/branding/T-shirts4.jpeg" alt="Branding 7">
+                <img src="images/branding/hoodie3.jpeg" alt="Branding 8">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/printing/arsenal.jpg" alt="Branding 9">
+                <img src="images/branding/cups2.jpg" alt="Branding 10">
+                <img src="images/branding/sign.jpg" alt="Branding 11">
+                <img src="images/branding/business cards.jpg" alt="Branding 12">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/branding/hoodie2.jpeg" alt="Branding 13">
+                <img src="images/branding/cotton caps2.jpeg" alt="Branding 14">
+                <img src="images/branding/booklet.jpg" alt="Branding 15">
+                <img src="images/branding/pens.jpg" alt="Branding 16">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/branding/cups1.jpg" alt="Branding 17">
+                <img src="images/branding/shoppingbags.jpg" alt="Branding 18">
+                <img src="images/branding/IMG20250901142927.jpg" alt="Branding 19">
+                <img src="images/branding/lanyards.jpeg" alt="Branding 20">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/branding/office branding 3.jpg" alt="Branding 21">
+                <img src="images/branding/mugs.jpeg" alt="Branding 22">
+                <img src="images/branding/office branding.jpeg" alt="Branding 23">
+                <img src="images/branding/branded envelopes.webp" alt="Branding 24">
+            </div>
+        </div>
+        <div class="carousel-arrow prev" onclick="changeSlide('branding', -1)">❮</div>
+        <div class="carousel-arrow next" onclick="changeSlide('branding', 1)">❯</div>
+        <div class="carousel-dots" id="dots-branding"></div>
+    </div>
+
+    <div class="persuasive" style="margin-top: 20px;">
+        <h3>📈 Why Consistent Branding Matters</h3>
+        <p>Brands that are consistently presented are 3–4 times more likely to be noticed. We help you maintain that consistency across every touchpoint – from business cards to office signage.</p>
+    </div>
+
+    <!-- Gallery grid with many containers -->
+    <div class="gallery-grid">
+        <!-- all branding cards (15+ items) – replace with your actual cards -->
+        <div class="gallery-card"><img src="images/branding/stationeryset.webp" class="gallery-img"><div class="gallery-info"><h3>Stationery set</h3><p>Letterhead + envelope + card</p><button class="add-btn" onclick="openModal('Stationery set')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/work vests.jpeg" class="gallery-img"><div class="gallery-info"><h3>Work vests</h3><p>Detailed work vests</p><button class="add-btn" onclick="openModal('Vehicle wrap')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/uniform.webp" class="gallery-img"><div class="gallery-info"><h3>Uniform printing</h3><p>T-shirts, caps, aprons</p><button class="add-btn" onclick="openModal('Uniform printing')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/hoodie2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Branded Hoodies</h3><p>Stylistic </p><button class="add-btn" onclick="openModal('Brand manual')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/lanyards.jpeg" class="gallery-img"><div class="gallery-info"><h3>Nametags & lanyards</h3><p>Custom printed lanyards</p><button class="add-btn" onclick="openModal('Lanyards')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/arsenal.jpg" class="gallery-img"><div class="gallery-info"><h3>Jerseys</h3><p>Football, NFL, Basket Ball, Rugby</p><button class="add-btn" onclick="openModal('Expo booth')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/cups2.jpg" class="gallery-img"><div class="gallery-info"><h3>Corporate gifts</h3><p>Pens, mugs, notepads</p><button class="add-btn" onclick="openModal('Corporate gifts')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/sign.jpg" class="gallery-img"><div class="gallery-info"><h3>Signage</h3><p>Acrylic / metal logo</p><button class="add-btn" onclick="openModal('Reception sign')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/business cards.jpg" class="gallery-img"><div class="gallery-info"><h3>Business cards</h3><p>Premium finish</p><button class="add-btn" onclick="openModal('Business cards')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/branded envelopes.webp" class="gallery-img"><div class="gallery-info"><h3>Branded envelopes</h3><p>DL / A4</p><button class="add-btn" onclick="openModal('Envelopes')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/glass trophies.jpeg" class="gallery-img"><div class="gallery-info"><h3>Trophies</h3><p>Glass / Crystal</p><button class="add-btn" onclick="openModal('Presentation folder')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/booklet.jpg" class="gallery-img"><div class="gallery-info"><h3>Branded notebook</h3><p>Custom cover</p><button class="add-btn" onclick="openModal('Notebook')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/pens.jpg" class="gallery-img"><div class="gallery-info"><h3>Custom pens</h3><p>Metal / plastic</p><button class="add-btn" onclick="openModal('Custom pens')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/cotton caps.jpeg" class="gallery-img"><div class="gallery-info"><h3>Custom caps</h3><p>Cotton / wool</p><button class="add-btn" onclick="openModal('Caps')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/shoppingbags.jpg" class="gallery-img"><div class="gallery-info"><h3>Cotton tote bag</h3><p>Screen printed</p><button class="add-btn" onclick="openModal('Tote bag')">Add to quote</button></div></div>
+    </div>
+
+    <div class="persuasive" style="margin-bottom: 60px;">
+        <h3>🎯 Ready to Elevate Your Brand?</h3>
+        <p>Browse our products and add them to your quote. Need something custom? We're just a message away.</p>
+    </div>
+</div>
+
+<footer>...</footer>
+<script src="fyeti.js"></script>
+</body>
+</html>

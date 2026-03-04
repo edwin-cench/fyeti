@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>alQa Brands | Printing & Signage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div id="loading-screen" class="loading-screen">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+</div>
+
+<div class="doodle-wrapper">...</div>
+<div id="toast" class="toast">...</div>
+<div id="cartModal" class="modal">...</div>
+<div id="channelModal" class="modal channel-modal">...</div>
+<div id="overlay" class="overlay" onclick="closeNav()"></div>
+<div id="mySidebar" class="sidebar">...</div>
+<a href="#quote-area" class="cart-float" id="cart-float">🛒 Quote (<span id="cart-count">0</span>)</a>
+
+<header>
+    <div class="logo">
+        <a href="index.html" title="Back to top">
+            <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
+        </a>
+    </div>
+    <nav class="desktop-nav">
+        <ul>
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="index.html#about">📌 About</a></li>
+            <li class="dropdown">
+                <a href="#">📦 Services ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="design.html">🎨 Design</a></li>
+                    <li><a href="branding.html">🏷️ Branding</a></li>
+                    <li><a href="printing.html">🖨️ Printing</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#contact">📞 Contact</a></li>
+            <li><a href="#quote-area" class="cart-nav">🛒 <span id="nav-cart-count">0</span></a></li>
+        </ul>
+    </nav>
+    <div class="mobile-controls">...</div>
+</header>
+
+<div class="container">
+    <div class="persuasive">
+        <h3>🖨️ High-Quality Printing, Fast Turnaround</h3>
+        <p>From eye-catching banners to durable signage, our in-house printing ensures every detail pops. Whether you need one-off items or bulk orders, we deliver with precision and speed.</p>
+    </div>
+
+    <h1 class="page-title">Printing & Signage</h1>
+    <p class="page-description">Explore our full range of printing and signage products. Make a lasting impression with quality prints.</p>
+
+    <!-- Carousel for Printing (6 slides) – replace with your slides -->
+    <div class="carousel-container" id="carousel-printing">
+        <div class="carousel-slides">
+            <div class="carousel-slide">
+                <img src="images/printing/printing p1.jpeg" alt="Printing 1">
+                <img src="images/printing/IMG-20240722-WA0031.jpg" alt="Printing 2">
+                <img src="images/printing/canvas2.jpg" alt="Printing 3">
+                <img src="images/printing/20240807_152028.jpg" alt="Printing 4">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/printing/brand office.jpeg" alt="Printing 5">
+                <img src="images/printing/ready to hang.jpg" alt="Printing 6">
+                <img src="images/printing/20240806_145508.jpg" alt="Printing 7">
+                <img src="images/printing/printing.jpg" alt="Printing 8">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/printing/vinyl stickers.webp" alt="Printing 9">
+                <img src="images/printing/Receipt books2.jpeg" alt="Printing 10">
+                <img src="images/printing/coroplast.webp" alt="Printing 11">
+                <img src="images/printing/printingp2.jpeg" alt="Printing 12">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/printing/calender.jpg" alt="Printing 13">
+                <img src="images/printing/table throw.webp" alt="Printing 14">
+                <img src="images/printing/pos.jpg" alt="Printing 15">
+                <img src="images/printing/reflective signs.webp" alt="Printing 16">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/printing/printing p1.jpeg" alt="Printing 17">
+                <img src="images/printing/calender.jpg" alt="Printing 18">
+                <img src="images/printing/water bottle stickers.jpeg" alt="Printing 19">
+                <img src="images/printing/jerseys2.jpeg" alt="Printing 20">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/printing/tear drop.jpeg" alt="Printing 21">
+                <img src="images/printing/printingp3.jpeg" alt="Printing 22">
+                <img src="images/printing/posters.jpeg" alt="Printing 23">
+                <img src="images/branding/hoodie.jpeg" alt="Printing 24">
+            </div>
+        </div>
+        <div class="carousel-arrow prev" onclick="changeSlide('printing', -1)">❮</div>
+        <div class="carousel-arrow next" onclick="changeSlide('printing', 1)">❯</div>
+        <div class="carousel-dots" id="dots-printing"></div>
+    </div>
+
+    <div class="persuasive" style="margin-top: 20px;">
+        <h3>📐 From Concept to Completion</h3>
+        <p>We handle everything – design, proofing, production, and installation. Our state-of-the-art equipment guarantees vibrant colors and crisp details every time.</p>
+    </div>
+
+    <!-- Gallery grid with many containers -->
+    <div class="gallery-grid">
+        <!-- all printing cards (15+ items) – replace with your actual cards -->
+        <div class="gallery-card"><img src="images/printing/lightbox.jpg" class="gallery-img"><div class="gallery-info"><h3>3D lightbox</h3><p>Illuminated letters</p><button class="add-btn" onclick="openModal('3D lightbox')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/roll up.jpg" class="gallery-img"><div class="gallery-info"><h3>Roll‑up banner</h3><p>80x200cm</p><button class="add-btn" onclick="openModal('Roll-up banner')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/ready to hang.jpg" class="gallery-img"><div class="gallery-info"><h3>Canvas print</h3><p>Ready to hang</p><button class="add-btn" onclick="openModal('Canvas print')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/vinyl stickers.webp" class="gallery-img"><div class="gallery-info"><h3>Vinyl stickers</h3><p>Phone stickers, laptop, car e.t.c</p><button class="add-btn" onclick="openModal('Vinyl stickers')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/printing.jpg" class="gallery-img"><div class="gallery-info"><h3>Outdoor banner</h3><p>Mesh / PVC</p><button class="add-btn" onclick="openModal('Outdoor banner')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/event banners.jpg" class="gallery-img"><div class="gallery-info"><h3>Backdrop / Event Banners</h3><p>Banners made for specific events</p><button class="add-btn" onclick="openModal('Foamboard')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/water bottle stickers.jpeg" class="gallery-img"><div class="gallery-info"><h3>Bottle stickers</h3><p>Water bottle, drinks and any other</p><button class="add-btn" onclick="openModal('Acrylic sign')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/coroplast.webp" class="gallery-img"><div class="gallery-info"><h3>Coroplast yard sign</h3><p>18x24"</p><button class="add-btn" onclick="openModal('Coroplast sign')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/reflective signs.webp" class="gallery-img"><div class="gallery-info"><h3>Reflective signs</h3><p>Road signs, construction, working area e.t.c</p><button class="add-btn" onclick="openModal('Window perf')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/Receipt books2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Receipt books</h3><p>Financial record books</p><button class="add-btn" onclick="openModal('Floor graphics')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/table throw.webp" class="gallery-img"><div class="gallery-info"><h3>Table throw / runner</h3><p>Stretch fabric</p><button class="add-btn" onclick="openModal('Table throw')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/pos.jpg" class="gallery-img"><div class="gallery-info"><h3>Pop‑up stand</h3><p>Modular display</p><button class="add-btn" onclick="openModal('Pop-up stand')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/tear drop.jpeg" class="gallery-img"><div class="gallery-info"><h3>Tear drop / Feather flag</h3><p>Outdoor teardrop</p><button class="add-btn" onclick="openModal('Feather flag')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/booklet.jpeg" class="gallery-img"><div class="gallery-info"><h3>Booklet printing</h3><p>Saddle stitch</p><button class="add-btn" onclick="openModal('Booklet printing')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/calender.jpg" class="gallery-img"><div class="gallery-info"><h3>Wall calendar</h3><p>Spiral bound</p><button class="add-btn" onclick="openModal('Calendar')">Add to quote</button></div></div>
+    </div>
+
+    <div class="persuasive" style="margin-bottom: 60px;">
+        <h3>💬 Ready to Print?</h3>
+        <p>Add items to your quote or contact us for a custom quote. Let's bring your ideas to life.</p>
+    </div>
+</div>
+
+<footer>...</footer>
+<script src="fyeti.js"></script>
+</body>
+</html>

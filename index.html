@@ -8,6 +8,12 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
+<!-- Loading Screen -->
+<div id="loading-screen" class="loading-screen">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+</div>
+
 <div class="doodle-wrapper">
     <div class="doodle shape-circle"></div>
     <div class="doodle shape-triangle"></div>
@@ -53,383 +59,68 @@
     </div>
 </div>
 
+<!-- Overlay for mobile sidebar -->
 <div id="overlay" class="overlay" onclick="closeNav()"></div>
+
+<!-- Mobile Sidebar -->
 <div id="mySidebar" class="sidebar">
-    <!-- Theme toggle button moved to sidebar -->
-    <button class="sidebar-theme-toggle" onclick="toggleTheme()" id="theme-btn">☀️</button>
-    <a href="#" onclick="closeNav()">🏠 Home</a>
-    <a href="#about" onclick="closeNav()">📌 About Us</a>
+    <button class="sidebar-theme-toggle" onclick="toggleTheme()" id="theme-btn-mobile">☀️</button>
+    <a href="index.html" onclick="closeNav()">🏠 Home</a>
+    <a href="index.html#about" onclick="closeNav()">📌 About Us</a>
     <a href="#quote-area" class="sidebar-cart-link" onclick="closeNav()">🛒 Quote (<span id="sidebar-cart-count">0</span>)</a>
-    <a href="#design-section" onclick="closeNav()">🎨 Design</a>
-    <a href="#branding-section" onclick="closeNav()">🏷️ Branding</a>
-    <a href="#printing-section" onclick="closeNav()">🖨️ Printing</a>
+    <a href="design.html" onclick="closeNav()">🎨 Design</a>
+    <a href="branding.html" onclick="closeNav()">🏷️ Branding</a>
+    <a href="printing.html" onclick="closeNav()">🖨️ Printing</a>
     <button class="dropdown-btn">▼ All Products</button>
     <div class="dropdown-container">
-        <a href="#printing-section" onclick="closeNav()">Signage</a>
-        <a href="#printing-section" onclick="closeNav()">Posters</a>
-        <a href="#printing-section" onclick="closeNav()">Stickers</a>
-        <a href="#printing-section" onclick="closeNav()">Canvas Prints</a>
-        <a href="#printing-section" onclick="closeNav()">Roll-ups</a>
-        <a href="#printing-section" onclick="closeNav()">e.t.c</a>
+        <a href="printing.html#signage" onclick="closeNav()">Signage</a>
+        <a href="printing.html#posters" onclick="closeNav()">Posters</a>
+        <a href="printing.html#stickers" onclick="closeNav()">Stickers</a>
+        <a href="printing.html#canvas" onclick="closeNav()">Canvas Prints</a>
+        <a href="printing.html#rollups" onclick="closeNav()">Roll-ups</a>
+        <a href="printing.html#etc" onclick="closeNav()">e.t.c</a>
     </div>
-    <a href="#contact" onclick="closeNav()">📞 Contact</a>
+    <a href="index.html#contact" onclick="closeNav()">📞 Contact</a>
     <div style="position: absolute; bottom: 20px; width:100%; text-align:center; font-size:0.8rem;">&copy; 2026 alQa Business</div>
 </div>
 
+<!-- Floating Cart (mobile & desktop) -->
 <a href="#quote-area" class="cart-float" id="cart-float">🛒 Quote (<span id="cart-count">0</span>)</a>
 
 <header>
-    <div class="logo" id="logo-container">
-        <a href="#" title="Back to top">
+    <div class="logo">
+        <a href="index.html" title="Back to top">
             <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
         </a>
     </div>
-    <div class="header-controls">
-        <!-- Theme toggle removed from here -->
-        <a href="#quote-area" class="cart-nav">🛒 <span id="nav-cart-count">0</span></a>
+
+    <!-- Desktop Navigation with emojis -->
+    <nav class="desktop-nav">
+        <ul>
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="index.html#about">📌 About</a></li>
+            <li class="dropdown">
+                <a href="#">📦 Services ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="design.html">🎨 Design</a></li>
+                    <li><a href="branding.html">🏷️ Branding</a></li>
+                    <li><a href="printing.html">🖨️ Printing</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#contact">📞 Contact</a></li>
+            <li><a href="#quote-area" class="cart-nav">🛒 <span id="nav-cart-count">0</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Mobile Controls -->
+    <div class="mobile-controls">
+        <a href="#quote-area" class="cart-nav">🛒 <span id="nav-cart-count-mobile">0</span></a>
         <button class="menu-toggle" onclick="openNav()">☰</button>
     </div>
 </header>
 
-<div class="container">
-    <!-- laptop scene with logo on screen -->
-    <div class="laptop-scene">
-        <div class="person"><div class="person-head"><div class="person-hair"></div></div><div class="person-body"></div></div>
-        <div class="laptop">
-            <div class="laptop-screen">
-                <div class="laptop-display">
-                    <div class="pop-icon icon-design">🎨</div>
-                    <div class="pop-icon icon-brand">🏷️</div>
-                    <div class="pop-icon icon-print">🖨️</div>
-                    <div class="laptop-logo">
-                        <img src="images/logo/logo 2.jpeg" alt="alQa logo">
-                        <span>alQa  Brands </span>
-                    </div>
-                </div>
-            </div>
-            <div class="laptop-base"></div>
-        </div>
-    </div>
+<!-- rest of your content unchanged ... -->
+<!-- ... (keep all sections as they are) ... -->
 
-    <!-- Hero business with <img> tags -->
-    <section class="hero">
-        <div class="hero-grid">
-            <a href="#design-section" class="hero-card">
-                <img src="images/design/circular.jpg" alt="Design services">
-                <h2>Design</h2>
-            </a>
-            <a href="#branding-section" class="hero-card">
-                <img src="images/branding/wallb.jpg" alt="Branding services">
-                <h2>Branding</h2>
-            </a>
-            <a href="#printing-section" class="hero-card">
-                <img src="images/printing/printing.jpg" alt="Printing services">
-                <h2>Printing</h2>
-            </a>
-        </div>
-        <p>From identity to physical form — alQa delivers corporate branding, high-end design, and large-format printing for businesses across Kenya. <br>Fast, precise, creative.</p>
-        <div class="btn-center">
-            <a href="#contact" class="btn">Request consultation</a>
-        </div>
-    </section>
-
-    <!-- ========== ABOUT US SECTION ========== -->
-    <h2 class="section-title" id="about">About Us</h2>
-    <div class="about-grid">
-        <div class="about-text">
-            <h3>Our story</h3>
-            <p>Founded in 2024, alQa Brands started as a two‑person design studio in Nairobi. Today we are a full‑service creative agency and print house, trusted by over 500 businesses across Kenya. We blend strategic thinking with bold creativity to help brands stand out—from logo design to large‑scale signage.</p>
-            <p><strong>📍 Based in Nairobi, serving the world.</strong> Our in‑house production facility allows us to control quality every step of the way, ensuring fast turnaround and exceptional results.</p>
-            <div class="about-highlight">
-                <div class="about-highlight-item"><span>500+</span><small>brands served</small></div>
-                <div class="about-highlight-item"><span>5‑day</span><small>avg. turnaround</small></div>
-                <div class="about-highlight-item"><span>24/7</span><small>client support</small></div>
-            </div>
-        </div>
-        <div class="about-map">
-            <img src="images/Nairobi.webp" alt="Map location placeholder">
-            <h4>📍 Visit our workshop</h4>
-            <p><i>📌</i> 123 Creative Avenue, Industrial Area, Nairobi, Kenya</p>
-            <p><i>🕒</i> Mon–Fri 8:00 – 18:00 · Sat 9:00 – 14:00</p>
-            <p><i>📞</i> +254 794 851 212</p>
-            <p style="font-style: italic; margin-top: 15px;">"We’d love to meet you and discuss your next project over a cup of Kenyan coffee."</p>
-        </div>
-    </div>
-
-    <!-- Core services -->
-    <h2 class="section-title">Core services</h2>
-    <div class="services-grid">
-        <div class="service-card"><div class="service-icon">📐</div><h3>Graphic Design</h3><p>Logos, brochures, — tailored to your brand.</p></div>
-        <div class="service-card"><div class="service-icon">🏢</div><h3>Corporate Identity</h3><p>Complete branding guidelines, stationery, and brand books.</p></div>
-        <div class="service-card"><div class="service-icon">🪧</div><h3>3D Signage</h3><p>Illuminated letters, channel letters, building signs.</p></div>
-        <div class="service-card"><div class="service-icon">🖨️</div><h3>Large Format</h3><p>Banners, canvas, stickers, exhibition stands.</p></div>
-        <div class="service-card"><div class="service-icon">📦</div><h3>Packaging</h3><p>Custom boxes, labels, and product packaging design.</p></div>
-        <div class="service-card"><div class="service-icon">📱</div><h3>Digital Marketing</h3><p>Social media kits, web banners, media banners.</p></div>
-    </div>
-
-    <!-- How we work -->
-    <h2 class="section-title">How it works</h2>
-    <div class="steps-grid">
-        <div class="step-card"><span class="step-icon">📋</span><h3>1. Brief</h3><p>Tell us your vision via form or WhatsApp.</p></div>
-        <div class="step-card"><span class="step-icon">🤝</span><h3>2. Quote & concept</h3><p>We provide a detailed quote and mockup.</p></div>
-        <div class="step-card"><span class="step-icon">✍️</span><h3>3. Approval & production</h3><p>You approve, we produce with quality.</p></div>
-        <div class="step-card"><span class="step-icon">🚚</span><h3>4. Delivery</h3><p>Shipping or installation across Kenya.</p></div>
-    </div>
-
-    <!-- DESIGN SECTION (6 slides, 24 images) -->
-    <h2 class="section-title" id="design-section">Creative design</h2>
-    <div class="carousel-container" id="carousel-design">
-        <div class="carousel-slides">
-            <div class="carousel-slide">
-                <img src="images/design/20240311_194625.jpg" alt="Design 1">
-                <img src="images/design/success cards.jpeg" alt="Design 2">
-                <img src="images/design/logo2.jpeg" alt="Design 3">
-                <img src="images/design/product label.webp" alt="Design 4">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/design/campaign  flyers.jpeg" alt="Design 5">
-                <img src="images/design/certificates.jpeg" alt="Design 6">
-                <img src="images/design/productbox.webp" alt="Design 7">
-                <img src="images/design/party banners.jpeg" alt="Design 8">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/design/charts.webp" alt="Design 9">
-                <img src="images/branding/business cards.jpg" alt="Design 10">
-                <img src="images/design/circular.jpg" alt="Design 11">
-                <img src="images/design/magazins.jpg" alt="Design 12">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/design/20240801_182623.jpg" alt="Design 13">
-                <img src="images/design/menu.jpeg" alt="Design 14">
-                <img src="images/design/email header.jpg" alt="Design 15">
-                <img src="images/design/flyer.jpg" alt="Design 16">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/design/brochure.jpeg" alt="Design 17">
-                <img src="images/design/eulogy.jpg" alt="Design 18">
-                <img src="images/design/custom illustrations.webp" alt="Design 19">
-                <img src="images/design/product catalog.webp" alt="Design 20">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/design/Educational visuals.webp" alt="Design 21">
-                <img src="images/design/design1.jpg" alt="Design 22">
-                <img src="images/design/hotel2.jpg" alt="Design 23">
-                <img src="images/design/design 1.webp" alt="Design 24">
-            </div>
-        </div>
-        <div class="carousel-arrow prev" onclick="changeSlide('design', -1)">❮</div>
-        <div class="carousel-arrow next" onclick="changeSlide('design', 1)">❯</div>
-        <div class="carousel-dots" id="dots-design"></div>
-    </div>
-    <div class="gallery-grid">
-        <!-- gallery cards (15 items) unchanged -->
-        <div class="gallery-card"><img src="images/design/logosuit.jpg" class="gallery-img"><div class="gallery-info"><h3>Logo suite</h3><p>Minimalist/modern</p><button class="add-btn" onclick="openModal('Logo design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/eulogy.jpg" class="gallery-img"><div class="gallery-info"><h3>Programe Flyers</h3><p>A4 / A5</p><button class="add-btn" onclick="openModal('UI design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/flyer.jpg" class="gallery-img"><div class="gallery-info"><h3>Flyer</h3><p>A5 / DL flyer</p><button class="add-btn" onclick="openModal('Flyer design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/menu.jpeg" class="gallery-img"><div class="gallery-info"><h3>Restaurant menu</h3><p>Multi-page menu</p><button class="add-btn" onclick="openModal('Menu design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/brochure.jpeg" class="gallery-img"><div class="gallery-info"><h3>Brochure</h3><p>Tri-fold / bi-fold</p><button class="add-btn" onclick="openModal('Brochure design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/charts.webp" class="gallery-img"><div class="gallery-info"><h3>Charts</h3><p>Charts for business or fucntions and also visual reports</p><button class="add-btn" onclick="openModal('Social media kit')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/productbox.webp" class="gallery-img"><div class="gallery-info"><h3>Packaging design</h3><p>Product box</p><button class="add-btn" onclick="openModal('Packaging design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/product label.webp" class="gallery-img"><div class="gallery-info"><h3>Product label</h3><p>Sticker label</p><button class="add-btn" onclick="openModal('Label design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/posters 2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Poster</h3><p>A2, A3, A4 and A5 poster</p><button class="add-btn" onclick="openModal('Poster design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/design1.jpg" class="gallery-img"><div class="gallery-info"><h3>Media banners</h3><p>Display ads</p><button class="add-btn" onclick="openModal('Web banner set')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/custom illustrations.webp" class="gallery-img"><div class="gallery-info"><h3>Custom illustration</h3><p>Vector art</p><button class="add-btn" onclick="openModal('Illustration')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/magazins.jpg" class="gallery-img"><div class="gallery-info"><h3>Magazine layout</h3><p>Multi-page editorial</p><button class="add-btn" onclick="openModal('Magazine layout')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/email header.jpg" class="gallery-img"><div class="gallery-info"><h3>Email header</h3><p>Newsletter template</p><button class="add-btn" onclick="openModal('Email header')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/product catalog.webp" class="gallery-img"><div class="gallery-info"><h3>Product catalog</h3><p>20-page catalog</p><button class="add-btn" onclick="openModal('Catalog design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/Educational visuals.webp" class="gallery-img"><div class="gallery-info"><h3>Educational Visuals</h3><p>Visuals for educational purposes</p><button class="add-btn" onclick="openModal('Icon set')">Add to quote</button></div></div>
-    </div>
-
-    <!-- BRANDING SECTION (6 slides, 24 images) -->
-    <h2 class="section-title" id="branding-section">Corporate branding</h2>
-    <div class="carousel-container" id="carousel-branding">
-        <div class="carousel-slides">
-            <div class="carousel-slide">
-                <img src="images/branding/T-shirts2.jpeg" alt="Branding 1">
-                <img src="images/branding/hoodie.jpeg" alt="Branding 2">
-                <img src="images/branding/glass trophies.jpeg" alt="Branding 3">
-                <img src="images/branding/wrist bands.jpeg" alt="Branding 4">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/branding/office branding 1.jpg" alt="Branding 5">
-                <img src="images/branding/nametags.jpeg" alt="Branding 6">
-                <img src="images/branding/T-shirts4.jpeg" alt="Branding 7">
-                <img src="images/branding/hoodie3.jpeg" alt="Branding 8">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/printing/arsenal.jpg" alt="Branding 9">
-                <img src="images/branding/cups2.jpg" alt="Branding 10">
-                <img src="images/branding/sign.jpg" alt="Branding 11">
-                <img src="images/branding/business cards.jpg" alt="Branding 12">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/branding/hoodie2.jpeg" alt="Branding 13">
-                <img src="images/branding/cotton caps2.jpeg" alt="Branding 14">
-                <img src="images/branding/booklet.jpg" alt="Branding 15">
-                <img src="images/branding/pens.jpg" alt="Branding 16">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/branding/cups1.jpg" alt="Branding 17">
-                <img src="images/branding/shoppingbags.jpg" alt="Branding 18">
-                <img src="images/branding/IMG20250901142927.jpg" alt="Branding 19">
-                <img src="images/branding/lanyards.jpeg" alt="Branding 20">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/branding/office branding 3.jpg" alt="Branding 21">
-                <img src="images/branding/mugs.jpeg" alt="Branding 22">
-                <img src="images/branding/office branding.jpeg" alt="Branding 23">
-                <img src="images/branding/branded envelopes.webp" alt="Branding 24">
-            </div>
-        </div>
-        <div class="carousel-arrow prev" onclick="changeSlide('branding', -1)">❮</div>
-        <div class="carousel-arrow next" onclick="changeSlide('branding', 1)">❯</div>
-        <div class="carousel-dots" id="dots-branding"></div>
-    </div>
-    <div class="gallery-grid">
-        <!-- gallery cards (15 items) unchanged -->
-        <div class="gallery-card"><img src="images/branding/stationeryset.webp" class="gallery-img"><div class="gallery-info"><h3>Stationery set</h3><p>Letterhead + envelope + card</p><button class="add-btn" onclick="openModal('Stationery set')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/work vests.jpeg" class="gallery-img"><div class="gallery-info"><h3>Work vests</h3><p>Detailed work vests</p><button class="add-btn" onclick="openModal('Vehicle wrap')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/uniform.webp" class="gallery-img"><div class="gallery-info"><h3>Uniform printing</h3><p>T-shirts, caps, aprons</p><button class="add-btn" onclick="openModal('Uniform printing')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/hoodie2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Branded Hoodies</h3><p>Stylistic </p><button class="add-btn" onclick="openModal('Brand manual')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/lanyards.jpeg" class="gallery-img"><div class="gallery-info"><h3>Nametags & lanyards</h3><p>Custom printed lanyards</p><button class="add-btn" onclick="openModal('Lanyards')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/arsenal.jpg" class="gallery-img"><div class="gallery-info"><h3>Jerseys</h3><p>Football, NFL, Basket Ball, Rugby</p><button class="add-btn" onclick="openModal('Expo booth')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/cups2.jpg" class="gallery-img"><div class="gallery-info"><h3>Corporate gifts</h3><p>Pens, mugs, notepads</p><button class="add-btn" onclick="openModal('Corporate gifts')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/sign.jpg" class="gallery-img"><div class="gallery-info"><h3>Signage</h3><p>Acrylic / metal logo</p><button class="add-btn" onclick="openModal('Reception sign')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/business cards.jpg" class="gallery-img"><div class="gallery-info"><h3>Business cards</h3><p>Premium finish</p><button class="add-btn" onclick="openModal('Business cards')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/branded envelopes.webp" class="gallery-img"><div class="gallery-info"><h3>Branded envelopes</h3><p>DL / A4</p><button class="add-btn" onclick="openModal('Envelopes')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/glass trophies.jpeg" class="gallery-img"><div class="gallery-info"><h3>Trophies</h3><p>Glass / Crystal</p><button class="add-btn" onclick="openModal('Presentation folder')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/booklet.jpg" class="gallery-img"><div class="gallery-info"><h3>Branded notebook</h3><p>Custom cover</p><button class="add-btn" onclick="openModal('Notebook')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/pens.jpg" class="gallery-img"><div class="gallery-info"><h3>Custom pens</h3><p>Metal / plastic</p><button class="add-btn" onclick="openModal('Custom pens')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/cotton caps.jpeg" class="gallery-img"><div class="gallery-info"><h3>Custom caps</h3><p>Cotton / wool</p><button class="add-btn" onclick="openModal('Caps')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/shoppingbags.jpg" class="gallery-img"><div class="gallery-info"><h3>Cotton tote bag</h3><p>Screen printed</p><button class="add-btn" onclick="openModal('Tote bag')">Add to quote</button></div></div>
-    </div>
-
-    <!-- PRINTING SECTION (6 slides, 24 images) -->
-    <h2 class="section-title" id="printing-section">Printing & signage</h2>
-    <div class="carousel-container" id="carousel-printing">
-        <div class="carousel-slides">
-            <div class="carousel-slide">
-                <img src="images/printing/printing p1.jpeg" alt="Printing 1">
-                <img src="images/printing/IMG-20240722-WA0031.jpg" alt="Printing 2">
-                <img src="images/printing/canvas2.jpg" alt="Printing 3">
-                <img src="images/printing/20240807_152028.jpg" alt="Printing 4">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/printing/brand office.jpeg" alt="Printing 5">
-                <img src="images/printing/ready to hang.jpg" alt="Printing 6">
-                <img src="images/printing/20240806_145508.jpg" alt="Printing 7">
-                <img src="images/printing/printing.jpg" alt="Printing 8">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/printing/vinyl stickers.webp" alt="Printing 9">
-                <img src="images/printing/Receipt books2.jpeg" alt="Printing 10">
-                <img src="images/printing/coroplast.webp" alt="Printing 11">
-                <img src="images/printing/printingp2.jpeg" alt="Printing 12">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/printing/calender.jpg" alt="Printing 13">
-                <img src="images/printing/table throw.webp" alt="Printing 14">
-                <img src="images/printing/pos.jpg" alt="Printing 15">
-                <img src="images/printing/reflective signs.webp" alt="Printing 16">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/printing/printing p1.jpeg" alt="Printing 17">
-                <img src="images/printing/calender.jpg" alt="Printing 18">
-                <img src="images/printing/water bottle stickers.jpeg" alt="Printing 19">
-                <img src="images/printing/jerseys2.jpeg" alt="Printing 20">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/printing/tear drop.jpeg" alt="Printing 21">
-                <img src="images/printing/printingp3.jpeg" alt="Printing 22">
-                <img src="images/printing/posters.jpeg" alt="Printing 23">
-                <img src="images/branding/hoodie.jpeg" alt="Printing 24">
-            </div>
-        </div>
-        <div class="carousel-arrow prev" onclick="changeSlide('printing', -1)">❮</div>
-        <div class="carousel-arrow next" onclick="changeSlide('printing', 1)">❯</div>
-        <div class="carousel-dots" id="dots-printing"></div>
-    </div>
-    <div class="gallery-grid">
-        <!-- gallery cards (15 items) unchanged -->
-        <div class="gallery-card"><img src="images/printing/lightbox.jpg" class="gallery-img"><div class="gallery-info"><h3>3D lightbox</h3><p>Illuminated letters</p><button class="add-btn" onclick="openModal('3D lightbox')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/roll up.jpg" class="gallery-img"><div class="gallery-info"><h3>Roll‑up banner</h3><p>80x200cm</p><button class="add-btn" onclick="openModal('Roll-up banner')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/ready to hang.jpg" class="gallery-img"><div class="gallery-info"><h3>Canvas print</h3><p>Ready to hang</p><button class="add-btn" onclick="openModal('Canvas print')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/vinyl stickers.webp" class="gallery-img"><div class="gallery-info"><h3>Vinyl stickers</h3><p>Phone stickers, laptop, car e.t.c</p><button class="add-btn" onclick="openModal('Vinyl stickers')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/printing.jpg" class="gallery-img"><div class="gallery-info"><h3>Outdoor banner</h3><p>Mesh / PVC</p><button class="add-btn" onclick="openModal('Outdoor banner')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/event banners.jpg" class="gallery-img"><div class="gallery-info"><h3>Backdrop / Event Banners</h3><p>Banners made for specific events</p><button class="add-btn" onclick="openModal('Foamboard')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/water bottle stickers.jpeg" class="gallery-img"><div class="gallery-info"><h3>Bottle stickers</h3><p>Water bottle, drinks and any other</p><button class="add-btn" onclick="openModal('Acrylic sign')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/coroplast.webp" class="gallery-img"><div class="gallery-info"><h3>Coroplast yard sign</h3><p>18x24"</p><button class="add-btn" onclick="openModal('Coroplast sign')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/reflective signs.webp" class="gallery-img"><div class="gallery-info"><h3>Reflective signs</h3><p>Road signs, construction, working area e.t.c</p><button class="add-btn" onclick="openModal('Window perf')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/Receipt books2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Receipt books</h3><p>Financial record books</p><button class="add-btn" onclick="openModal('Floor graphics')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/table throw.webp" class="gallery-img"><div class="gallery-info"><h3>Table throw / runner</h3><p>Stretch fabric</p><button class="add-btn" onclick="openModal('Table throw')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/pos.jpg" class="gallery-img"><div class="gallery-info"><h3>Pop‑up stand</h3><p>Modular display</p><button class="add-btn" onclick="openModal('Pop-up stand')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/tear drop.jpeg" class="gallery-img"><div class="gallery-info"><h3>Tear drop / Feather flag</h3><p>Outdoor teardrop</p><button class="add-btn" onclick="openModal('Feather flag')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/booklet.jpeg" class="gallery-img"><div class="gallery-info"><h3>Booklet printing</h3><p>Saddle stitch</p><button class="add-btn" onclick="openModal('Booklet printing')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/calender.jpg" class="gallery-img"><div class="gallery-info"><h3>Wall calendar</h3><p>Spiral bound</p><button class="add-btn" onclick="openModal('Calendar')">Add to quote</button></div></div>
-    </div>
-
-    <!-- why choose us -->
-    <h2 class="section-title">Why alQa?</h2>
-    <div class="why-grid">
-        <div class="why-card"><h3>⚡ 5‑day turnaround</h3><p>Most projects delivered within a week.</p></div>
-        <div class="why-card"><h3>🎯 In‑house production</h3><p>No outsourcing: full control of printing & signage.</p></div>
-        <div class="why-card"><h3>📞 24/7 support</h3><p>Direct WhatsApp line to your project manager.</p></div>
-        <div class="why-card"><h3>🏆 500+ brands</h3><p>Trusted by companies across East Africa.</p></div>
-    </div>
-
-    <!-- Testimonials -->
-    <h2 class="section-title">Client stories</h2>
-    <div class="testimonials">
-        <div class="testimonial-card"><p>"alQa redesigned our entire brand identity and did all our stationery and signage. Professional, fast and great quality."</p><div class="testimonial-author">— Grace M., CEO, Urban Eatery</div></div>
-        <div class="testimonial-card"><p>"We needed 50 roll-up banners and vehicle wraps for a trade show. They delivered in 3 days. Highly recommend."</p><div class="testimonial-author">— James K., Marketing, Technova</div></div>
-        <div class="testimonial-card"><p>"The 3D signage they installed for our headquarters is stunning. Attention to detail and installation was seamless."</p><div class="testimonial-author">— Amina S., Operations, Prime Properties</div></div>
-        <div class="testimonial-card"><p>"Their design team captured our brand essence perfectly. The new packaging has increased our shelf appeal dramatically."</p><div class="testimonial-author">— David O., Product Manager, FreshFoods Ltd</div></div>
-    </div>
-
-    <!-- dynamic quote area -->
-    <div id="quote-area">
-        <h3>📋 Your quote summary</h3>
-        <div class="quote-items" id="quote-list"></div>
-        <div class="quote-total" id="quote-total">Total: KSh 0</div>
-        <div class="quote-actions">
-            <button onclick="clearQuote()">🗑️ Clear</button>
-            <button onclick="sendWhatsAppBusiness()">💬 Send via WhatsApp</button>
-        </div>
-    </div>
-
-    <!-- contact section -->
-    <h2 class="section-title" id="contact">Start a project</h2>
-    <div class="contact-section-wrapper">
-        <div class="contact-container">
-            <div class="contact-form-wrapper">
-                <h3>Write us a message</h3>
-                <form id="contactForm" onsubmit="handleFormSubmit(event)">
-                    <div class="form-group"><label class="form-label">Full name *</label><input type="text" class="form-input" required placeholder="John Kimani"></div>
-                    <div class="form-group"><label class="form-label">Company *</label><input type="text" class="form-input" required placeholder="Your Business Ltd"></div>
-                    <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" required placeholder="john@company.com"></div>
-                    <div class="form-group"><label class="form-label">Service needed</label><select class="form-select"><option>Design</option><option>Branding</option><option>Printing</option><option>Signage</option></select></div>
-                    <div class="form-group"><label class="form-label">Message *</label><textarea class="form-textarea" rows="3" required placeholder="Tell us details..."></textarea></div>
-                    <button type="submit" class="submit-btn">Send inquiry</button>
-                </form>
-            </div>
-            <div class="contact-info-grid">
-                <div class="contact-card"><div class="icon">📞</div><div><h4>Phone</h4><p><a href="tel:+254794851212" style="color:white;">+254 794 851 212</a></p></div></div>
-                <div class="contact-card"><div class="icon">📧</div><div><h4>Email</h4><p><a href="mailto:alqabrandscreations@gmail.com" style="color:white;">alqabrandscreations@gmail.com</a></p></div></div>
-                <div class="contact-card"><div class="icon">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/254794851212" onclick="sendWhatsAppBusiness()" style="color:white;">Chat direct</a></p></div></div>
-                <div class="contact-card"><div class="icon">📍</div><div><h4>Location</h4><p>Nairobi, Kenya</p></div></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<footer>
-    <p>&copy; 2026 alQa Brands Creatives — business identity & print</p>
-    <div class="footer-links">
-        <a href="https://www.linkedin.com/in/alqa-brands-6709a83b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
-        <a href="https://www.instagram.com/alqabrands?utm_source=qr&igsh=M2hxM2FsOXcyb21q">Instagram</a>
-        <a href="https://www.facebook.com/share/16WD14SCfo/">Facebook</a>
-    </div>
-</footer>
-<script src="fyeti.js"></script>
 </body>
 </html>

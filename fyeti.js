@@ -1,8 +1,7 @@
 (function() {
     let cart = JSON.parse(localStorage.getItem('alqa_cart')) || [];
-    let currentFormData = null; // store form data for channel selection
+    let currentFormData = null;
 
-    // Toast function - now also ensures display block
     function showToast(message) {
         const toast = document.getElementById('toast');
         toast.textContent = message;
@@ -12,7 +11,6 @@
         }, 5000);
     }
 
-    // Modal handling for add to cart
     let currentItemName = '';
     window.openModal = function(itemName) {
         currentItemName = itemName;
@@ -47,6 +45,7 @@
         const cartCount = document.getElementById('cart-count');
         const sideCount = document.getElementById('sidebar-cart-count');
         const navCount = document.getElementById('nav-cart-count');
+        const navCountMobile = document.getElementById('nav-cart-count-mobile');
         const totalSpan = document.getElementById('quote-total');
         if (!list) return;
 
@@ -56,6 +55,7 @@
             floatCart.style.display = 'none';
             sideCount.innerText = '0';
             if (navCount) navCount.innerText = '0';
+            if (navCountMobile) navCountMobile.innerText = '0';
             return;
         }
         area.style.display = 'block';
@@ -63,6 +63,7 @@
         cartCount.innerText = cart.length;
         sideCount.innerText = cart.length;
         if (navCount) navCount.innerText = cart.length;
+        if (navCountMobile) navCountMobile.innerText = cart.length;
 
         let totalItems = 0;
         cart.forEach((item, idx) => {
@@ -76,7 +77,6 @@
         totalSpan.innerText = `Total items: ${totalItems}`;
     }
 
-    // WhatsApp function for direct quote send (used by cart button)
     window.sendWhatsAppBusiness = function() {
         const phone = '254794851212';
         let msg = 'Hello alQa Brands, I would like a quote for:\n';
@@ -88,12 +88,10 @@
         window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
     };
 
-    // Channel selection modal functions
     window.closeChannelModal = function() {
         document.getElementById('channelModal').classList.remove('active');
     };
 
-    // Form submit: prevent default, store data, show channel modal
     window.handleFormSubmit = function(e) {
         e.preventDefault();
         const form = e.target;
@@ -107,7 +105,6 @@
         document.getElementById('channelModal').classList.add('active');
     };
 
-    // Send via WhatsApp using stored form data
     window.sendViaWhatsApp = function() {
         if (!currentFormData) return;
         const { name, company, email, service, message } = currentFormData;
@@ -124,7 +121,6 @@
         showToast('Thank you for contacting us! We\'ll reach back within 24 hours.');
     };
 
-    // Send via Email using stored form data
     window.sendViaEmail = function() {
         if (!currentFormData) return;
         const { name, company, email, service, message } = currentFormData;
@@ -141,28 +137,26 @@
         showToast('Thank you for contacting us! We\'ll reach back within 24 hours.');
     };
 
-    // theme
     window.toggleTheme = function() {
         const html = document.documentElement;
         const current = html.getAttribute('data-theme');
         const next = current === 'light' ? 'dark' : 'light';
         html.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
-        document.getElementById('theme-btn').innerText = next === 'light' ? '🌙' : '☀️';
+        document.getElementById('theme-btn-mobile').innerText = next === 'light' ? '🌙' : '☀️';
     };
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
-    document.getElementById('theme-btn').innerText = savedTheme === 'light' ? '🌙' : '☀️';
+    document.getElementById('theme-btn-mobile').innerText = savedTheme === 'light' ? '🌙' : '☀️';
 
     window.openNav = function() { document.getElementById('mySidebar').style.left = '0'; document.getElementById('overlay').style.display = 'block'; };
     window.closeNav = function() { document.getElementById('mySidebar').style.left = '-300px'; document.getElementById('overlay').style.display = 'none'; };
 
-    // dropdown
     document.querySelectorAll('.dropdown-btn').forEach(btn => {
         btn.addEventListener('click', function() { this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'; });
     });
 
-    // ========== CAROUSEL INIT (horizontal) ==========
+    // ========== CAROUSEL INIT ==========
     const carousels = {
         design: { index: 0, slides: document.querySelectorAll('#carousel-design .carousel-slide'), container: document.querySelector('#carousel-design .carousel-slides'), dotsContainer: document.getElementById('dots-design') },
         branding: { index: 0, slides: document.querySelectorAll('#carousel-branding .carousel-slide'), container: document.querySelector('#carousel-branding .carousel-slides'), dotsContainer: document.getElementById('dots-branding') },
@@ -172,7 +166,7 @@
     function updateCarousel(name) {
         const c = carousels[name];
         if (!c || !c.container) return;
-        c.container.style.transform = `translateX(-${c.index * 100}%)`; // horizontal
+        c.container.style.transform = `translateX(-${c.index * 100}%)`;
         if (c.dotsContainer) {
             const dots = c.dotsContainer.children;
             for (let i = 0; i < dots.length; i++) {
@@ -210,14 +204,30 @@
         }, 5000);
     }
 
-    // init cart
     updateCartDisplay();
 
-    // close modal if click outside content
     document.getElementById('cartModal').addEventListener('click', function(e) {
         if (e.target === this) closeModal();
     });
     document.getElementById('channelModal').addEventListener('click', function(e) {
         if (e.target === this) closeChannelModal();
     });
+
+    // ========== LOADING SCREEN - FAST AND RELIABLE ==========
+    function hideLoadingScreen() {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen && loadingScreen.style.display !== 'none') {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 300);
+        }
+    }
+
+    // Hide as soon as DOM is ready
+    document.addEventListener('DOMContentLoaded', hideLoadingScreen);
+    // Also try on window load
+    window.addEventListener('load', hideLoadingScreen);
+    // Force hide after 1.5 seconds max
+    setTimeout(hideLoadingScreen, 1500);
 })();
