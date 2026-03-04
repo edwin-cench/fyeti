@@ -29,6 +29,7 @@
     <div class="doodle shape-blob"></div>
 </div>
 
+<!-- Toast notification - hidden by default -->
 <div id="toast" class="toast">Thank you for contacting us! We'll reach back within 24 hours.</div>
 
 <!-- MODAL for adding to cart -->
@@ -46,18 +47,27 @@
     </div>
 </div>
 
-<!-- Channel selection modal -->
+<!-- Channel selection modal (WhatsApp / Email) -->
 <div id="channelModal" class="modal channel-modal">
     <div class="modal-content">
         <h3>Choose how to send</h3>
         <div class="channel-options">
-            <div class="channel-option" onclick="sendViaWhatsApp()"><div class="icon">💬</div><span>WhatsApp</span></div>
-            <div class="channel-option" onclick="sendViaEmail()"><div class="icon">📧</div><span>Email</span></div>
+            <div class="channel-option" onclick="sendViaWhatsApp()">
+                <div class="icon">💬</div>
+                <span>WhatsApp</span>
+            </div>
+            <div class="channel-option" onclick="sendViaEmail()">
+                <div class="icon">📧</div>
+                <span>Email</span>
+            </div>
         </div>
-        <div class="modal-actions" style="justify-content: center;"><button class="cancel" onclick="closeChannelModal()">Cancel</button></div>
+        <div class="modal-actions" style="justify-content: center;">
+            <button class="cancel" onclick="closeChannelModal()">Cancel</button>
+        </div>
     </div>
 </div>
 
+<!-- Overlay for mobile sidebar -->
 <div id="overlay" class="overlay" onclick="closeNav()"></div>
 
 <!-- Mobile Sidebar -->
@@ -82,6 +92,7 @@
     <div style="position: absolute; bottom: 20px; width:100%; text-align:center; font-size:0.8rem;">&copy; 2026 alQa Business</div>
 </div>
 
+<!-- Floating Cart (mobile & desktop) -->
 <a href="#quote-area" class="cart-float" id="cart-float">🛒 Quote (<span id="cart-count">0</span>)</a>
 
 <header>
@@ -106,6 +117,7 @@
             </li>
             <li><a href="index.html#contact">📞 Contact</a></li>
             <li><a href="#quote-area" class="cart-nav">🛒 <span id="nav-cart-count">0</span></a></li>
+            <li><button class="theme-toggle" onclick="toggleTheme()" id="theme-btn-desktop">☀️</button></li>
         </ul>
     </nav>
 
@@ -177,9 +189,8 @@
         <p>We don't just create pretty pictures – we build brand experiences. Every design is backed by strategy, ensuring your message resonates with your audience. Let's turn your vision into reality.</p>
     </div>
 
-    <!-- Gallery grid with many containers -->
+    <!-- Gallery grid with many containers (all with Add to quote buttons) -->
     <div class="gallery-grid">
-        <!-- all design cards (15+ items) – replace with your actual cards -->
         <div class="gallery-card"><img src="images/design/logosuit.jpg" class="gallery-img"><div class="gallery-info"><h3>Logo suite</h3><p>Minimalist/modern</p><button class="add-btn" onclick="openModal('Logo design')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/design/eulogy.jpg" class="gallery-img"><div class="gallery-info"><h3>Programe Flyers</h3><p>A4 / A5</p><button class="add-btn" onclick="openModal('UI design')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/design/flyer.jpg" class="gallery-img"><div class="gallery-info"><h3>Flyer</h3><p>A5 / DL flyer</p><button class="add-btn" onclick="openModal('Flyer design')">Add to quote</button></div></div>
@@ -195,6 +206,17 @@
         <div class="gallery-card"><img src="images/design/email header.jpg" class="gallery-img"><div class="gallery-info"><h3>Email header</h3><p>Newsletter template</p><button class="add-btn" onclick="openModal('Email header')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/design/product catalog.webp" class="gallery-img"><div class="gallery-info"><h3>Product catalog</h3><p>20-page catalog</p><button class="add-btn" onclick="openModal('Catalog design')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/design/Educational visuals.webp" class="gallery-img"><div class="gallery-info"><h3>Educational Visuals</h3><p>Visuals for educational purposes</p><button class="add-btn" onclick="openModal('Icon set')">Add to quote</button></div></div>
+    </div>
+
+    <!-- dynamic quote area (same as index) -->
+    <div id="quote-area">
+        <h3>📋 Your quote summary</h3>
+        <div class="quote-items" id="quote-list"></div>
+        <div class="quote-total" id="quote-total">Total: KSh 0</div>
+        <div class="quote-actions">
+            <button onclick="clearQuote()">🗑️ Clear</button>
+            <button onclick="sendWhatsAppBusiness()">💬 Send via WhatsApp</button>
+        </div>
     </div>
 
     <!-- Final call to action -->

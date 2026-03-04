@@ -29,17 +29,70 @@
     <div class="doodle shape-blob"></div>
 </div>
 
+<!-- Toast notification - hidden by default -->
 <div id="toast" class="toast">Thank you for contacting us! We'll reach back within 24 hours.</div>
 
 <!-- MODAL for adding to cart -->
-<div id="cartModal" class="modal">...</div>
-<div id="channelModal" class="modal channel-modal">...</div>
+<div id="cartModal" class="modal">
+    <div class="modal-content">
+        <h3 id="modalItemName">Add to quote</h3>
+        <label for="modalQuantity">Quantity</label>
+        <input type="number" id="modalQuantity" value="1" min="1">
+        <label for="modalNote">Note (size, color, details)</label>
+        <textarea id="modalNote" placeholder="e.g., A0 size, red background..."></textarea>
+        <div class="modal-actions">
+            <button class="cancel" onclick="closeModal()">Cancel</button>
+            <button class="confirm" onclick="confirmAddToCart()">Add to quote</button>
+        </div>
+    </div>
+</div>
 
+<!-- Channel selection modal (WhatsApp / Email) -->
+<div id="channelModal" class="modal channel-modal">
+    <div class="modal-content">
+        <h3>Choose how to send</h3>
+        <div class="channel-options">
+            <div class="channel-option" onclick="sendViaWhatsApp()">
+                <div class="icon">💬</div>
+                <span>WhatsApp</span>
+            </div>
+            <div class="channel-option" onclick="sendViaEmail()">
+                <div class="icon">📧</div>
+                <span>Email</span>
+            </div>
+        </div>
+        <div class="modal-actions" style="justify-content: center;">
+            <button class="cancel" onclick="closeChannelModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Overlay for mobile sidebar -->
 <div id="overlay" class="overlay" onclick="closeNav()"></div>
 
-<!-- Mobile Sidebar (same as design.html) -->
-<div id="mySidebar" class="sidebar">...</div>
+<!-- Mobile Sidebar -->
+<div id="mySidebar" class="sidebar">
+    <button class="sidebar-theme-toggle" onclick="toggleTheme()" id="theme-btn-mobile">☀️</button>
+    <a href="index.html" onclick="closeNav()">🏠 Home</a>
+    <a href="index.html#about" onclick="closeNav()">📌 About Us</a>
+    <a href="#quote-area" class="sidebar-cart-link" onclick="closeNav()">🛒 Quote (<span id="sidebar-cart-count">0</span>)</a>
+    <a href="design.html" onclick="closeNav()">🎨 Design</a>
+    <a href="branding.html" onclick="closeNav()">🏷️ Branding</a>
+    <a href="printing.html" onclick="closeNav()">🖨️ Printing</a>
+    <button class="dropdown-btn">▼ All Products</button>
+    <div class="dropdown-container">
+        <a href="printing.html#signage" onclick="closeNav()">Signage</a>
+        <a href="printing.html#posters" onclick="closeNav()">Posters</a>
+        <a href="printing.html#stickers" onclick="closeNav()">Stickers</a>
+        <a href="printing.html#canvas" onclick="closeNav()">Canvas Prints</a>
+        <a href="printing.html#rollups" onclick="closeNav()">Roll-ups</a>
+        <a href="printing.html#etc" onclick="closeNav()">e.t.c</a>
+    </div>
+    <a href="index.html#contact" onclick="closeNav()">📞 Contact</a>
+    <div style="position: absolute; bottom: 20px; width:100%; text-align:center; font-size:0.8rem;">&copy; 2026 alQa Business</div>
+</div>
 
+<!-- Floating Cart (mobile & desktop) -->
 <a href="#quote-area" class="cart-float" id="cart-float">🛒 Quote (<span id="cart-count">0</span>)</a>
 
 <header>
@@ -48,6 +101,8 @@
             <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
         </a>
     </div>
+
+    <!-- Desktop Navigation with emojis -->
     <nav class="desktop-nav">
         <ul>
             <li><a href="index.html">🏠 Home</a></li>
@@ -62,12 +117,19 @@
             </li>
             <li><a href="index.html#contact">📞 Contact</a></li>
             <li><a href="#quote-area" class="cart-nav">🛒 <span id="nav-cart-count">0</span></a></li>
+            <li><button class="theme-toggle" onclick="toggleTheme()" id="theme-btn-desktop">☀️</button></li>
         </ul>
     </nav>
-    <div class="mobile-controls">...</div>
+
+    <!-- Mobile Controls -->
+    <div class="mobile-controls">
+        <a href="#quote-area" class="cart-nav">🛒 <span id="nav-cart-count-mobile">0</span></a>
+        <button class="menu-toggle" onclick="openNav()">☰</button>
+    </div>
 </header>
 
 <div class="container">
+    <!-- Persuasive header -->
     <div class="persuasive">
         <h3>🌟 Build a Brand That Lasts</h3>
         <p>Your brand is more than a logo – it's the emotion people feel when they interact with your business. We create cohesive identities that build trust and recognition. From stationery to signage, we've got you covered.</p>
@@ -128,7 +190,6 @@
 
     <!-- Gallery grid with many containers -->
     <div class="gallery-grid">
-        <!-- all branding cards (15+ items) – replace with your actual cards -->
         <div class="gallery-card"><img src="images/branding/stationeryset.webp" class="gallery-img"><div class="gallery-info"><h3>Stationery set</h3><p>Letterhead + envelope + card</p><button class="add-btn" onclick="openModal('Stationery set')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/branding/work vests.jpeg" class="gallery-img"><div class="gallery-info"><h3>Work vests</h3><p>Detailed work vests</p><button class="add-btn" onclick="openModal('Vehicle wrap')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/branding/uniform.webp" class="gallery-img"><div class="gallery-info"><h3>Uniform printing</h3><p>T-shirts, caps, aprons</p><button class="add-btn" onclick="openModal('Uniform printing')">Add to quote</button></div></div>
@@ -146,13 +207,31 @@
         <div class="gallery-card"><img src="images/branding/shoppingbags.jpg" class="gallery-img"><div class="gallery-info"><h3>Cotton tote bag</h3><p>Screen printed</p><button class="add-btn" onclick="openModal('Tote bag')">Add to quote</button></div></div>
     </div>
 
+    <!-- dynamic quote area -->
+    <div id="quote-area">
+        <h3>📋 Your quote summary</h3>
+        <div class="quote-items" id="quote-list"></div>
+        <div class="quote-total" id="quote-total">Total: KSh 0</div>
+        <div class="quote-actions">
+            <button onclick="clearQuote()">🗑️ Clear</button>
+            <button onclick="sendWhatsAppBusiness()">💬 Send via WhatsApp</button>
+        </div>
+    </div>
+
     <div class="persuasive" style="margin-bottom: 60px;">
         <h3>🎯 Ready to Elevate Your Brand?</h3>
         <p>Browse our products and add them to your quote. Need something custom? We're just a message away.</p>
     </div>
 </div>
 
-<footer>...</footer>
+<footer>
+    <p>&copy; 2026 alQa Brands Creatives — business identity & print</p>
+    <div class="footer-links">
+        <a href="https://www.linkedin.com/in/alqa-brands-6709a83b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
+        <a href="https://www.instagram.com/alqabrands?utm_source=qr&igsh=M2hxM2FsOXcyb21q">Instagram</a>
+        <a href="https://www.facebook.com/share/16WD14SCfo/">Facebook</a>
+    </div>
+</footer>
 <script src="fyeti.js"></script>
 </body>
 </html>
