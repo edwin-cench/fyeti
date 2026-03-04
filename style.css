@@ -150,6 +150,18 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
     gap: 25px;
     align-items: center;
 }
+.desktop-nav .theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+    transition: 0.2s;
+}
+.desktop-nav .theme-toggle:hover {
+    transform: rotate(15deg);
+}
 
 .desktop-nav a {
     color: white;

@@ -14,6 +14,14 @@
     <p>Loading...</p>
 </div>
 
+<!-- Force hide loading screen after 1 second (backup) -->
+<script>
+    setTimeout(function() {
+        var ls = document.getElementById('loading-screen');
+        if (ls) ls.style.display = 'none';
+    }, 1000);
+</script>
+
 <div class="doodle-wrapper">
     <div class="doodle shape-circle"></div>
     <div class="doodle shape-triangle"></div>
@@ -102,13 +110,14 @@
             <li class="dropdown">
                 <a href="#">📦 Services ▼</a>
                 <ul class="dropdown-menu">
-                    <li><a href="design.html">🎨 Design</a></li>
-                    <li><a href="branding.html">🏷️ Branding</a></li>
-                    <li><a href="printing.html">🖨️ Printing</a></li>
+                    <li><a href="index.html#design-section">🎨 Design</a></li>
+                    <li><a href="index.html#branding-section">🏷️ Branding</a></li>
+                    <li><a href="index.html#printing-section">🖨️ Printing</a></li>
                 </ul>
             </li>
             <li><a href="index.html#contact">📞 Contact</a></li>
             <li><a href="#quote-area" class="cart-nav">🛒 <span id="nav-cart-count">0</span></a></li>
+            <li><button class="theme-toggle" onclick="toggleTheme()" id="theme-btn-desktop">☀️</button></li>
         </ul>
     </nav>
 
@@ -119,8 +128,192 @@
     </div>
 </header>
 
-<!-- rest of your content unchanged ... -->
-<!-- ... (keep all sections as they are) ... -->
+<div class="container">
+    <!-- laptop scene with logo on screen -->
+    <div class="laptop-scene">
+        <div class="person"><div class="person-head"><div class="person-hair"></div></div><div class="person-body"></div></div>
+        <div class="laptop">
+            <div class="laptop-screen">
+                <div class="laptop-display">
+                    <div class="pop-icon icon-design">🎨</div>
+                    <div class="pop-icon icon-brand">🏷️</div>
+                    <div class="pop-icon icon-print">🖨️</div>
+                    <div class="laptop-logo">
+                        <img src="images/logo/logo 2.jpeg" alt="alQa logo">
+                        <span>alQa  Brands </span>
+                    </div>
+                </div>
+            </div>
+            <div class="laptop-base"></div>
+        </div>
+    </div>
 
+    <!-- Hero business with <img> tags -->
+    <section class="hero">
+        <div class="hero-grid">
+            <a href="index.html#design-section" class="hero-card">
+                <img src="images/design/circular.jpg" alt="Design services">
+                <h2>Design</h2>
+            </a>
+            <a href="index.html#branding-section" class="hero-card">
+                <img src="images/branding/wallb.jpg" alt="Branding services">
+                <h2>Branding</h2>
+            </a>
+            <a href="index.html#printing-section" class="hero-card">
+                <img src="images/printing/printing.jpg" alt="Printing services">
+                <h2>Printing</h2>
+            </a>
+        </div>
+        <p>From identity to physical form — alQa delivers corporate branding, high-end design, and large-format printing for businesses across Kenya. <br>Fast, precise, creative.</p>
+        <div class="btn-center">
+            <a href="#contact" class="btn">Request consultation</a>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT US SECTION ========== -->
+    <h2 class="section-title" id="about">About Us</h2>
+    <div class="about-grid">
+        <div class="about-text">
+            <h3>Our story</h3>
+            <p>Founded in 2024, alQa Brands started as a two‑person design studio in Nairobi. Today we are a full‑service creative agency and print house, trusted by over 500 businesses across Kenya. We blend strategic thinking with bold creativity to help brands stand out—from logo design to large‑scale signage.</p>
+            <p><strong>📍 Based in Nairobi, serving the world.</strong> Our in‑house production facility allows us to control quality every step of the way, ensuring fast turnaround and exceptional results.</p>
+            <div class="about-highlight">
+                <div class="about-highlight-item"><span>500+</span><small>brands served</small></div>
+                <div class="about-highlight-item"><span>5‑day</span><small>avg. turnaround</small></div>
+                <div class="about-highlight-item"><span>24/7</span><small>client support</small></div>
+            </div>
+        </div>
+        <div class="about-map">
+            <img src="images/Nairobi.webp" alt="Map location placeholder">
+            <h4>📍 Visit our workshop</h4>
+            <p><i>📌</i> 123 Creative Avenue, Industrial Area, Nairobi, Kenya</p>
+            <p><i>🕒</i> Mon–Fri 8:00 – 18:00 · Sat 9:00 – 14:00</p>
+            <p><i>📞</i> +254 794 851 212</p>
+            <p style="font-style: italic; margin-top: 15px;">"We’d love to meet you and discuss your next project over a cup of Kenyan coffee."</p>
+        </div>
+    </div>
+
+    <!-- Core services -->
+    <h2 class="section-title">Core services</h2>
+    <div class="services-grid">
+        <div class="service-card"><div class="service-icon">📐</div><h3>Graphic Design</h3><p>Logos, brochures, — tailored to your brand.</p></div>
+        <div class="service-card"><div class="service-icon">🏢</div><h3>Corporate Identity</h3><p>Complete branding guidelines, stationery, and brand books.</p></div>
+        <div class="service-card"><div class="service-icon">🪧</div><h3>3D Signage</h3><p>Illuminated letters, channel letters, building signs.</p></div>
+        <div class="service-card"><div class="service-icon">🖨️</div><h3>Large Format</h3><p>Banners, canvas, stickers, exhibition stands.</p></div>
+        <div class="service-card"><div class="service-icon">📦</div><h3>Packaging</h3><p>Custom boxes, labels, and product packaging design.</p></div>
+        <div class="service-card"><div class="service-icon">📱</div><h3>Digital Marketing</h3><p>Social media kits, web banners, media banners.</p></div>
+    </div>
+
+    <!-- How we work -->
+    <h2 class="section-title">How it works</h2>
+    <div class="steps-grid">
+        <div class="step-card"><span class="step-icon">📋</span><h3>1. Brief</h3><p>Tell us your vision via form or WhatsApp.</p></div>
+        <div class="step-card"><span class="step-icon">🤝</span><h3>2. Quote & concept</h3><p>We provide a detailed quote and mockup.</p></div>
+        <div class="step-card"><span class="step-icon">✍️</span><h3>3. Approval & production</h3><p>You approve, we produce with quality.</p></div>
+        <div class="step-card"><span class="step-icon">🚚</span><h3>4. Delivery</h3><p>Shipping or installation across Kenya.</p></div>
+    </div>
+
+    <!-- DESIGN SECTION (5 containers only) -->
+    <h2 class="section-title" id="design-section">Creative design</h2>
+    <div class="gallery-grid">
+        <div class="gallery-card"><img src="images/design/logosuit.jpg" class="gallery-img"><div class="gallery-info"><h3>Logo suite</h3><p>Minimalist/modern</p><button class="add-btn" onclick="openModal('Logo design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/eulogy.jpg" class="gallery-img"><div class="gallery-info"><h3>Programe Flyers</h3><p>A4 / A5</p><button class="add-btn" onclick="openModal('UI design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/flyer.jpg" class="gallery-img"><div class="gallery-info"><h3>Flyer</h3><p>A5 / DL flyer</p><button class="add-btn" onclick="openModal('Flyer design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/menu.jpeg" class="gallery-img"><div class="gallery-info"><h3>Restaurant menu</h3><p>Multi-page menu</p><button class="add-btn" onclick="openModal('Menu design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/brochure.jpeg" class="gallery-img"><div class="gallery-info"><h3>Brochure</h3><p>Tri-fold / bi-fold</p><button class="add-btn" onclick="openModal('Brochure design')">Add to quote</button></div></div>
+    </div>
+    <div class="view-more">
+        <a href="design.html" class="btn">View More Design Products</a>
+    </div>
+
+    <!-- BRANDING SECTION (5 containers only) -->
+    <h2 class="section-title" id="branding-section">Corporate branding</h2>
+    <div class="gallery-grid">
+        <div class="gallery-card"><img src="images/branding/stationeryset.webp" class="gallery-img"><div class="gallery-info"><h3>Stationery set</h3><p>Letterhead + envelope + card</p><button class="add-btn" onclick="openModal('Stationery set')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/work vests.jpeg" class="gallery-img"><div class="gallery-info"><h3>Work vests</h3><p>Detailed work vests</p><button class="add-btn" onclick="openModal('Vehicle wrap')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/uniform.webp" class="gallery-img"><div class="gallery-info"><h3>Uniform printing</h3><p>T-shirts, caps, aprons</p><button class="add-btn" onclick="openModal('Uniform printing')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/hoodie2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Branded Hoodies</h3><p>Stylistic </p><button class="add-btn" onclick="openModal('Brand manual')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/lanyards.jpeg" class="gallery-img"><div class="gallery-info"><h3>Nametags & lanyards</h3><p>Custom printed lanyards</p><button class="add-btn" onclick="openModal('Lanyards')">Add to quote</button></div></div>
+    </div>
+    <div class="view-more">
+        <a href="branding.html" class="btn">View More Branding Products</a>
+    </div>
+
+    <!-- PRINTING SECTION (5 containers only) -->
+    <h2 class="section-title" id="printing-section">Printing & signage</h2>
+    <div class="gallery-grid">
+        <div class="gallery-card"><img src="images/printing/lightbox.jpg" class="gallery-img"><div class="gallery-info"><h3>3D lightbox</h3><p>Illuminated letters</p><button class="add-btn" onclick="openModal('3D lightbox')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/roll up.jpg" class="gallery-img"><div class="gallery-info"><h3>Roll‑up banner</h3><p>80x200cm</p><button class="add-btn" onclick="openModal('Roll-up banner')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/ready to hang.jpg" class="gallery-img"><div class="gallery-info"><h3>Canvas print</h3><p>Ready to hang</p><button class="add-btn" onclick="openModal('Canvas print')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/vinyl stickers.webp" class="gallery-img"><div class="gallery-info"><h3>Vinyl stickers</h3><p>Phone stickers, laptop, car e.t.c</p><button class="add-btn" onclick="openModal('Vinyl stickers')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/printing.jpg" class="gallery-img"><div class="gallery-info"><h3>Outdoor banner</h3><p>Mesh / PVC</p><button class="add-btn" onclick="openModal('Outdoor banner')">Add to quote</button></div></div>
+    </div>
+    <div class="view-more">
+        <a href="printing.html" class="btn">View More Printing Products</a>
+    </div>
+
+    <!-- why choose us -->
+    <h2 class="section-title">Why alQa?</h2>
+    <div class="why-grid">
+        <div class="why-card"><h3>⚡ 5‑day turnaround</h3><p>Most projects delivered within a week.</p></div>
+        <div class="why-card"><h3>🎯 In‑house production</h3><p>No outsourcing: full control of printing & signage.</p></div>
+        <div class="why-card"><h3>📞 24/7 support</h3><p>Direct WhatsApp line to your project manager.</p></div>
+        <div class="why-card"><h3>🏆 500+ brands</h3><p>Trusted by companies across East Africa.</p></div>
+    </div>
+
+    <!-- Testimonials -->
+    <h2 class="section-title">Client stories</h2>
+    <div class="testimonials">
+        <div class="testimonial-card"><p>"alQa redesigned our entire brand identity and did all our stationery and signage. Professional, fast and great quality."</p><div class="testimonial-author">— Grace M., CEO, Urban Eatery</div></div>
+        <div class="testimonial-card"><p>"We needed 50 roll-up banners and vehicle wraps for a trade show. They delivered in 3 days. Highly recommend."</p><div class="testimonial-author">— James K., Marketing, Technova</div></div>
+        <div class="testimonial-card"><p>"The 3D signage they installed for our headquarters is stunning. Attention to detail and installation was seamless."</p><div class="testimonial-author">— Amina S., Operations, Prime Properties</div></div>
+        <div class="testimonial-card"><p>"Their design team captured our brand essence perfectly. The new packaging has increased our shelf appeal dramatically."</p><div class="testimonial-author">— David O., Product Manager, FreshFoods Ltd</div></div>
+    </div>
+
+    <!-- dynamic quote area -->
+    <div id="quote-area">
+        <h3>📋 Your quote summary</h3>
+        <div class="quote-items" id="quote-list"></div>
+        <div class="quote-total" id="quote-total">Total: KSh 0</div>
+        <div class="quote-actions">
+            <button onclick="clearQuote()">🗑️ Clear</button>
+            <button onclick="sendWhatsAppBusiness()">💬 Send via WhatsApp</button>
+        </div>
+    </div>
+
+    <!-- contact section -->
+    <h2 class="section-title" id="contact">Start a project</h2>
+    <div class="contact-section-wrapper">
+        <div class="contact-container">
+            <div class="contact-form-wrapper">
+                <h3>Write us a message</h3>
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group"><label class="form-label">Full name *</label><input type="text" class="form-input" required placeholder="John Kimani"></div>
+                    <div class="form-group"><label class="form-label">Company *</label><input type="text" class="form-input" required placeholder="Your Business Ltd"></div>
+                    <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" required placeholder="john@company.com"></div>
+                    <div class="form-group"><label class="form-label">Service needed</label><select class="form-select"><option>Design</option><option>Branding</option><option>Printing</option><option>Signage</option></select></div>
+                    <div class="form-group"><label class="form-label">Message *</label><textarea class="form-textarea" rows="3" required placeholder="Tell us details..."></textarea></div>
+                    <button type="submit" class="submit-btn">Send inquiry</button>
+                </form>
+            </div>
+            <div class="contact-info-grid">
+                <div class="contact-card"><div class="icon">📞</div><div><h4>Phone</h4><p><a href="tel:+254794851212" style="color:white;">+254 794 851 212</a></p></div></div>
+                <div class="contact-card"><div class="icon">📧</div><div><h4>Email</h4><p><a href="mailto:alqabrandscreations@gmail.com" style="color:white;">alqabrandscreations@gmail.com</a></p></div></div>
+                <div class="contact-card"><div class="icon">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/254794851212" onclick="sendWhatsAppBusiness()" style="color:white;">Chat direct</a></p></div></div>
+                <div class="contact-card"><div class="icon">📍</div><div><h4>Location</h4><p>Nairobi, Kenya</p></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 alQa Brands Creatives — business identity & print</p>
+    <div class="footer-links">
+        <a href="https://www.linkedin.com/in/alqa-brands-6709a83b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>
+        <a href="https://www.instagram.com/alqabrands?utm_source=qr&igsh=M2hxM2FsOXcyb21q">Instagram</a>
+        <a href="https://www.facebook.com/share/16WD14SCfo/">Facebook</a>
+    </div>
+</footer>
+<script src="fyeti.js"></script>
 </body>
 </html>

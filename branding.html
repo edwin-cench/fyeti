@@ -8,10 +8,19 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
+<!-- Loading Screen -->
 <div id="loading-screen" class="loading-screen">
     <div class="spinner"></div>
     <p>Loading...</p>
 </div>
+
+<!-- Force hide loading screen after 1 second (backup) -->
+<script>
+    setTimeout(function() {
+        var ls = document.getElementById('loading-screen');
+        if (ls) ls.style.display = 'none';
+    }, 1000);
+</script>
 
 <div class="doodle-wrapper">
     <div class="doodle shape-circle"></div>

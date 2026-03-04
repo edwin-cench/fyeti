@@ -137,18 +137,31 @@
         showToast('Thank you for contacting us! We\'ll reach back within 24 hours.');
     };
 
+    // ========== THEME TOGGLE ==========
     window.toggleTheme = function() {
         const html = document.documentElement;
         const current = html.getAttribute('data-theme');
         const next = current === 'light' ? 'dark' : 'light';
         html.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
-        document.getElementById('theme-btn-mobile').innerText = next === 'light' ? '🌙' : '☀️';
+
+        const mobileBtn = document.getElementById('theme-btn-mobile');
+        const desktopBtn = document.getElementById('theme-btn-desktop');
+        const newIcon = next === 'light' ? '🌙' : '☀️';
+        if (mobileBtn) mobileBtn.innerText = newIcon;
+        if (desktopBtn) desktopBtn.innerText = newIcon;
     };
+
+    // Apply saved theme on load
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
-    document.getElementById('theme-btn-mobile').innerText = savedTheme === 'light' ? '🌙' : '☀️';
+    const initialIcon = savedTheme === 'light' ? '🌙' : '☀️';
+    const mobileBtn = document.getElementById('theme-btn-mobile');
+    const desktopBtn = document.getElementById('theme-btn-desktop');
+    if (mobileBtn) mobileBtn.innerText = initialIcon;
+    if (desktopBtn) desktopBtn.innerText = initialIcon;
 
+    // ========== SIDEBAR & DROPDOWNS ==========
     window.openNav = function() { document.getElementById('mySidebar').style.left = '0'; document.getElementById('overlay').style.display = 'block'; };
     window.closeNav = function() { document.getElementById('mySidebar').style.left = '-300px'; document.getElementById('overlay').style.display = 'none'; };
 
@@ -204,8 +217,10 @@
         }, 5000);
     }
 
+    // ========== INIT CART DISPLAY ==========
     updateCartDisplay();
 
+    // ========== MODAL CLICK OUTSIDE ==========
     document.getElementById('cartModal').addEventListener('click', function(e) {
         if (e.target === this) closeModal();
     });
@@ -213,17 +228,18 @@
         if (e.target === this) closeChannelModal();
     });
 
-    // ========== LOADING SCREEN - FAST AND RELIABLE ==========
+    // ========== LOADING SCREEN ==========
     function hideLoadingScreen() {
         const loadingScreen = document.getElementById('loading-screen');
         if (loadingScreen && loadingScreen.style.display !== 'none') {
             loadingScreen.style.opacity = '0';
             setTimeout(() => {
                 loadingScreen.style.display = 'none';
-            }, 300); // 300ms transition for a smooth fade out
+            }, 300);
         }
     }
 
-    // Force hide after exactly 1 second (1000ms), ignoring page load speed
-    setTimeout(hideLoadingScreen, 1000);
+    document.addEventListener('DOMContentLoaded', hideLoadingScreen);
+    window.addEventListener('load', hideLoadingScreen);
+    setTimeout(hideLoadingScreen, 1500);
 })();
