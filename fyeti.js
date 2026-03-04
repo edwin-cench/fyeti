@@ -220,14 +220,10 @@
             loadingScreen.style.opacity = '0';
             setTimeout(() => {
                 loadingScreen.style.display = 'none';
-            }, 300);
+            }, 300); // 300ms transition for a smooth fade out
         }
     }
 
-    // Hide as soon as DOM is ready
-    document.addEventListener('DOMContentLoaded', hideLoadingScreen);
-    // Also try on window load
-    window.addEventListener('load', hideLoadingScreen);
-    // Force hide after 1.5 seconds max
-    setTimeout(hideLoadingScreen, 1500);
+    // Force hide after exactly 1 second (1000ms), ignoring page load speed
+    setTimeout(hideLoadingScreen, 1000);
 })();
