@@ -89,10 +89,6 @@ body {
 
 /* laptop scene with logo */
 .laptop-scene { display: flex; justify-content: center; align-items: flex-end; height: 280px; margin: 20px 0 20px; perspective: 1000px; position: relative; }
-.person { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1; display: flex; flex-direction: column; align-items: center; animation: typeBob 2.2s infinite ease-in-out; }
-.person-head { width: 70px; height: 80px; background: #e0ac69; border-radius: 40px; box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2); }
-.person-hair { position: absolute; top: -4px; left: -4px; width: 78px; height: 35px; background: #2b2b2b; border-radius: 40px 40px 10px 10px; }
-.person-body { width: 130px; height: 90px; background: var(--nav-bg); border-radius: 40px 40px 0 0; margin-top: -8px; }
 .laptop { position: relative; z-index: 10; width: 320px; transform-style: preserve-3d; transform: rotateX(8deg); animation: laptopFloat 5s ease-in-out infinite; }
 .laptop-screen { width: 320px; height: 200px; background: #111; border: 8px solid #333; border-radius: 12px 12px 0 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(43,127,255,0.2); }
 .laptop-display { width: 100%; height: 100%; background: linear-gradient(135deg, #1a2a4a, #0a0c10); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
@@ -102,39 +98,26 @@ body {
 .icon-brand { animation: popOutLaptop 4s infinite ease-out 1.2s; left: 50%; top: 40%; border-color: var(--accent-print); }
 .icon-print { animation: popOutLaptop 4s infinite ease-out 2.4s; left: 40%; top: 50%; border-color: var(--whatsapp); }
 @keyframes popOutLaptop { 0% { transform: scale(0) translateY(0); opacity: 0; } 15% { opacity: 1; } 100% { transform: scale(2) translateY(-180px); opacity: 0; } }
-@keyframes typeBob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(5px); } }
 @keyframes laptopFloat { 0%,100% { transform: rotateX(8deg) translateY(0); } 50% { transform: rotateX(10deg) translateY(-8px); } }
 
-/* Laptop logo styling */
+/* Laptop logo styling - now fills the screen */
 .laptop-logo {
-    position: relative;
-    z-index: 15;
-    background: rgba(255,255,255,0.1);
-    border-radius: 20px;
-    padding: 8px 12px;
-    backdrop-filter: blur(4px);
-    border: 2px solid var(--accent);
-    box-shadow: 0 0 30px var(--accent);
-    animation: logoGlow 3s infinite alternate;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5; /* below pop icons (z-index 20) */
+    border: none;
+    box-shadow: none;
+    animation: none;
+    background: transparent;
 }
 .laptop-logo img {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    object-fit: cover;
-}
-.laptop-logo span {
-    font-weight: 900;
-    font-size: 1.4rem;
-    color: white;
-    text-shadow: 0 0 10px var(--accent);
-}
-@keyframes logoGlow {
-    0% { box-shadow: 0 0 20px var(--accent); border-color: var(--accent); }
-    100% { box-shadow: 0 0 40px #fff; border-color: #fff; }
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* was 'cover' – now fits the whole image */
+    display: block;
 }
 
 /* header & nav */
@@ -142,6 +125,37 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
 .logo { display: flex; align-items: center; }
 .logo a { display: flex; align-items: center; text-decoration: none; }
 .logo-img { height: 70px; width: auto; border-radius: 8px; object-fit: cover; cursor: pointer; }
+
+/* Header left area for back button and logo */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Back button styling */
+.back-btn {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    transition: 0.2s;
+    font-size: 1.1rem;
+}
+.back-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.05);
+}
+
+/* On mobile, hide the back button to avoid clutter (users can use sidebar) */
+@media (max-width: 700px) {
+    .header-left .back-btn {
+        display: none;
+    }
+}
 
 /* Desktop Navigation */
 .desktop-nav ul {
@@ -162,13 +176,12 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
 .desktop-nav .theme-toggle:hover {
     transform: rotate(15deg);
 }
-
 .desktop-nav a {
     color: white;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
-    padding: 8px 12px; /* add padding for border effect */
+    padding: 8px 12px;
     border: 1px solid transparent;
     border-radius: 30px;
 }
@@ -177,8 +190,6 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
     border-color: var(--accent);
     background: rgba(255,255,255,0.05);
 }
-
-/* Style the dropdown menu items like buttons */
 .desktop-nav .dropdown-menu a {
     display: block;
     padding: 10px 20px;
@@ -192,17 +203,8 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
     border-color: var(--accent);
     transform: translateX(5px);
 }
-
-/* Ensure page titles and descriptions are centered */
-.page-title, .page-description {
-    text-align: center;
-}
-.page-description {
-    margin-bottom: 40px;
-    font-size: 1.2rem;
-    color: var(--text-muted);
-}
-/* Persuasive section styles */
+.page-title, .page-description { text-align: center; }
+.page-description { margin-bottom: 40px; font-size: 1.2rem; color: var(--text-muted); }
 .persuasive {
     text-align: center;
     margin: 60px 0 20px;
@@ -211,20 +213,9 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
     border-radius: 30px;
     border: 1px solid var(--border-color);
 }
-.persuasive h3 {
-    font-size: 2rem;
-    color: var(--accent);
-    margin-bottom: 15px;
-}
-.persuasive p {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    color: var(--text-muted);
-}
-.desktop-nav .dropdown {
-    position: relative;
-}
+.persuasive h3 { font-size: 2rem; color: var(--accent); margin-bottom: 15px; }
+.persuasive p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: var(--text-muted); }
+.desktop-nav .dropdown { position: relative; }
 .desktop-nav .dropdown-menu {
     display: none;
     position: absolute;
@@ -237,20 +228,14 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
     min-width: 150px;
     z-index: 100;
 }
-.desktop-nav .dropdown:hover .dropdown-menu {
-    display: block;
-}
-.desktop-nav .dropdown-menu li {
-    list-style: none;
-}
+.desktop-nav .dropdown:hover .dropdown-menu { display: block; }
+.desktop-nav .dropdown-menu li { list-style: none; }
 .desktop-nav .dropdown-menu a {
     display: block;
     padding: 8px 20px;
     color: var(--text-color);
 }
-.desktop-nav .dropdown-menu a:hover {
-    background: rgba(43,127,255,0.1);
-}
+.desktop-nav .dropdown-menu a:hover { background: rgba(43,127,255,0.1); }
 .desktop-nav .cart-nav {
     font-size: 1.5rem;
     color: white;
@@ -260,9 +245,7 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
     gap: 4px;
     transition: 0.2s;
 }
-.desktop-nav .cart-nav:hover {
-    transform: scale(1.1);
-}
+.desktop-nav .cart-nav:hover { transform: scale(1.1); }
 .desktop-nav .cart-nav span {
     background: var(--accent);
     color: black;
@@ -277,10 +260,8 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
     line-height: 1;
 }
 
-/* Mobile controls (hidden on desktop) */
-.mobile-controls {
-    display: none;
-}
+/* Mobile controls */
+.mobile-controls { display: none; }
 .mobile-controls .cart-nav {
     font-size: 1.5rem;
     color: white;
@@ -290,9 +271,7 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
     gap: 4px;
     transition: 0.2s;
 }
-.mobile-controls .cart-nav:hover {
-    transform: scale(1.1);
-}
+.mobile-controls .cart-nav:hover { transform: scale(1.1); }
 .mobile-controls .cart-nav span {
     background: var(--accent);
     color: black;
@@ -371,11 +350,9 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
 .add-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--accent); padding: 10px 18px; width: 100%; border-radius: 30px; font-weight: 600; }
 .add-btn:hover { background: var(--accent); color: black; border-color: var(--accent); }
 
-/* center button container */
 .btn-center { text-align: center; margin-top: 20px; }
 .view-more { text-align: center; margin: 20px 0 40px; }
 
-/* sections */
 .section-title { font-size: 2.4rem; margin: 70px 0 35px; text-align: center; font-weight: 700; letter-spacing: -0.02em; position: relative; }
 .section-title:after { content: ''; display: block; width: 70px; height: 4px; background: var(--accent); margin: 15px auto 0; border-radius: 4px; }
 
@@ -403,7 +380,6 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
 .service-card h3, .step-card h3, .why-card h3 { font-size: 1.5rem; margin-bottom: 12px; }
 .service-card p, .step-card p, .why-card p { color: var(--text-muted); font-size: 0.95rem; }
 
-/* testimonials grid for 4 items */
 .testimonials { display: grid; grid-template-columns: repeat(2,1fr); gap: 25px; margin: 40px 0; }
 .testimonial-card { background: var(--card-bg); border-radius: 24px; padding: 30px; border: 1px solid var(--border-color); }
 .testimonial-card p { font-style: italic; font-size: 1.1rem; margin-bottom: 15px; }
@@ -416,7 +392,7 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
 .gallery-info { padding: 15px; }
 .gallery-info h3 { font-size: 1.2rem; margin-bottom: 4px; }
 
-/* ========== HORIZONTAL CAROUSEL STYLES (4 images per slide, touching) ========== */
+/* ========== HORIZONTAL CAROUSEL STYLES ========== */
 .carousel-container {
     position: relative;
     width: 100%;
@@ -551,7 +527,7 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
 .modal-actions .confirm { background: var(--accent); color: black; }
 .modal-actions .confirm:hover { background: #1a5fd9; transform: scale(1.05); }
 
-/* Channel selection modal (for WhatsApp/Email) */
+/* Channel selection modal */
 .channel-modal .modal-content { text-align: center; }
 .channel-options { display: flex; gap: 20px; justify-content: center; margin: 30px 0; }
 .channel-option {
@@ -572,7 +548,7 @@ header { padding: 12px 30px; display: flex; justify-content: space-between; alig
 .channel-option .icon { font-size: 3rem; margin-bottom: 10px; }
 .channel-option span { font-weight: 700; color: var(--text-color); }
 
-/* Toast notification - hidden by default */
+/* Toast notification */
 .toast {
     display: none;
     position: fixed;
