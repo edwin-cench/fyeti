@@ -6,6 +6,72 @@
     <title>alQa Brands | Business + Creative Agency</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <style>
+        /* Welcome header styles */
+        .welcome-header {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        .welcome-header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent), var(--accent-print));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        .welcome-header .motto {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-print);
+            margin-bottom: 15px;
+        }
+        .welcome-header .motto span {
+            display: inline-block;
+            margin: 0 5px;
+        }
+        .welcome-header p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        @media (max-width: 700px) {
+            .welcome-header h1 { font-size: 2.2rem; }
+            .welcome-header .motto { font-size: 1.4rem; }
+            .welcome-header p { font-size: 1.1rem; }
+        }
+
+        /* New intro-details styles */
+        .intro-details {
+            text-align: center;
+            margin: 50px 0 30px;
+            padding: 30px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+        .intro-details h2 {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .intro-details p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        @media (max-width: 700px) {
+            .intro-details h2 { font-size: 1.8rem; }
+            .intro-details p { font-size: 1rem; }
+        }
+    </style>
 </head>
 <body>
 <!-- Loading Screen -->
@@ -110,9 +176,9 @@
             <li class="dropdown">
                 <a href="#">📦 Services ▼</a>
                 <ul class="dropdown-menu">
-                    <li><a href="index.html#design-section">🎨 Design</a></li>
-                    <li><a href="index.html#branding-section">🏷️ Branding</a></li>
-                    <li><a href="index.html#printing-section">🖨️ Printing</a></li>
+                    <li><a href="design.html">🎨 Design</a></li>
+                    <li><a href="branding.html">🏷️ Branding</a></li>
+                    <li><a href="printing.html">🖨️ Printing</a></li>
                 </ul>
             </li>
             <li><a href="index.html#contact">📞 Contact</a></li>
@@ -129,6 +195,15 @@
 </header>
 
 <div class="container">
+    <!-- ========== UPDATED WELCOME HEADER ========== -->
+    <div class="welcome-header">
+        <h1>👋 Welcome to alQa Brands Creatives</h1>
+        <div class="motto">
+            <span>🎨</span> Concepts Crafted. <span>🖨️</span> Quality Printed.
+        </div>
+        <p>We turn your vision into powerful branding, stunning design, and flawless print. From concept to creation – your story, amplified.</p>
+    </div>
+
     <!-- laptop scene with logo on screen -->
     <div class="laptop-scene">
         <div class="person"><div class="person-head"><div class="person-hair"></div></div><div class="person-body"></div></div>
@@ -146,6 +221,12 @@
             </div>
             <div class="laptop-base"></div>
         </div>
+    </div>
+
+    <!-- ========== INTRO DETAILS SECTION ========== -->
+    <div class="intro-details">
+        <h2>Your One-Stop Creative Partner</h2>
+        <p>We help businesses like yours stand out with professional design, cohesive branding, and high-quality printing. Whether you need a logo, custom signage, or a full brand identity, we've got you covered – all from our Nairobi workshop. Fast, friendly, and built around your needs.</p>
     </div>
 
     <!-- Hero business with <img> tags -->
