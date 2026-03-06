@@ -75,6 +75,7 @@
     <button class="sidebar-theme-toggle" onclick="toggleTheme()" id="theme-btn-mobile">☀️</button>
     <a href="index.html" onclick="closeNav()">🏠 Home</a>
     <a href="index.html#about" onclick="closeNav()">📌 About Us</a>
+    <a href="portfolio.html" onclick="closeNav()">📁 Portfolio</a>
     <a href="#quote-area" class="sidebar-cart-link" onclick="closeNav()">🛒 Quote (<span id="sidebar-cart-count">0</span>)</a>
     <a href="design.html" onclick="closeNav()">🎨 Design</a>
     <a href="branding.html" onclick="closeNav()">🏷️ Branding</a>
@@ -92,14 +93,16 @@
     <div style="position: absolute; bottom: 20px; width:100%; text-align:center; font-size:0.8rem;">&copy; 2026 alQa Business</div>
 </div>
 
-<!-- Floating Cart (mobile & desktop) -->
 <a href="#quote-area" class="cart-float" id="cart-float">🛒 Quote (<span id="cart-count">0</span>)</a>
 
 <header>
-    <div class="logo">
-        <a href="index.html" title="Back to top">
-            <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
-        </a>
+    <div class="header-left">
+        <a href="index.html" class="back-btn">← Back</a>
+        <div class="logo">
+            <a href="index.html" title="Back to top">
+                <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
+            </a>
+        </div>
     </div>
 
     <!-- Desktop Navigation with emojis -->
@@ -107,6 +110,7 @@
         <ul>
             <li><a href="index.html">🏠 Home</a></li>
             <li><a href="index.html#about">📌 About</a></li>
+            <li><a href="portfolio.html">📁 Portfolio</a></li>
             <li class="dropdown">
                 <a href="#">📦 Services ▼</a>
                 <ul class="dropdown-menu">
@@ -129,7 +133,6 @@
 </header>
 
 <div class="container">
-    <!-- Persuasive header -->
     <div class="persuasive">
         <h3>🌟 Build a Brand That Lasts</h3>
         <p>Your brand is more than a logo – it's the emotion people feel when they interact with your business. We create cohesive identities that build trust and recognition. From stationery to signage, we've got you covered.</p>
@@ -138,7 +141,7 @@
     <h1 class="page-title">🏷️ Corporate Branding</h1>
     <p class="page-description">Discover our full range of branding products. Make your mark with consistent, professional branding.</p>
 
-    <!-- Carousel for Branding (6 slides) – replace with your slides -->
+    <!-- Carousel for Branding (6 slides) -->
     <div class="carousel-container" id="carousel-branding">
         <div class="carousel-slides">
             <div class="carousel-slide">
@@ -207,7 +210,6 @@
         <div class="gallery-card"><img src="images/branding/shoppingbags.jpg" class="gallery-img"><div class="gallery-info"><h3>Cotton tote bag</h3><p>Screen printed</p><button class="add-btn" onclick="openModal('Tote bag')">Add to quote</button></div></div>
     </div>
 
-    <!-- dynamic quote area -->
     <div id="quote-area">
         <h3>📋 Your quote summary</h3>
         <div class="quote-items" id="quote-list"></div>

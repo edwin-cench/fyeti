@@ -75,6 +75,7 @@
     <button class="sidebar-theme-toggle" onclick="toggleTheme()" id="theme-btn-mobile">☀️</button>
     <a href="index.html" onclick="closeNav()">🏠 Home</a>
     <a href="index.html#about" onclick="closeNav()">📌 About Us</a>
+    <a href="portfolio.html" onclick="closeNav()">📁 Portfolio</a>
     <a href="#quote-area" class="sidebar-cart-link" onclick="closeNav()">🛒 Quote (<span id="sidebar-cart-count">0</span>)</a>
     <a href="design.html" onclick="closeNav()">🎨 Design</a>
     <a href="branding.html" onclick="closeNav()">🏷️ Branding</a>
@@ -92,14 +93,16 @@
     <div style="position: absolute; bottom: 20px; width:100%; text-align:center; font-size:0.8rem;">&copy; 2026 alQa Business</div>
 </div>
 
-<!-- Floating Cart (mobile & desktop) -->
 <a href="#quote-area" class="cart-float" id="cart-float">🛒 Quote (<span id="cart-count">0</span>)</a>
 
 <header>
-    <div class="logo">
-        <a href="index.html" title="Back to top">
-            <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
-        </a>
+    <div class="header-left">
+        <a href="index.html" class="back-btn">← Back</a>
+        <div class="logo">
+            <a href="index.html" title="Back to top">
+                <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
+            </a>
+        </div>
     </div>
 
     <!-- Desktop Navigation with emojis -->
@@ -107,6 +110,7 @@
         <ul>
             <li><a href="index.html">🏠 Home</a></li>
             <li><a href="index.html#about">📌 About</a></li>
+            <li><a href="portfolio.html">📁 Portfolio</a></li>
             <li class="dropdown">
                 <a href="#">📦 Services ▼</a>
                 <ul class="dropdown-menu">
@@ -138,7 +142,7 @@
     <h1 class="page-title">🎨 Creative Design</h1>
     <p class="page-description">Explore our full range of design products. Each piece is crafted to elevate your brand.</p>
 
-    <!-- Carousel (6 slides, 4 images each) – replace with your actual slides -->
+    <!-- Carousel (6 slides, 4 images each) -->
     <div class="carousel-container" id="carousel-design">
         <div class="carousel-slides">
             <div class="carousel-slide">
@@ -189,7 +193,7 @@
         <p>We don't just create pretty pictures – we build brand experiences. Every design is backed by strategy, ensuring your message resonates with your audience. Let's turn your vision into reality.</p>
     </div>
 
-    <!-- Gallery grid with many containers (all with Add to quote buttons) -->
+    <!-- Gallery grid with many containers -->
     <div class="gallery-grid">
         <div class="gallery-card"><img src="images/design/logosuit.jpg" class="gallery-img"><div class="gallery-info"><h3>Logo suite</h3><p>Minimalist/modern</p><button class="add-btn" onclick="openModal('Logo design')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/design/eulogy.jpg" class="gallery-img"><div class="gallery-info"><h3>Programe Flyers</h3><p>A4 / A5</p><button class="add-btn" onclick="openModal('UI design')">Add to quote</button></div></div>
@@ -208,7 +212,7 @@
         <div class="gallery-card"><img src="images/design/Educational visuals.webp" class="gallery-img"><div class="gallery-info"><h3>Educational Visuals</h3><p>Visuals for educational purposes</p><button class="add-btn" onclick="openModal('Icon set')">Add to quote</button></div></div>
     </div>
 
-    <!-- dynamic quote area (same as index) -->
+    <!-- dynamic quote area -->
     <div id="quote-area">
         <h3>📋 Your quote summary</h3>
         <div class="quote-items" id="quote-list"></div>
