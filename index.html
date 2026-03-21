@@ -71,6 +71,29 @@
             .intro-details h2 { font-size: 1.8rem; }
             .intro-details p { font-size: 1rem; }
         }
+
+        /* Deposit notice style */
+        .deposit-note {
+            background: rgba(255, 193, 7, 0.12);
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            backdrop-filter: blur(2px);
+        }
+        .deposit-note::before {
+            content: "⚠️ ";
+            font-weight: 700;
+        }
+        @media (prefers-color-scheme: dark) {
+            .deposit-note {
+                background: rgba(255, 193, 7, 0.08);
+                color: #f5f5f5;
+            }
+        }
     </style>
 </head>
 <body>
@@ -288,7 +311,7 @@
     <h2 class="section-title" id="branding-section">Corporate branding</h2>
     <div class="gallery-grid">
         <div class="gallery-card"><img src="images/branding/stationeryset.webp" class="gallery-img"><div class="gallery-info"><h3>Stationery set</h3><p>Letterhead + envelope + card</p><button class="add-btn" onclick="openModal('Stationery set')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/work vests.jpeg" class="gallery-img"><div class="gallery-info"><h3>Work vests</h3><p>Detailed work vests</p><button class="add-btn" onclick="openModal('Vehicle wrap')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/work vests.jpeg" class="gallery-img"><div class="gallery-info"><h3>Reflector Jackets</h3><p>Detailed work vests</p><button class="add-btn" onclick="openModal('Vehicle wrap')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/branding/uniform.webp" class="gallery-img"><div class="gallery-info"><h3>Uniform printing</h3><p>T-shirts, caps, aprons</p><button class="add-btn" onclick="openModal('Uniform printing')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/branding/hoodie2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Branded Hoodies</h3><p>Stylistic </p><button class="add-btn" onclick="openModal('Brand manual')">Add to quote</button></div></div>
         <div class="gallery-card"><img src="images/branding/lanyards.jpeg" class="gallery-img"><div class="gallery-info"><h3>Nametags & lanyards</h3><p>Custom printed lanyards</p><button class="add-btn" onclick="openModal('Lanyards')">Add to quote</button></div></div>
@@ -359,6 +382,10 @@
         <div class="contact-container">
             <div class="contact-form-wrapper">
                 <h3>Write us a message</h3>
+                <!-- Deposit notice added above the form -->
+                <div class="deposit-note">
+                    NB: Before starting any project quotation is done first, then a 70% deposit is paid.
+                </div>
                 <form id="contactForm" onsubmit="handleFormSubmit(event)">
                     <div class="form-group"><label class="form-label">Full name *</label><input type="text" class="form-input" required placeholder="John Kimani"></div>
                     <div class="form-group"><label class="form-label">Company *</label><input type="text" class="form-input" required placeholder="Your Business Ltd"></div>
