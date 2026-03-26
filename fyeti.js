@@ -1,6 +1,7 @@
 (function() {
     let cart = JSON.parse(localStorage.getItem('alqa_cart')) || [];
     let currentFormData = null;
+    let currentFormType = null; // 'contact' or 'custom'
 
     function showToast(message) {
         const toast = document.getElementById('toast');
@@ -51,17 +52,17 @@
 
         list.innerHTML = '';
         if (cart.length === 0) {
-            area.style.display = 'none';
-            floatCart.style.display = 'none';
-            sideCount.innerText = '0';
+            if (area) area.style.display = 'none';
+            if (floatCart) floatCart.style.display = 'none';
+            if (sideCount) sideCount.innerText = '0';
             if (navCount) navCount.innerText = '0';
             if (navCountMobile) navCountMobile.innerText = '0';
             return;
         }
-        area.style.display = 'block';
-        floatCart.style.display = 'block';
-        cartCount.innerText = cart.length;
-        sideCount.innerText = cart.length;
+        if (area) area.style.display = 'block';
+        if (floatCart) floatCart.style.display = 'block';
+        if (cartCount) cartCount.innerText = cart.length;
+        if (sideCount) sideCount.innerText = cart.length;
         if (navCount) navCount.innerText = cart.length;
         if (navCountMobile) navCountMobile.innerText = cart.length;
 
@@ -74,7 +75,7 @@
                              <div style="display:flex; align-items:center; gap:15px;"><span class="quote-qty">x${item.quantity}</span><span class="remove-btn" onclick="removeFromQuote(${idx})">✕</span></div>`;
             list.appendChild(row);
         });
-        totalSpan.innerText = `Total items: ${totalItems}`;
+        if (totalSpan) totalSpan.innerText = `Total items: ${totalItems}`;
     }
 
     window.sendWhatsAppBusiness = function() {
@@ -92,6 +93,7 @@
         document.getElementById('channelModal').classList.remove('active');
     };
 
+    // Main contact form handler
     window.handleFormSubmit = function(e) {
         e.preventDefault();
         const form = e.target;
@@ -102,40 +104,90 @@
         const message = form.querySelector('textarea').value;
 
         currentFormData = { name, company, email, service, message };
+        currentFormType = 'contact';
+        document.getElementById('channelModal').classList.add('active');
+    };
+
+    // Custom request handler (for design page)
+    window.handleCustomRequest = function(e) {
+        e.preventDefault();
+        const name = document.getElementById('customName').value.trim();
+        const email = document.getElementById('customEmail').value.trim();
+        const phone = document.getElementById('customPhone').value.trim();
+        const service = document.getElementById('customService').value;
+        const message = document.getElementById('customMessage').value.trim();
+
+        if (!name || !email || !message) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        currentFormData = { name, email, phone, service, message };
+        currentFormType = 'custom';
         document.getElementById('channelModal').classList.add('active');
     };
 
     window.sendViaWhatsApp = function() {
         if (!currentFormData) return;
-        const { name, company, email, service, message } = currentFormData;
         const phone = '254794851212';
-        let whatsappMsg = `New inquiry from ${name} (${company}, ${email})\n`;
-        whatsappMsg += `Service: ${service}\nMessage: ${message}\n\n`;
+        let whatsappMsg = '';
+
+        if (currentFormType === 'contact') {
+            const { name, company, email, service, message } = currentFormData;
+            whatsappMsg = `New inquiry from ${name} (${company}, ${email})\n`;
+            whatsappMsg += `Service: ${service}\nMessage: ${message}\n\n`;
+        } else if (currentFormType === 'custom') {
+            const { name, email, phone, service, message } = currentFormData;
+            whatsappMsg = `Custom design request from ${name}\n`;
+            whatsappMsg += `Email: ${email}\nPhone: ${phone || '—'}\nService: ${service}\n`;
+            whatsappMsg += `Details:\n${message}\n\n`;
+        }
+
         if (cart.length > 0) {
             whatsappMsg += 'Quote items:\n';
             cart.forEach(i => { whatsappMsg += `🔹 ${i.name} x${i.quantity} (${i.note})\n`; });
         }
+
         window.open(`https://wa.me/${phone}?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
-        document.getElementById('contactForm').reset();
+        resetForms();
         closeChannelModal();
         showToast('Thank you for contacting us! We\'ll reach back within 24 hours.');
     };
 
     window.sendViaEmail = function() {
         if (!currentFormData) return;
-        const { name, company, email, service, message } = currentFormData;
         const recipient = 'alqabrandscreations@gmail.com';
-        let subject = `Inquiry from ${name} (${company})`;
-        let body = `Name: ${name}\nCompany: ${company}\nEmail: ${email}\nService: ${service}\nMessage: ${message}\n\n`;
+        let subject = '', body = '';
+
+        if (currentFormType === 'contact') {
+            const { name, company, email, service, message } = currentFormData;
+            subject = `Inquiry from ${name} (${company})`;
+            body = `Name: ${name}\nCompany: ${company}\nEmail: ${email}\nService: ${service}\nMessage: ${message}\n\n`;
+        } else if (currentFormType === 'custom') {
+            const { name, email, phone, service, message } = currentFormData;
+            subject = `Custom design request from ${name}`;
+            body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || '—'}\nService: ${service}\n\nDetails:\n${message}\n\n`;
+        }
+
         if (cart.length > 0) {
             body += 'Quote items:\n';
             cart.forEach(i => { body += `- ${i.name} x${i.quantity} (${i.note})\n`; });
         }
+
         window.open(`mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
-        document.getElementById('contactForm').reset();
+        resetForms();
         closeChannelModal();
         showToast('Thank you for contacting us! We\'ll reach back within 24 hours.');
     };
+
+    function resetForms() {
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) contactForm.reset();
+        const customForm = document.getElementById('customRequestForm');
+        if (customForm) customForm.reset();
+        currentFormData = null;
+        currentFormType = null;
+    }
 
     // ========== THEME TOGGLE ==========
     window.toggleTheme = function() {
@@ -221,12 +273,18 @@
     updateCartDisplay();
 
     // ========== MODAL CLICK OUTSIDE ==========
-    document.getElementById('cartModal').addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
-    });
-    document.getElementById('channelModal').addEventListener('click', function(e) {
-        if (e.target === this) closeChannelModal();
-    });
+    const cartModal = document.getElementById('cartModal');
+    if (cartModal) {
+        cartModal.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    }
+    const channelModal = document.getElementById('channelModal');
+    if (channelModal) {
+        channelModal.addEventListener('click', function(e) {
+            if (e.target === this) closeChannelModal();
+        });
+    }
 
     // ========== LOADING SCREEN ==========
     function hideLoadingScreen() {

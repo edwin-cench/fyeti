@@ -6,6 +6,83 @@
     <title>alQa Brands | Creative Design</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <style>
+        /* Additional styles for design page */
+        .deposit-note {
+            background: rgba(255, 193, 7, 0.12);
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            backdrop-filter: blur(2px);
+        }
+        .deposit-note::before {
+            content: "⚠️ ";
+            font-weight: 700;
+        }
+        .custom-form-section {
+            margin: 60px 0 40px;
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+        .custom-form-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        .custom-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-light);
+            font-family: inherit;
+        }
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            width: fit-content;
+        }
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+        @media (max-width: 700px) {
+            .custom-form-section { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
 <!-- Loading Screen -->
@@ -14,14 +91,6 @@
     <p>Loading...</p>
 </div>
 
-<!-- Force hide loading screen after 1 second (backup) -->
-<script>
-    setTimeout(function() {
-        var ls = document.getElementById('loading-screen');
-        if (ls) ls.style.display = 'none';
-    }, 1000);
-</script>
-
 <div class="doodle-wrapper">
     <div class="doodle shape-circle"></div>
     <div class="doodle shape-triangle"></div>
@@ -29,7 +98,7 @@
     <div class="doodle shape-blob"></div>
 </div>
 
-<!-- Toast notification - hidden by default -->
+<!-- Toast notification -->
 <div id="toast" class="toast">Thank you for contacting us! We'll reach back within 24 hours.</div>
 
 <!-- MODAL for adding to cart -->
@@ -47,7 +116,7 @@
     </div>
 </div>
 
-<!-- Channel selection modal (WhatsApp / Email) -->
+<!-- Channel selection modal -->
 <div id="channelModal" class="modal channel-modal">
     <div class="modal-content">
         <h3>Choose how to send</h3>
@@ -97,7 +166,7 @@
 
 <header>
     <div class="header-left">
-        <a href="index.html" class="back-btn">← Back</a>
+        <!-- Back button removed -->
         <div class="logo">
             <a href="index.html" title="Back to top">
                 <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
@@ -105,7 +174,7 @@
         </div>
     </div>
 
-    <!-- Desktop Navigation with emojis -->
+    <!-- Desktop Navigation -->
     <nav class="desktop-nav">
         <ul>
             <li><a href="index.html">🏠 Home</a></li>
@@ -193,23 +262,23 @@
         <p>We don't just create pretty pictures – we build brand experiences. Every design is backed by strategy, ensuring your message resonates with your audience. Let's turn your vision into reality.</p>
     </div>
 
-    <!-- Gallery grid with many containers -->
+    <!-- Gallery grid with expanded descriptions -->
     <div class="gallery-grid">
-        <div class="gallery-card"><img src="images/design/logosuit.jpg" class="gallery-img"><div class="gallery-info"><h3>Logo suite</h3><p>Minimalist/modern</p><button class="add-btn" onclick="openModal('Logo design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/eulogy.jpg" class="gallery-img"><div class="gallery-info"><h3>Programe Flyers</h3><p>A4 / A5</p><button class="add-btn" onclick="openModal('UI design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/flyer.jpg" class="gallery-img"><div class="gallery-info"><h3>Flyer</h3><p>A5 / DL flyer</p><button class="add-btn" onclick="openModal('Flyer design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/menu.jpeg" class="gallery-img"><div class="gallery-info"><h3>Restaurant menu</h3><p>Multi-page menu</p><button class="add-btn" onclick="openModal('Menu design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/brochure.jpeg" class="gallery-img"><div class="gallery-info"><h3>Brochure</h3><p>Tri-fold / bi-fold</p><button class="add-btn" onclick="openModal('Brochure design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/charts.webp" class="gallery-img"><div class="gallery-info"><h3>Charts</h3><p>Visual reports</p><button class="add-btn" onclick="openModal('Social media kit')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/productbox.webp" class="gallery-img"><div class="gallery-info"><h3>Packaging design</h3><p>Product box</p><button class="add-btn" onclick="openModal('Packaging design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/product label.webp" class="gallery-img"><div class="gallery-info"><h3>Product label</h3><p>Sticker label</p><button class="add-btn" onclick="openModal('Label design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/posters 2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Poster</h3><p>A2, A3, A4 and A5 poster</p><button class="add-btn" onclick="openModal('Poster design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/design1.jpg" class="gallery-img"><div class="gallery-info"><h3>Media banners</h3><p>Display ads</p><button class="add-btn" onclick="openModal('Web banner set')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/custom illustrations.webp" class="gallery-img"><div class="gallery-info"><h3>Custom illustration</h3><p>Vector art</p><button class="add-btn" onclick="openModal('Illustration')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/magazins.jpg" class="gallery-img"><div class="gallery-info"><h3>Magazine layout</h3><p>Multi-page editorial</p><button class="add-btn" onclick="openModal('Magazine layout')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/email header.jpg" class="gallery-img"><div class="gallery-info"><h3>Email header</h3><p>Newsletter template</p><button class="add-btn" onclick="openModal('Email header')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/product catalog.webp" class="gallery-img"><div class="gallery-info"><h3>Product catalog</h3><p>20-page catalog</p><button class="add-btn" onclick="openModal('Catalog design')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/design/Educational visuals.webp" class="gallery-img"><div class="gallery-info"><h3>Educational Visuals</h3><p>Visuals for educational purposes</p><button class="add-btn" onclick="openModal('Icon set')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/logosuit.jpg" class="gallery-img"><div class="gallery-info"><h3>Logo suite</h3><p>We craft unique, timeless logos that capture your brand's essence. Perfect for startups and rebrands.</p><button class="add-btn" onclick="openModal('Logo design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/eulogy.jpg" class="gallery-img"><div class="gallery-info"><h3>Programme Flyers</h3><p>Elegant program flyers for events, weddings, and conferences. Custom layouts, premium paper options.</p><button class="add-btn" onclick="openModal('Programme flyer')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/flyer.jpg" class="gallery-img"><div class="gallery-info"><h3>Flyer</h3><p>Eye-catching flyers designed to grab attention. Available in A5, DL, and custom sizes.</p><button class="add-btn" onclick="openModal('Flyer design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/menu.jpeg" class="gallery-img"><div class="gallery-info"><h3>Restaurant menu</h3><p>Beautifully designed menus that enhance dining experience. Multi-page, foldable, or digital.</p><button class="add-btn" onclick="openModal('Menu design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/brochure.jpeg" class="gallery-img"><div class="gallery-info"><h3>Brochure</h3><p>Professional tri-fold or bi-fold brochures that tell your story compellingly.</p><button class="add-btn" onclick="openModal('Brochure design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/charts.webp" class="gallery-img"><div class="gallery-info"><h3>Charts & infographics</h3><p>Clear, visually engaging charts and infographics for reports and presentations.</p><button class="add-btn" onclick="openModal('Infographic design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/productbox.webp" class="gallery-img"><div class="gallery-info"><h3>Packaging design</h3><p>Custom packaging that stands out on shelves. From concept to print-ready files.</p><button class="add-btn" onclick="openModal('Packaging design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/product label.webp" class="gallery-img"><div class="gallery-info"><h3>Product label</h3><p>Striking product labels with detailed artwork, suitable for bottles, boxes, and jars.</p><button class="add-btn" onclick="openModal('Label design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/posters 2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Poster</h3><p>Large-format posters for advertising, events, or décor. Sizes A2, A3, A4, and beyond.</p><button class="add-btn" onclick="openModal('Poster design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/design1.jpg" class="gallery-img"><div class="gallery-info"><h3>Media banners</h3><p>Digital banners for websites, social media, and display ads. Responsive designs.</p><button class="add-btn" onclick="openModal('Web banner set')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/custom illustrations.webp" class="gallery-img"><div class="gallery-info"><h3>Custom illustration</h3><p>Unique vector illustrations tailored to your brand story and style.</p><button class="add-btn" onclick="openModal('Illustration')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/magazins.jpg" class="gallery-img"><div class="gallery-info"><h3>Magazine layout</h3><p>Editorial layouts for magazines, catalogs, and annual reports. Clean and modern.</p><button class="add-btn" onclick="openModal('Magazine layout')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/email header.jpg" class="gallery-img"><div class="gallery-info"><h3>Email header</h3><p>Professional email headers that reinforce brand identity for newsletters and campaigns.</p><button class="add-btn" onclick="openModal('Email header')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/product catalog.webp" class="gallery-img"><div class="gallery-info"><h3>Product catalog</h3><p>Comprehensive catalog design with product photography integration and compelling layouts.</p><button class="add-btn" onclick="openModal('Catalog design')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/design/Educational visuals.webp" class="gallery-img"><div class="gallery-info"><h3>Educational Visuals</h3><p>Engaging educational materials, infographics, and visual aids for learning.</p><button class="add-btn" onclick="openModal('Educational visuals')">Add to quote</button></div></div>
     </div>
 
     <!-- dynamic quote area -->
@@ -223,10 +292,56 @@
         </div>
     </div>
 
+    <!-- ========== CUSTOM DESIGN REQUEST FORM ========== -->
+    <div class="custom-form-section">
+        <h3>📝 Need a custom design? Tell us about your project</h3>
+        <p class="form-intro">If you don't see exactly what you're looking for, fill out this form and our design team will get back to you within 24 hours with a custom solution and quote.</p>
+        
+        <!-- Deposit notice (same as index) -->
+        <div class="deposit-note">
+            NB: Before starting any project quotation is done first, then a 70% deposit is paid.
+        </div>
+        
+        <form id="customRequestForm" class="custom-form" onsubmit="handleCustomRequest(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="customName">Full name *</label>
+                    <input type="text" id="customName" required placeholder="John Kimani">
+                </div>
+                <div class="form-group">
+                    <label for="customEmail">Email *</label>
+                    <input type="email" id="customEmail" required placeholder="john@company.com">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="customPhone">Phone number</label>
+                    <input type="tel" id="customPhone" placeholder="+254 712 345 678">
+                </div>
+                <div class="form-group">
+                    <label for="customService">Service category</label>
+                    <select id="customService">
+                        <option>Logo & Identity</option>
+                        <option>Print Materials</option>
+                        <option>Packaging</option>
+                        <option>Digital Assets</option>
+                        <option>Illustration</option>
+                        <option>Other Design</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customMessage">Describe your project / what you need *</label>
+                <textarea id="customMessage" rows="4" required placeholder="Tell us details: size, quantity, style, deadline, etc."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send request →</button>
+        </form>
+    </div>
+
     <!-- Final call to action -->
     <div class="persuasive" style="margin-bottom: 60px;">
         <h3>🚀 Ready to Transform Your Brand?</h3>
-        <p>Click any item above to add to your quote, or contact us for a custom consultation. Your brand deserves the best – let's make it happen.</p>
+        <p>Click any item above to add to your quote, or use the form for a custom design consultation. Your brand deserves the best – let's make it happen.</p>
     </div>
 </div>
 
@@ -238,6 +353,7 @@
         <a href="https://www.facebook.com/share/16WD14SCfo/">Facebook</a>
     </div>
 </footer>
+
 <script src="fyeti.js"></script>
 </body>
 </html>

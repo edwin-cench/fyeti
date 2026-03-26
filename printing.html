@@ -6,6 +6,83 @@
     <title>alQa Brands | Printing & Signage</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <style>
+        /* Additional styles for printing page */
+        .deposit-note {
+            background: rgba(255, 193, 7, 0.12);
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            backdrop-filter: blur(2px);
+        }
+        .deposit-note::before {
+            content: "⚠️ ";
+            font-weight: 700;
+        }
+        .custom-form-section {
+            margin: 60px 0 40px;
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+        .custom-form-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        .custom-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-light);
+            font-family: inherit;
+        }
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            width: fit-content;
+        }
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+        @media (max-width: 700px) {
+            .custom-form-section { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
 <!-- Loading Screen -->
@@ -97,7 +174,7 @@
 
 <header>
     <div class="header-left">
-        <a href="index.html" class="back-btn">← Back</a>
+        <!-- Back button removed -->
         <div class="logo">
             <a href="index.html" title="Back to top">
                 <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
@@ -191,23 +268,23 @@
         <p>We handle everything – design, proofing, production, and installation. Our state-of-the-art equipment guarantees vibrant colors and crisp details every time.</p>
     </div>
 
-    <!-- Gallery grid with many containers -->
+    <!-- Gallery grid with expanded descriptions -->
     <div class="gallery-grid">
-        <div class="gallery-card"><img src="images/printing/lightbox.jpg" class="gallery-img"><div class="gallery-info"><h3>3D lightbox</h3><p>Illuminated letters</p><button class="add-btn" onclick="openModal('3D lightbox')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/roll up.jpg" class="gallery-img"><div class="gallery-info"><h3>Roll‑up banner</h3><p>80x200cm</p><button class="add-btn" onclick="openModal('Roll-up banner')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/ready to hang.jpg" class="gallery-img"><div class="gallery-info"><h3>Canvas print</h3><p>Ready to hang</p><button class="add-btn" onclick="openModal('Canvas print')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/vinyl stickers.webp" class="gallery-img"><div class="gallery-info"><h3>Vinyl stickers</h3><p>Phone stickers, laptop, car e.t.c</p><button class="add-btn" onclick="openModal('Vinyl stickers')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/printing.jpg" class="gallery-img"><div class="gallery-info"><h3>Outdoor banner</h3><p>Mesh / PVC</p><button class="add-btn" onclick="openModal('Outdoor banner')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/event banners.jpg" class="gallery-img"><div class="gallery-info"><h3>Backdrop / Event Banners</h3><p>Banners made for specific events</p><button class="add-btn" onclick="openModal('Foamboard')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/water bottle stickers.jpeg" class="gallery-img"><div class="gallery-info"><h3>Bottle stickers</h3><p>Water bottle, drinks and any other</p><button class="add-btn" onclick="openModal('Acrylic sign')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/coroplast.webp" class="gallery-img"><div class="gallery-info"><h3>Coroplast yard sign</h3><p>18x24"</p><button class="add-btn" onclick="openModal('Coroplast sign')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/reflective signs.webp" class="gallery-img"><div class="gallery-info"><h3>Reflective signs</h3><p>Road signs, construction, working area e.t.c</p><button class="add-btn" onclick="openModal('Window perf')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/Receipt books2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Receipt books</h3><p>Financial record books</p><button class="add-btn" onclick="openModal('Floor graphics')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/table throw.webp" class="gallery-img"><div class="gallery-info"><h3>Table throw / runner</h3><p>Stretch fabric</p><button class="add-btn" onclick="openModal('Table throw')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/pos.jpg" class="gallery-img"><div class="gallery-info"><h3>Pop‑up stand</h3><p>Modular display</p><button class="add-btn" onclick="openModal('Pop-up stand')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/tear drop.jpeg" class="gallery-img"><div class="gallery-info"><h3>Tear drop / Feather flag</h3><p>Outdoor teardrop</p><button class="add-btn" onclick="openModal('Feather flag')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/booklet.jpeg" class="gallery-img"><div class="gallery-info"><h3>Booklet printing</h3><p>Saddle stitch</p><button class="add-btn" onclick="openModal('Booklet printing')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/calender.jpg" class="gallery-img"><div class="gallery-info"><h3>Wall calendar</h3><p>Spiral bound</p><button class="add-btn" onclick="openModal('Calendar')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/lightbox.jpg" class="gallery-img"><div class="gallery-info"><h3>3D lightbox</h3><p>Illuminated letters and lightboxes that make your business shine 24/7. Perfect for storefronts and lobbies.</p><button class="add-btn" onclick="openModal('3D lightbox')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/roll up.jpg" class="gallery-img"><div class="gallery-info"><h3>Roll‑up banner</h3><p>Portable, professional displays for events and trade shows. Lightweight and easy to set up.</p><button class="add-btn" onclick="openModal('Roll-up banner')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/ready to hang.jpg" class="gallery-img"><div class="gallery-info"><h3>Canvas & Portraits</h3><p>Gallery-quality canvas prints ready to hang. Perfect for offices, homes, or art displays.</p><button class="add-btn" onclick="openModal('Canvas print')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/vinyl stickers.webp" class="gallery-img"><div class="gallery-info"><h3>Vinyl stickers</h3><p>Custom die-cut stickers for phones, laptops, cars, and packaging. Durable and weather-resistant.</p><button class="add-btn" onclick="openModal('Vinyl stickers')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/printing.jpg" class="gallery-img"><div class="gallery-info"><h3>Outdoor banner</h3><p>Heavy-duty mesh or PVC banners for long-lasting outdoor advertising. UV and weather resistant.</p><button class="add-btn" onclick="openModal('Outdoor banner')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/event banners.jpg" class="gallery-img"><div class="gallery-info"><h3>Backdrop / Event Banners</h3><p>Custom backdrops for weddings, corporate events, and photo booths. Vibrant, seamless prints.</p><button class="add-btn" onclick="openModal('Event backdrop')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/water bottle stickers.jpeg" class="gallery-img"><div class="gallery-info"><h3>Bottle stickers</h3><p>Custom labels for water bottles, drinks, and product packaging. Full-color, waterproof.</p><button class="add-btn" onclick="openModal('Bottle stickers')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/coroplast.webp" class="gallery-img"><div class="gallery-info"><h3>Coroplast yard sign</h3><p>Lightweight, weatherproof corrugated plastic signs for yards, events, and real estate.</p><button class="add-btn" onclick="openModal('Coroplast sign')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/reflective signs.webp" class="gallery-img"><div class="gallery-info"><h3>Reflective signs</h3><p>High-visibility safety and directional signs. Essential for construction zones and parking lots.</p><button class="add-btn" onclick="openModal('Reflective sign')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/Receipt books2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Receipt books</h3><p>Custom receipt books with numbered duplicates. Perfect for businesses and service providers.</p><button class="add-btn" onclick="openModal('Receipt books')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/table throw.webp" class="gallery-img"><div class="gallery-info"><h3>Table throw / runner</h3><p>Stretch fabric table covers with full-bleed printing. Makes your booth stand out at events.</p><button class="add-btn" onclick="openModal('Table throw')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/pos.jpg" class="gallery-img"><div class="gallery-info"><h3>Pop‑up stand</h3><p>Modular display systems for exhibitions. Easy setup, professional look.</p><button class="add-btn" onclick="openModal('Pop-up stand')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/tear drop.jpeg" class="gallery-img"><div class="gallery-info"><h3>Tear drop / Feather flag</h3><p>Curved outdoor flags that flutter in the wind. Highly visible for roadside advertising.</p><button class="add-btn" onclick="openModal('Feather flag')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/booklet.jpeg" class="gallery-img"><div class="gallery-info"><h3>Booklet printing</h3><p>Saddle-stitched booklets for menus, brochures, and programs. Professional finish.</p><button class="add-btn" onclick="openModal('Booklet printing')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/calender.jpg" class="gallery-img"><div class="gallery-info"><h3>Wall calendar</h3><p>Custom spiral-bound calendars with your branding. Great for giveaways and promotions.</p><button class="add-btn" onclick="openModal('Calendar')">Add to quote</button></div></div>
     </div>
 
     <div id="quote-area">
@@ -220,9 +297,55 @@
         </div>
     </div>
 
+    <!-- ========== CUSTOM PRINTING REQUEST FORM ========== -->
+    <div class="custom-form-section">
+        <h3>📝 Need a custom print job?</h3>
+        <p class="form-intro">Don't see exactly what you're looking for? Fill out this form and our printing experts will get back to you within 24 hours with a custom quote.</p>
+        
+        <!-- Deposit notice (same as index) -->
+        <div class="deposit-note">
+            NB: Before starting any project quotation is done first, then a 70% deposit is paid.
+        </div>
+        
+        <form id="customRequestForm" class="custom-form" onsubmit="handleCustomRequest(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="customName">Full name *</label>
+                    <input type="text" id="customName" required placeholder="John Kimani">
+                </div>
+                <div class="form-group">
+                    <label for="customEmail">Email *</label>
+                    <input type="email" id="customEmail" required placeholder="john@company.com">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="customPhone">Phone number</label>
+                    <input type="tel" id="customPhone" placeholder="+254 712 345 678">
+                </div>
+                <div class="form-group">
+                    <label for="customService">Service category</label>
+                    <select id="customService">
+                        <option>Banners & Signage</option>
+                        <option>Stickers & Labels</option>
+                        <option>Canvas & Art Prints</option>
+                        <option>Promotional Items</option>
+                        <option>Large Format Printing</option>
+                        <option>Other Printing</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customMessage">Describe your project / what you need *</label>
+                <textarea id="customMessage" rows="4" required placeholder="Tell us details: size, quantity, material, deadline, etc."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send request →</button>
+        </form>
+    </div>
+
     <div class="persuasive" style="margin-bottom: 60px;">
         <h3>💬 Ready to Print?</h3>
-        <p>Add items to your quote or contact us for a custom quote. Let's bring your ideas to life.</p>
+        <p>Add items to your quote or use the form for a custom printing solution. Let's bring your ideas to life.</p>
     </div>
 </div>
 
@@ -234,6 +357,7 @@
         <a href="https://www.facebook.com/share/16WD14SCfo/">Facebook</a>
     </div>
 </footer>
+
 <script src="fyeti.js"></script>
 </body>
 </html>

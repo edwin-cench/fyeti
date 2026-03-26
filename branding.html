@@ -6,6 +6,83 @@
     <title>alQa Brands | Corporate Branding</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <style>
+        /* Additional styles for branding page */
+        .deposit-note {
+            background: rgba(255, 193, 7, 0.12);
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            backdrop-filter: blur(2px);
+        }
+        .deposit-note::before {
+            content: "⚠️ ";
+            font-weight: 700;
+        }
+        .custom-form-section {
+            margin: 60px 0 40px;
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+        .custom-form-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        .custom-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-light);
+            font-family: inherit;
+        }
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            width: fit-content;
+        }
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+        @media (max-width: 700px) {
+            .custom-form-section { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
 <!-- Loading Screen -->
@@ -97,7 +174,7 @@
 
 <header>
     <div class="header-left">
-        <a href="index.html" class="back-btn">← Back</a>
+        <!-- Back button removed -->
         <div class="logo">
             <a href="index.html" title="Back to top">
                 <img src="images/logo/best logo.png" class="logo-img" alt="alQa">
@@ -191,23 +268,23 @@
         <p>Brands that are consistently presented are 3–4 times more likely to be noticed. We help you maintain that consistency across every touchpoint – from business cards to office signage.</p>
     </div>
 
-    <!-- Gallery grid with many containers -->
+    <!-- Gallery grid with expanded descriptions -->
     <div class="gallery-grid">
-        <div class="gallery-card"><img src="images/branding/stationeryset.webp" class="gallery-img"><div class="gallery-info"><h3>Stationery set</h3><p>Letterhead + envelope + card</p><button class="add-btn" onclick="openModal('Stationery set')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/work vests.jpeg" class="gallery-img"><div class="gallery-info"><h3>Reflector Jackets</h3><p>Detailed work vests</p><button class="add-btn" onclick="openModal('Vehicle wrap')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/uniform.webp" class="gallery-img"><div class="gallery-info"><h3>Uniform printing</h3><p>T-shirts, caps, aprons</p><button class="add-btn" onclick="openModal('Uniform printing')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/hoodie2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Branded Hoodies</h3><p>Stylistic </p><button class="add-btn" onclick="openModal('Brand manual')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/lanyards.jpeg" class="gallery-img"><div class="gallery-info"><h3>Nametags & lanyards</h3><p>Custom printed lanyards</p><button class="add-btn" onclick="openModal('Lanyards')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/printing/arsenal.jpg" class="gallery-img"><div class="gallery-info"><h3>Jerseys</h3><p>Football, NFL, Basket Ball, Rugby</p><button class="add-btn" onclick="openModal('Expo booth')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/cups2.jpg" class="gallery-img"><div class="gallery-info"><h3>Corporate gifts</h3><p>Pens, mugs, notepads</p><button class="add-btn" onclick="openModal('Corporate gifts')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/sign.jpg" class="gallery-img"><div class="gallery-info"><h3>Signage</h3><p>Acrylic / metal logo</p><button class="add-btn" onclick="openModal('Reception sign')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/business cards.jpg" class="gallery-img"><div class="gallery-info"><h3>Business cards</h3><p>Premium finish</p><button class="add-btn" onclick="openModal('Business cards')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/branded envelopes.webp" class="gallery-img"><div class="gallery-info"><h3>Branded envelopes</h3><p>DL / A4</p><button class="add-btn" onclick="openModal('Envelopes')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/glass trophies.jpeg" class="gallery-img"><div class="gallery-info"><h3>Trophies</h3><p>Glass / Crystal</p><button class="add-btn" onclick="openModal('Presentation folder')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/booklet.jpg" class="gallery-img"><div class="gallery-info"><h3>Branded notebook</h3><p>Custom cover</p><button class="add-btn" onclick="openModal('Notebook')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/pens.jpg" class="gallery-img"><div class="gallery-info"><h3>Custom pens</h3><p>Metal / plastic</p><button class="add-btn" onclick="openModal('Custom pens')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/cotton caps.jpeg" class="gallery-img"><div class="gallery-info"><h3>Custom caps</h3><p>Cotton / wool</p><button class="add-btn" onclick="openModal('Caps')">Add to quote</button></div></div>
-        <div class="gallery-card"><img src="images/branding/shoppingbags.jpg" class="gallery-img"><div class="gallery-info"><h3>Cotton tote bag</h3><p>Screen printed</p><button class="add-btn" onclick="openModal('Tote bag')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/stationeryset.webp" class="gallery-img"><div class="gallery-info"><h3>Stationery set</h3><p>Complete stationery suite: letterheads, envelopes, and business cards with matching design. Professional and cohesive.</p><button class="add-btn" onclick="openModal('Stationery set')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/work vests.jpeg" class="gallery-img"><div class="gallery-info"><h3>Reflector Jackets</h3><p>High-visibility work vests with custom logos. Perfect for construction, events, and field staff.</p><button class="add-btn" onclick="openModal('Reflector jackets')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/uniform.webp" class="gallery-img"><div class="gallery-info"><h3>Uniform printing</h3><p>Custom uniforms for your team: T-shirts, polo shirts, caps, aprons, and more. Durable printing.</p><button class="add-btn" onclick="openModal('Uniform printing')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/hoodie2.jpeg" class="gallery-img"><div class="gallery-info"><h3>Branded Hoodies</h3><p>Premium hoodies with your logo. Great for staff gifts, promotional events, or retail.</p><button class="add-btn" onclick="openModal('Branded hoodies')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/lanyards.jpeg" class="gallery-img"><div class="gallery-info"><h3>Nametags & lanyards</h3><p>Custom printed lanyards with ID holders and metal or plastic nametags. Essential for events and offices.</p><button class="add-btn" onclick="openModal('Lanyards')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/printing/arsenal.jpg" class="gallery-img"><div class="gallery-info"><h3>Jerseys</h3><p>Full sublimation jerseys for sports teams, clubs, and corporate tournaments. Design your own.</p><button class="add-btn" onclick="openModal('Jerseys')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/cups2.jpg" class="gallery-img"><div class="gallery-info"><h3>Corporate gifts</h3><p>Branded mugs, pens, notepads, and more. Thoughtful giveaways that keep your brand top of mind.</p><button class="add-btn" onclick="openModal('Corporate gifts')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/sign.jpg" class="gallery-img"><div class="gallery-info"><h3>Signage</h3><p>Acrylic, metal, or wooden logo signs for reception areas, offices, and storefronts.</p><button class="add-btn" onclick="openModal('Reception sign')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/business cards.jpg" class="gallery-img"><div class="gallery-info"><h3>Business cards</h3><p>Premium business cards on thick cardstock with matte or glossy finish. Spot UV and foil options.</p><button class="add-btn" onclick="openModal('Business cards')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/branded envelopes.webp" class="gallery-img"><div class="gallery-info"><h3>Branded envelopes</h3><p>Custom printed envelopes in DL, C4, and C5 sizes. Enhance your mail presence.</p><button class="add-btn" onclick="openModal('Envelopes')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/glass trophies.jpeg" class="gallery-img"><div class="gallery-info"><h3>Trophies</h3><p>Glass and crystal trophies engraved with your logo. Perfect for awards, anniversaries, and milestones.</p><button class="add-btn" onclick="openModal('Trophies')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/booklet.jpg" class="gallery-img"><div class="gallery-info"><h3>Branded notebook</h3><p>Custom hardcover or softcover notebooks with your logo. Ideal for conferences and client gifts.</p><button class="add-btn" onclick="openModal('Notebook')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/pens.jpg" class="gallery-img"><div class="gallery-info"><h3>Custom pens</h3><p>Metal or plastic pens with your branding. A classic promotional item that gets used daily.</p><button class="add-btn" onclick="openModal('Custom pens')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/cotton caps.jpeg" class="gallery-img"><div class="gallery-info"><h3>Custom caps</h3><p>Cotton or wool caps with embroidered or screen-printed logos. Stylish and practical.</p><button class="add-btn" onclick="openModal('Caps')">Add to quote</button></div></div>
+        <div class="gallery-card"><img src="images/branding/shoppingbags.jpg" class="gallery-img"><div class="gallery-info"><h3>Cotton tote bag</h3><p>Eco-friendly cotton tote bags with screen-printed branding. Great for retail and events.</p><button class="add-btn" onclick="openModal('Tote bag')">Add to quote</button></div></div>
     </div>
 
     <div id="quote-area">
@@ -220,9 +297,55 @@
         </div>
     </div>
 
+    <!-- ========== CUSTOM BRANDING REQUEST FORM ========== -->
+    <div class="custom-form-section">
+        <h3>📝 Need a custom branding solution?</h3>
+        <p class="form-intro">If you have a specific branding need not listed above, fill out this form and our branding experts will get back to you within 24 hours with a custom quote.</p>
+        
+        <!-- Deposit notice (same as index) -->
+        <div class="deposit-note">
+            NB: Before starting any project quotation is done first, then a 70% deposit is paid.
+        </div>
+        
+        <form id="customRequestForm" class="custom-form" onsubmit="handleCustomRequest(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="customName">Full name *</label>
+                    <input type="text" id="customName" required placeholder="John Kimani">
+                </div>
+                <div class="form-group">
+                    <label for="customEmail">Email *</label>
+                    <input type="email" id="customEmail" required placeholder="john@company.com">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="customPhone">Phone number</label>
+                    <input type="tel" id="customPhone" placeholder="+254 712 345 678">
+                </div>
+                <div class="form-group">
+                    <label for="customService">Service category</label>
+                    <select id="customService">
+                        <option>Corporate Uniforms</option>
+                        <option>Promotional Merchandise</option>
+                        <option>Office Signage</option>
+                        <option>Stationery & Print</option>
+                        <option>Full Brand Identity</option>
+                        <option>Other Branding</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customMessage">Describe your project / what you need *</label>
+                <textarea id="customMessage" rows="4" required placeholder="Tell us details: quantity, colors, deadlines, any specific requirements..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send request →</button>
+        </form>
+    </div>
+
     <div class="persuasive" style="margin-bottom: 60px;">
         <h3>🎯 Ready to Elevate Your Brand?</h3>
-        <p>Browse our products and add them to your quote. Need something custom? We're just a message away.</p>
+        <p>Browse our products and add them to your quote. Need something custom? Use the form above – we're just a message away.</p>
     </div>
 </div>
 
@@ -234,6 +357,7 @@
         <a href="https://www.facebook.com/share/16WD14SCfo/">Facebook</a>
     </div>
 </footer>
+
 <script src="fyeti.js"></script>
 </body>
 </html>
