@@ -108,7 +108,7 @@
         document.getElementById('channelModal').classList.add('active');
     };
 
-    // Custom request handler (for design page)
+    // Custom request handler (for design/branding/printing pages)
     window.handleCustomRequest = function(e) {
         e.preventDefault();
         const name = document.getElementById('customName').value.trim();
@@ -138,7 +138,7 @@
             whatsappMsg += `Service: ${service}\nMessage: ${message}\n\n`;
         } else if (currentFormType === 'custom') {
             const { name, email, phone, service, message } = currentFormData;
-            whatsappMsg = `Custom design request from ${name}\n`;
+            whatsappMsg = `Custom request from ${name}\n`;
             whatsappMsg += `Email: ${email}\nPhone: ${phone || '—'}\nService: ${service}\n`;
             whatsappMsg += `Details:\n${message}\n\n`;
         }
@@ -165,7 +165,7 @@
             body = `Name: ${name}\nCompany: ${company}\nEmail: ${email}\nService: ${service}\nMessage: ${message}\n\n`;
         } else if (currentFormType === 'custom') {
             const { name, email, phone, service, message } = currentFormData;
-            subject = `Custom design request from ${name}`;
+            subject = `Custom request from ${name}`;
             body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || '—'}\nService: ${service}\n\nDetails:\n${message}\n\n`;
         }
 
@@ -189,29 +189,46 @@
         currentFormType = null;
     }
 
-    // ========== THEME TOGGLE ==========
-    window.toggleTheme = function() {
-        const html = document.documentElement;
-        const current = html.getAttribute('data-theme');
-        const next = current === 'light' ? 'dark' : 'light';
-        html.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
+    // ========== THEME TOGGLE WITH SYSTEM PREFERENCE ==========
+    function getSystemTheme() {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
 
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        // Update toggle buttons icons
+        const newIcon = theme === 'light' ? '🌙' : '☀️';
         const mobileBtn = document.getElementById('theme-btn-mobile');
         const desktopBtn = document.getElementById('theme-btn-desktop');
-        const newIcon = next === 'light' ? '🌙' : '☀️';
         if (mobileBtn) mobileBtn.innerText = newIcon;
         if (desktopBtn) desktopBtn.innerText = newIcon;
+    }
+
+    window.toggleTheme = function() {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        setTheme(next);
     };
 
-    // Apply saved theme on load
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    const initialIcon = savedTheme === 'light' ? '🌙' : '☀️';
-    const mobileBtn = document.getElementById('theme-btn-mobile');
-    const desktopBtn = document.getElementById('theme-btn-desktop');
-    if (mobileBtn) mobileBtn.innerText = initialIcon;
-    if (desktopBtn) desktopBtn.innerText = initialIcon;
+    // Initialize theme: check localStorage first, then system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else {
+        // No saved preference – use system theme
+        const systemTheme = getSystemTheme();
+        setTheme(systemTheme);
+    }
+
+    // Listen for system theme changes (optional)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        // Only change if user hasn't manually set a preference
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            setTheme(newTheme);
+        }
+    });
 
     // ========== SIDEBAR & DROPDOWNS ==========
     window.openNav = function() { document.getElementById('mySidebar').style.left = '0'; document.getElementById('overlay').style.display = 'block'; };
